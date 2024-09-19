@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 3452732114884017971}
   - component: {fileID: 492404229070731662}
   - component: {fileID: 7796959084597129576}
+  - component: {fileID: -5202086948739722200}
   m_Layer: 0
   m_Name: laser
   m_TagString: Weapon
@@ -334,6 +335,20 @@ MonoBehaviour:
   hover: 0
   fireCooldown: 0.5
   gun: {fileID: 652430019637556253}
+--- !u!114 &-5202086948739722200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411097325702905010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a5d6fa82a0d4d4a8fb9159d2b94b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 0}
+  firePoint: {fileID: 0}
 --- !u!1 &5757122732303161028
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,9 +10,15 @@ public class teslaDamage : MonoBehaviour
     public LayerMask enemyLayer;      // Layer mask to filter for enemies
     private Animator animator;
     public TurretController tc;
+    private GameManager gameManager;
+
+    private float destructionTimer;  // Tracks remaining time for destruction
+    private bool isDestroyed = false; // Check if destruction was already triggered
 
     void Start()
     {
+        Camera mainCamera = Camera.main;
+        gameManager = mainCamera.GetComponent<GameManager>();
         // Get the Animator component attached to this GameObject
         animator = GetComponent<Animator>();
 
@@ -23,8 +29,33 @@ public class teslaDamage : MonoBehaviour
             animator.speed = clipInfo[0].clip.length / effectDuration;
         }
 
-        Destroy(gameObject, effectDuration);
+        destructionTimer = effectDuration;
         ApplyDamage();
+    }
+
+    void Update()
+    {
+        // Check if the game is paused
+        if (gameManager.pause)
+        {
+            // Pause the animation
+            animator.speed = 0f;
+            return; // Skip the rest of the Update if the game is paused
+        }
+
+        // Resume the animation when the game is not paused
+        animator.speed = 1f;
+
+        // Update the destruction timer and destroy the object when the time is up
+        if (!isDestroyed)
+        {
+            destructionTimer -= Time.deltaTime;
+            if (destructionTimer <= 0)
+            {
+                Destroy(gameObject);
+                isDestroyed = true;
+            }
+        }
     }
 
     void ApplyDamage()
