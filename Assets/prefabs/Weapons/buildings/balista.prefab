@@ -365,7 +365,10 @@ MonoBehaviour:
   animator: {fileID: 6197773509319548437}
   hover: 0
   fireCooldown: 0.5
+  readyToShoot: 0
   gun: {fileID: 3431796013622484512}
+  aimingTolerance: 5
+  rotationSpeed: 100
 --- !u!114 &4363836100148014676
 MonoBehaviour:
   m_ObjectHideFlags: 0

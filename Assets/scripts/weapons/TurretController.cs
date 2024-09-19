@@ -14,6 +14,7 @@ public class TurretController : MonoBehaviour
 
     private float fireTimer; // Timer to track cooldown
     public float fireCooldown = 1f; // Cooldown time between shots in seconds
+    public bool readyToShoot;
 
     protected virtual void Start()
     {
@@ -46,7 +47,7 @@ public class TurretController : MonoBehaviour
             // Find the closest enemy within range
             FindClosestEnemy();
 
-            if (targetEnemy != null)
+            if (targetEnemy != null && readyToShoot)
             {
                 animator.speed = 1f / fireCooldown * 10;
                 animator.SetBool("fight", true);
@@ -57,8 +58,11 @@ public class TurretController : MonoBehaviour
                 {
                     if (shootBehavior != null)
                     {
-                        shootBehavior.Shoot();
-                        fireTimer = 0f; // Reset the cooldown timer after shooting
+                        if (readyToShoot)
+                        {
+                            shootBehavior.Shoot();
+                            fireTimer = 0f; // Reset the cooldown timer after shooting
+                        }
                     }
                 }
             }

@@ -365,6 +365,7 @@ MonoBehaviour:
   animator: {fileID: 3046215988583805933}
   hover: 0
   fireCooldown: 3
+  readyToShoot: 1
 --- !u!114 &5613230004537787480
 MonoBehaviour:
   m_ObjectHideFlags: 0
