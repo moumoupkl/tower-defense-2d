@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4116087548776196105}
   - component: {fileID: 7114173300331752137}
-  - component: {fileID: 6284023746791983682}
   - component: {fileID: 386305869210717348}
   - component: {fileID: 5876828392903837152}
+  - component: {fileID: 326292209851238213}
+  - component: {fileID: 6284023746791983682}
   m_Layer: 0
   m_Name: tile red
   m_TagString: Tile_red
@@ -87,25 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6284023746791983682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2280373100988410833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a1d930022f56894fbc0e63d64c638a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turret1: {fileID: 4927421271642273980, guid: 2d242dc0f2a177f47abd3080744f746b, type: 3}
-  turret2: {fileID: 7540767241916947676, guid: 9c4c7ef4c8a887d4588b88b72f14ec84, type: 3}
-  animator: {fileID: 5876828392903837152}
-  weaponPrice: 5
-  gameManager: {fileID: 0}
-  hover: 0
-  select: {fileID: 0}
 --- !u!61 &386305869210717348
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,3 +154,55 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &326292209851238213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280373100988410833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: keyboard
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &6284023746791983682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280373100988410833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1d930022f56894fbc0e63d64c638a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret1: {fileID: 4927421271642273980, guid: 2d242dc0f2a177f47abd3080744f746b, type: 3}
+  turret2: {fileID: 7540767241916947676, guid: 9c4c7ef4c8a887d4588b88b72f14ec84, type: 3}
+  animator: {fileID: 5876828392903837152}
+  weaponPrice: 5
+  gameManager: {fileID: 0}
+  hover: 0
+  select: {fileID: -3269377568202801211, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  activeConstruction: 0
+  constructionTime: 3
+  particles: {fileID: 2278256178577447766, guid: 12d3d41155bc33d4ca03d3c0bec4dcfc, type: 3}

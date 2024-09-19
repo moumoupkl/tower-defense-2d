@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class GameManager : MonoBehaviour
     public bool pausing;
     public bool resuming;
     private bool previousPauseState;
+    public InputActionReference move1;
+    public InputActionReference move2;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +65,13 @@ public class GameManager : MonoBehaviour
         {
             resuming = false;
         }
+
+        if (!move1.action.enabled || !move2.action.enabled)
+        {
+            move1.action.Enable();
+            move2.action.Enable();
+            Debug.Log("Re-enabled move action after tile deactivation.");
+        }
         
     }
     
@@ -84,4 +95,5 @@ public class GameManager : MonoBehaviour
     {
         currentCoins += coinsToAdd;
     }
+
 }

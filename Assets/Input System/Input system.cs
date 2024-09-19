@@ -37,9 +37,27 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""move p2"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""78b2fc71-fb24-4664-bbe9-97a6f5e2db7f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""select p1"",
                     ""type"": ""Button"",
                     ""id"": ""d261c055-b3d9-4da3-b216-e696931578f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""select p2"",
+                    ""type"": ""Button"",
+                    ""id"": ""68f68a2b-daa3-4e05-bcf6-8b31f3ccc172"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -160,7 +178,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""597cf8b1-955e-48d7-b4c4-e7552e05d33a"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/rightShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""keyboard"",
@@ -176,6 +194,138 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""controller"",
                     ""action"": ""select p1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""joystick 2"",
+                    ""id"": ""3ebe7c0f-8587-4415-af4b-74d3d1304e8f"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move p2"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e8338531-795f-46e0-b2e6-971454f269e3"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""controller"",
+                    ""action"": ""move p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""03c4a849-acd7-4c31-b01a-659361301f85"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""controller"",
+                    ""action"": ""move p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""1fea0d7c-6133-4a8f-83f2-655536333fa4"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""controller"",
+                    ""action"": ""move p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3e34d28a-f48d-460e-8ee0-eeefb75c488e"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""controller"",
+                    ""action"": ""move p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""keyboard2"",
+                    ""id"": ""19525d59-2958-46e2-901f-eeb630475e97"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move p2"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""493c2b96-5a15-4fdf-9801-dcba8ab35fe9"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""move p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""48a6cd3f-c467-45ed-b921-cd3d54db1363"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""move p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""94d88aad-4327-43ff-a85c-96b67c5ecc1c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""move p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""2183b69d-dba3-4d6e-a752-5892042ad45f"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""move p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ac0dc30-06e3-4a0d-b69e-0c8e64169f77"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""select p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20d1afd8-1ffd-4c38-9098-dcb57246a92c"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""controller"",
+                    ""action"": ""select p2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -210,7 +360,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_movep1 = m_Gameplay.FindAction("move p1", throwIfNotFound: true);
+        m_Gameplay_movep2 = m_Gameplay.FindAction("move p2", throwIfNotFound: true);
         m_Gameplay_selectp1 = m_Gameplay.FindAction("select p1", throwIfNotFound: true);
+        m_Gameplay_selectp2 = m_Gameplay.FindAction("select p2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,13 +425,17 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_movep1;
+    private readonly InputAction m_Gameplay_movep2;
     private readonly InputAction m_Gameplay_selectp1;
+    private readonly InputAction m_Gameplay_selectp2;
     public struct GameplayActions
     {
         private @Inputsystem m_Wrapper;
         public GameplayActions(@Inputsystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @movep1 => m_Wrapper.m_Gameplay_movep1;
+        public InputAction @movep2 => m_Wrapper.m_Gameplay_movep2;
         public InputAction @selectp1 => m_Wrapper.m_Gameplay_selectp1;
+        public InputAction @selectp2 => m_Wrapper.m_Gameplay_selectp2;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -292,9 +448,15 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @movep1.started += instance.OnMovep1;
             @movep1.performed += instance.OnMovep1;
             @movep1.canceled += instance.OnMovep1;
+            @movep2.started += instance.OnMovep2;
+            @movep2.performed += instance.OnMovep2;
+            @movep2.canceled += instance.OnMovep2;
             @selectp1.started += instance.OnSelectp1;
             @selectp1.performed += instance.OnSelectp1;
             @selectp1.canceled += instance.OnSelectp1;
+            @selectp2.started += instance.OnSelectp2;
+            @selectp2.performed += instance.OnSelectp2;
+            @selectp2.canceled += instance.OnSelectp2;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -302,9 +464,15 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @movep1.started -= instance.OnMovep1;
             @movep1.performed -= instance.OnMovep1;
             @movep1.canceled -= instance.OnMovep1;
+            @movep2.started -= instance.OnMovep2;
+            @movep2.performed -= instance.OnMovep2;
+            @movep2.canceled -= instance.OnMovep2;
             @selectp1.started -= instance.OnSelectp1;
             @selectp1.performed -= instance.OnSelectp1;
             @selectp1.canceled -= instance.OnSelectp1;
+            @selectp2.started -= instance.OnSelectp2;
+            @selectp2.performed -= instance.OnSelectp2;
+            @selectp2.canceled -= instance.OnSelectp2;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -343,6 +511,8 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnMovep1(InputAction.CallbackContext context);
+        void OnMovep2(InputAction.CallbackContext context);
         void OnSelectp1(InputAction.CallbackContext context);
+        void OnSelectp2(InputAction.CallbackContext context);
     }
 }

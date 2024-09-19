@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class explosion : MonoBehaviour
+public class AnimationEffect : MonoBehaviour
 {
-    public float lifetime = 2f; // Duration in seconds before the explosion object is destroyed
+    public float lifetime = 2f;
     private Animator animator;
 
     void Start()

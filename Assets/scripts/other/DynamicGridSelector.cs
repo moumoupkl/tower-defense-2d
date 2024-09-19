@@ -16,7 +16,9 @@ public class DynamicGridSelector : MonoBehaviour
     public float minY = 0f;      // Minimum Y boundary
     public float inputDelay = 0.5f; // Delay to prevent rapid selection changes
     private float inputTimer;
-    public InputActionReference move;
+    public InputActionReference movep1;
+    public InputActionReference movep2;
+    private InputActionReference move;
 
     // Initial position of the player
     private Vector2 currentPosition = new Vector2(1.5f, 5.5f);
@@ -36,7 +38,12 @@ public class DynamicGridSelector : MonoBehaviour
 
     void Update()
     {
-        
+        if (blueTeam)
+            move = movep1;
+
+        else    
+            move = movep2;
+               
         inputTimer -= Time.deltaTime;
 
         // Read joystick input
