@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class DynamicGridSelector : MonoBehaviour
 {
     public bool blueTeam;
     public string tileTag;
-    public string weaponTag;
     public GameObject selectionPrefab; // Reference to the selection indicator GameObject
     public GameObject selection;
     public float maxX = 10f;     // Maximum X boundary
@@ -18,9 +16,11 @@ public class DynamicGridSelector : MonoBehaviour
     private float inputTimer;
     public InputActionReference movep1;
     public InputActionReference movep2;
+    public InputActionReference buyAction; // Input action for purchasing turrets
     private InputActionReference move;
 
     // Initial position of the player
+    [SerializeField]
     private Vector2 currentPosition = new Vector2(1.5f, 5.5f);
 
     // Reference to the last selected object
@@ -34,13 +34,13 @@ public class DynamicGridSelector : MonoBehaviour
             selection = Instantiate(selectionPrefab, currentPosition, Quaternion.identity);
         }
         UpdateSelection(); // Update selection state at the start
+        buyAction.action.performed += OnBuyActionPerformed; // Subscribe to the purchase input action
     }
 
     void Update()
     {
         if (blueTeam)
             move = movep1;
-
         else    
             move = movep2;
                
@@ -50,6 +50,7 @@ public class DynamicGridSelector : MonoBehaviour
         Vector2 movedirection = move.action.ReadValue<Vector2>();
         float horizontal = movedirection.x;
         float vertical = movedirection.y;
+        
         // Normalize input to move only in one direction at a time
         if (Mathf.Abs(horizontal) > Mathf.Abs(vertical))
         {
@@ -76,6 +77,34 @@ public class DynamicGridSelector : MonoBehaviour
         }
     }
 
+    // Triggered when the purchase key is pressed
+    private void OnBuyActionPerformed(InputAction.CallbackContext context)
+    {
+        if (lastSelectedObject != null)
+        {
+            var tileScript = lastSelectedObject.GetComponent<tiles>();
+            if (tileScript != null && tileScript.hover && !tileScript.activeConstruction)
+            {
+                GameManager gameManager = tileScript.gameManager;
+
+                // Check if the player can afford the turret
+                if (!gameManager.pause && gameManager.currentCoins >= tileScript.weaponPrice)
+                {
+                    // Trigger turret construction and deduct currency
+                    tileScript.activeConstruction = true;
+                    gameManager.AddCoins(-tileScript.weaponPrice);
+                    StartCoroutine(tileScript.SpawnObject(tileScript.turret1)); // Trigger construction
+
+                    Debug.Log("Turret purchased and construction started!");
+                }
+                else
+                {
+                    Debug.Log("Not enough coins or game is paused.");
+                }
+            }
+        }
+    }
+
     void MoveSelection(Vector2 direction)
     {
         // Calculate the new position by moving one unit in the desired direction
@@ -97,7 +126,7 @@ public class DynamicGridSelector : MonoBehaviour
 
     void UpdateSelection()
     {
-        // Raycast to check if we are over a tile or weapon
+        // Raycast to check if we are over a tile
         RaycastHit2D hit = Physics2D.Raycast(currentPosition, Vector2.zero);
 
         // Deselect the previous object
@@ -107,12 +136,12 @@ public class DynamicGridSelector : MonoBehaviour
             lastSelectedObject = null;
         }
 
-        // Check if we hit a tile or weapon
+        // Check if we hit a tile
         if (hit.collider != null)
         {
             GameObject hitObject = hit.collider.gameObject;
-            
-            if (hitObject.CompareTag(tileTag) || hitObject.CompareTag(weaponTag))
+
+            if (hitObject.CompareTag(tileTag))
             {
                 SelectObject(hitObject);
                 lastSelectedObject = hitObject;
@@ -122,52 +151,27 @@ public class DynamicGridSelector : MonoBehaviour
 
     void SelectObject(GameObject obj)
     {
-
-        // Check for the tiles or weapon component and set the hover status to true
-        var tileScript = obj.GetComponent<tiles>(); // Assuming the script is named "tiles"
+        // Check for the tile component and set the hover status to true
+        var tileScript = obj.GetComponent<tiles>(); 
         if (tileScript != null)
         {
             tileScript.hover = true; // Set hover to true for selected tile
-        }
-
-        var weaponScript = obj.GetComponent<TurretController>();
-        if (weaponScript != null)
-        {
-            weaponScript.hover = true; 
-        }
-        else
-        {
-            var weaponScripttesla = obj.GetComponent<TeslaController>();
-            if (weaponScripttesla != null)
-            {
-                weaponScripttesla.hover = true;
-            }
-
         }
     }
 
     void DeselectObject(GameObject obj)
     {
-        // Check for the tiles or weapon component and set the hover status to false
-        var tileScript = obj.GetComponent<tiles>(); // Assuming the script is named "tiles"
+        // Check for the tile component and set the hover status to false
+        var tileScript = obj.GetComponent<tiles>(); 
         if (tileScript != null)
         {
             tileScript.hover = false; // Set hover to false for deselected tile
         }
+    }
 
-        var weaponScript = obj.GetComponent<TurretController>(); // Assuming the script is named "Weapon" for weapons
-        if (weaponScript != null)
-        {
-            weaponScript.hover = false; // Set hover to false for deselected weapon
-        }
-        else
-        {
-            var weaponScripttesla = obj.GetComponent<TeslaController>(); // Assuming the script is named "Weapon" for weapons
-            if (weaponScripttesla != null)
-            {
-                weaponScripttesla.hover = false; // Set hover to false for deselected weapon
-            }
-
-        }
+    private void OnDestroy()
+    {
+        // Unsubscribe from the buy action event when this object is destroyed
+        buyAction.action.performed -= OnBuyActionPerformed;
     }
 }
