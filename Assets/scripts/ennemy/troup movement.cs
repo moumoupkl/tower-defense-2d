@@ -9,6 +9,7 @@ public class TroupMovement : MonoBehaviour
     public int target;
     private float speed;
     public GameManager gameManager;
+    public bool blueTeam;
 
     void Start()
     {
@@ -24,21 +25,24 @@ public class TroupMovement : MonoBehaviour
             return;
         }
 
-        // Find the child object named "red" inside "troup path"
-        Transform red = troupPath.transform.Find("red");
-        if (red == null)
+        // Check if the blueTeam bool is true to determine the correct path
+        string teamPath = blueTeam ? "blue" : "red";
+
+        // Find the child object for the corresponding team inside "troup path"
+        Transform teamPathTransform = troupPath.transform.Find(teamPath);
+        if (teamPathTransform == null)
         {
-            Debug.LogError("Child 'red' not found inside 'troup path'.");
+            Debug.LogError($"Child '{teamPath}' not found inside 'troup path'.");
             return;
         }
 
-        // Get all child transforms inside "red" and assign them to the path array
-        int childCount = red.childCount;
+        // Get all child transforms inside the team path and assign them to the path array
+        int childCount = teamPathTransform.childCount;
         path = new Transform[childCount];
 
         for (int i = 0; i < childCount; i++)
         {
-            path[i] = red.GetChild(i);
+            path[i] = teamPathTransform.GetChild(i);
         }
 
         // Initialize starting position and target index

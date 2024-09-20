@@ -74,8 +74,8 @@ public class GameManager : MonoBehaviour
         }
         
     }
-    
-    public void SummonTroup()
+    // --------------------- blue team ---------------------
+    public void GroundTroupBlue()
     {
         if (!pause)
         {
@@ -83,13 +83,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SummonFlyingTroup()
+    public void FlyingTroupBlue()
     {
         if (!pause)
         {
         Instantiate(flyingtroup, new Vector2(1000, 1000), Quaternion.identity);
         }
     }
+
+    // --------------------- red team ---------------------
+    
 
     public void AddCoins(int coinsToAdd)
     {

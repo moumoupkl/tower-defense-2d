@@ -149,6 +149,7 @@ MonoBehaviour:
   path: []
   target: 0
   gameManager: {fileID: 0}
+  blueTeam: 1
 --- !u!61 &4578192734660917154
 BoxCollider2D:
   m_ObjectHideFlags: 0

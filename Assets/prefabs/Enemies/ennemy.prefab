@@ -116,11 +116,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1474837461805857911}
   - component: {fileID: 8099018401263337578}
-  - component: {fileID: -1532291254800093776}
   - component: {fileID: -2579866735009179921}
   - component: {fileID: 6287904850573101409}
   - component: {fileID: 656625304518894283}
   - component: {fileID: 3336460405227934395}
+  - component: {fileID: -1532291254800093776}
   m_Layer: 11
   m_Name: ennemy
   m_TagString: Enemy
@@ -196,22 +196,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1532291254800093776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2966670713212227299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13c89f8bcec58f2449a9260366f57011, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyStats: {fileID: 6287904850573101409}
-  path: []
-  target: 0
-  gameManager: {fileID: 0}
 --- !u!61 &-2579866735009179921
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -396,3 +380,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1532291254800093776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966670713212227299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c89f8bcec58f2449a9260366f57011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStats: {fileID: 6287904850573101409}
+  path: []
+  target: 0
+  gameManager: {fileID: 0}
+  blueTeam: 1
