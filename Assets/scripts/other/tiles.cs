@@ -14,7 +14,6 @@ public class tiles : MonoBehaviour
     public float constructionTime;
     public GameObject particles;
 
-    public Transform tile;
     
     void Start()
     {
@@ -23,12 +22,16 @@ public class tiles : MonoBehaviour
         gameManager = mainCamera.GetComponent<GameManager>();
     }
 
-    private void OnSelectp1()
+    private void OnSelectp1()// triggered on right shift
     {
-        if (!gameManager.pause && gameManager.currentCoins >= weaponPrice)
+        Debug.Log("right shift");
+        if (hover && !activeConstruction)
         {
-            activeConstruction = true;
-            StartCoroutine(SpawnObject(turret1, tile));
+            if (!gameManager.pause && gameManager.currentCoins >= weaponPrice)
+            {
+                activeConstruction = true;
+                StartCoroutine(SpawnObject(turret1));
+            }
         }
     }
 
@@ -43,7 +46,7 @@ public class tiles : MonoBehaviour
                 if (!gameManager.pause && gameManager.currentCoins >= weaponPrice)
                 {
                     activeConstruction = true;
-                    StartCoroutine(SpawnObject(turret1, tile));
+                    StartCoroutine(SpawnObject(turret1));
                 }
             }
             if (Input.GetKeyDown(KeyCode.LeftShift)) // Left Shift for turret2
@@ -51,7 +54,7 @@ public class tiles : MonoBehaviour
                 if (!gameManager.pause && gameManager.currentCoins >= weaponPrice)
                 {
                     activeConstruction = true;
-                    StartCoroutine(SpawnObject(turret2, tile));
+                    StartCoroutine(SpawnObject(turret2));
                 }
             }
         }
@@ -61,14 +64,14 @@ public class tiles : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnObject(GameObject turret, Transform spawnPosition)
+    IEnumerator SpawnObject(GameObject turret)
     {
         gameManager.AddCoins(-weaponPrice);
 
         if (particles != null)
         {
-            Debug.Log(spawnPosition.transform.position);
-            GameObject spawnedParticles = Instantiate(particles, spawnPosition.transform.position, Quaternion.identity);
+            Debug.Log(transform.position);
+            GameObject spawnedParticles = Instantiate(particles, transform.position, Quaternion.identity);
             Particle particleScript = spawnedParticles.GetComponent<Particle>();
 
             if (particleScript != null)
@@ -88,7 +91,7 @@ public class tiles : MonoBehaviour
             yield return null;
         }
 
-        Instantiate(turret, spawnPosition.transform.position, Quaternion.identity);
+        Instantiate(turret, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
     }
 }
