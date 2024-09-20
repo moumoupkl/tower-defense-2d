@@ -12,6 +12,7 @@ public class tiles : MonoBehaviour
     public bool activeConstruction;    // True when construction is active, prevents new construction until it's done
     public float constructionTime;     // Time it takes to construct the turret
     public GameObject particles;       // Visual effect for turret construction
+    public bool blueTeam;
 
     void Start()
     {
@@ -61,8 +62,18 @@ public class tiles : MonoBehaviour
             yield return null;
         }
 
-        // After construction time, spawn the turret and deactivate the tile
-        Instantiate(turret, transform.position, Quaternion.identity);
+        GameObject turretInstance = Instantiate(turret, transform.position, Quaternion.identity);
+        
+        TurretController turretController = turretInstance.GetComponent<TurretController>();
+
+        if (turretController != null)
+        {
+            if (blueTeam)
+                turretController.blueTeam = true;
+            else
+                turretController.blueTeam = false;
+        }
+
         gameObject.SetActive(false);
     }
 }

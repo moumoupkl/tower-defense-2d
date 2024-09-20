@@ -202,7 +202,7 @@ MonoBehaviour:
   weaponPrice: 5
   gameManager: {fileID: 0}
   hover: 0
-  select: {fileID: -3269377568202801211, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   activeConstruction: 0
   constructionTime: 3
   particles: {fileID: 2278256178577447766, guid: 12d3d41155bc33d4ca03d3c0bec4dcfc, type: 3}
+  blueTeam: 0

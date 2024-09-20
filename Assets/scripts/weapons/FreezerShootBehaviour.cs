@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class FreezerShootBehaviour : ShootBehavior
 {
-    //public GameObject explosionPrefab;
-    public GameObject triangle;
-    private List<Collider> colliders = new List<Collider>();
-    public List<Collider> GetColliders () { return colliders; }
-    public Transform firePoint;
+    public TriangRange triangRange;
+    public float slowDuration;
+    public float slowStrength;
+
     public override void Shoot()
     {
-        //GameObject TeslaExplosion = Instantiate(explosionPrefab, firePoint.position, firePoint.rotation);
-        foreach (Collider enemyCollider in colliders){
-            Debug.Log("qsygudfqgu");
+        foreach (var collider in triangRange.colliders)
+        {
+            // Get the GameObject that the collider is attached to
+            GameObject colliderObject = collider.gameObject;
+
+            // Try to get the script you want to affect (replace 'YourScript' with the actual script name)
+            TroupMovement troupMovement = colliderObject.GetComponent<TroupMovement>();
+
+            if (troupMovement != null)
+            {
+                // Perform your action on the script
+                troupMovement.Slow(slowDuration, slowStrength); // Replace with the method you want to call
+            }
         }
     }
-
-
 }
-

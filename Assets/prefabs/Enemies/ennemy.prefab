@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 656625304518894283}
   - component: {fileID: 3336460405227934395}
   - component: {fileID: -1532291254800093776}
+  - component: {fileID: 7001520986380476615}
   m_Layer: 11
   m_Name: ennemy
   m_TagString: Enemy
@@ -397,3 +398,30 @@ MonoBehaviour:
   target: 0
   gameManager: {fileID: 0}
   blueTeam: 1
+--- !u!50 &7001520986380476615
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966670713212227299}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

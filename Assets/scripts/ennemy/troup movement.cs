@@ -7,16 +7,23 @@ public class TroupMovement : MonoBehaviour
     public enemyStats enemyStats;
     public Transform[] path;
     public int target;
-    private float speed;
+    private float currentspeed;
+    private float Startspeed;
     public GameManager gameManager;
     public bool blueTeam;
+    public bool slown;
+    public float slowTime;
+    private float slowtimer;
+    public float slowStrength;
 
     void Start()
     {
+
         Camera mainCamera = Camera.main;
         gameManager = mainCamera.GetComponent<GameManager>();
 
-        speed = enemyStats.speed;
+        Startspeed = enemyStats.speed;
+        currentspeed = Startspeed;
         // Find the GameObject named "troup path" in the scene
         GameObject troupPath = GameObject.Find("troup path");
         if (troupPath == null)
@@ -59,6 +66,19 @@ public class TroupMovement : MonoBehaviour
 
     void Update()
     {
+        if (slown)
+        {
+            slowtimer += Time.deltaTime;
+            currentspeed = Startspeed * slowStrength;
+            if (slowtimer >= slowTime)
+            {
+                slown = false;
+            }
+        }
+        else
+            currentspeed = Startspeed;
+            
+
         if (!gameManager.pause)
         {
             if (path.Length == 0) return; // If there are no waypoints, exit early
@@ -66,7 +86,7 @@ public class TroupMovement : MonoBehaviour
             // Move towards the target position
             Vector2 currentPosition = transform.position;
             Vector2 targetPosition = path[target].position;
-            transform.position = Vector2.MoveTowards(currentPosition, targetPosition, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(currentPosition, targetPosition, currentspeed * Time.deltaTime);
 
             // Check if the object has reached the target position
             if (currentPosition == targetPosition)
@@ -85,5 +105,18 @@ public class TroupMovement : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Calculate angle in degrees
             transform.rotation = Quaternion.Euler(0, 0, angle - 90); // Apply rotation to the object
         }
+
+        if (slown)
+        {
+            
+        }
+    }
+
+    public void Slow (float SlowTime, float SlowStrength)
+    {
+        slown = true;
+        slowtimer = 0f;
+        slowTime = SlowTime;
+        slowStrength = SlowStrength;
     }
 }

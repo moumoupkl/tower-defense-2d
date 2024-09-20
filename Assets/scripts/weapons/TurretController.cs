@@ -15,6 +15,7 @@ public class TurretController : MonoBehaviour
     private float fireTimer; // Timer to track cooldown
     public float fireCooldown = 1f; // Cooldown time between shots in seconds
     public bool readyToShoot;
+    public bool blueTeam;
 
     protected virtual void Start()
     {
@@ -89,11 +90,15 @@ public class TurretController : MonoBehaviour
         // Iterate through all enemies to find the closest one within range
         foreach (GameObject enemy in enemies)
         {
-            float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < closestDistance && distanceToEnemy <= range)
+            TroupMovement enemyStats = enemy.GetComponent<TroupMovement>();
+            if (enemyStats.blueTeam != blueTeam)
             {
-                closestDistance = distanceToEnemy;
-                closestEnemy = enemy.transform;
+                float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
+                if (distanceToEnemy < closestDistance && distanceToEnemy <= range)
+                {
+                    closestDistance = distanceToEnemy;
+                    closestEnemy = enemy.transform;
+                }
             }
         }
 

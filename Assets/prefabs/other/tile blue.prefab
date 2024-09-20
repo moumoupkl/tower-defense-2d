@@ -205,4 +205,4 @@ MonoBehaviour:
   activeConstruction: 0
   constructionTime: 3
   particles: {fileID: 2278256178577447766, guid: 12d3d41155bc33d4ca03d3c0bec4dcfc, type: 3}
-  tile: {fileID: 3464467087149340758}
+  blueTeam: 1

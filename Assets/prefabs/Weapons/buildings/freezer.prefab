@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f957c091b47912b41bc0b7d28fa95c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliders: []
 --- !u!1 &5441539284068006505
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +359,7 @@ Animator:
   m_GameObject: {fileID: 6686811092729046199}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 933dcb7490b72814d8048ae1dcf51d5f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 09982a0d3584d6b48ac1c340a8f941d3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -381,7 +382,6 @@ GameObject:
   - component: {fileID: 4564384986012861220}
   - component: {fileID: 1665274115624832727}
   - component: {fileID: 3688451453414409004}
-  - component: {fileID: 760882441030605628}
   - component: {fileID: 5651269816708902518}
   m_Layer: 0
   m_Name: freezer
@@ -419,16 +419,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d3a9ddf100a6d42b04948f21a972f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootBehavior: {fileID: 0}
+  shootBehavior: {fileID: 5651269816708902518}
   range: 10
-  rangeIndicator: {fileID: 0}
+  rangeIndicator: {fileID: 1241440930303061266}
   gameManager: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 3890406406613334069}
   hover: 0
-  fireCooldown: 1
+  fireCooldown: 4
   readyToShoot: 0
-  gun: {fileID: 0}
-  aimingTolerance: 5
+  gun: {fileID: 2804104066940607362}
+  aimingTolerance: 20
   rotationSpeed: 100
 --- !u!212 &1665274115624832727
 SpriteRenderer:
@@ -517,54 +517,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!60 &760882441030605628
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8372406137674051238}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -2.0364103, y: 0.70530343}
-      - {x: -0.19846332, y: 0.0075443834}
-      - {x: -2.0395885, y: -0.68169284}
-  m_UseDelaunayMesh: 0
 --- !u!114 &5651269816708902518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,5 +529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced469fc4c2ab52439ddbeb3bca8f13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triangle: {fileID: 0}
-  firePoint: {fileID: 0}
+  triangRange: {fileID: 9086077882954359423}
+  slowDuration: 1.5
+  slowStrength: 0.66
