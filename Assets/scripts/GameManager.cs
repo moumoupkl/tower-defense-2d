@@ -16,12 +16,16 @@ public class GameManager : MonoBehaviour
     public int blueCoins;
     public float bluecoinspersecs;
     private float bluecoinsfloat;
+    private int bluePV= 100;
     public int redCoins;
     public float redcoinspersecs;
     private float redcoinsfloat;
+    private int redPV= 100;
     public int startingCoins;
     public TMP_Text BlueCoinstxt;
     public TMP_Text RedCoinstxt;
+    public TMP_Text BluePV;
+    public TMP_Text RedPV;
     public UnityEngine.UI.Button summon;
     public GameObject pauseImage;
     public bool pausing;
@@ -43,6 +47,8 @@ public class GameManager : MonoBehaviour
         previousPauseState = pause;
         BlueCoinstxt.text = blueCoins.ToString();
         RedCoinstxt.text = redCoins.ToString();
+        BluePV.text = bluePV.ToString();
+        RedPV.text = redPV.ToString();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -112,6 +118,14 @@ public class GameManager : MonoBehaviour
             bluecoinsfloat += coinsToAdd;
         else
             redcoinsfloat += coinsToAdd;
+    }
+
+    public void DamageToPlayer(int Damage, bool blueTeam)
+    {
+        if (!blueTeam)
+            bluePV -= Damage;
+        else
+            redPV -= Damage;
     }
 
 }

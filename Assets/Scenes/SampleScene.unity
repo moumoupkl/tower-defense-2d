@@ -2390,6 +2390,8 @@ MonoBehaviour:
   startingCoins: 0
   BlueCoinstxt: {fileID: 1014240216}
   RedCoinstxt: {fileID: 1631254715}
+  BluePV: {fileID: 219644028}
+  RedPV: {fileID: 728904020}
   summon: {fileID: 1877289647}
   pauseImage: {fileID: 162068513}
   pausing: 0

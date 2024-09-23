@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxhealth: 20
   health: 0
-  damage: 20
+  damage: 10
   speed: 0.5
   ground: 0
   gameManager: {fileID: 0}
@@ -134,6 +134,7 @@ MonoBehaviour:
   reward: 5
   explosion: {fileID: 5567741904827571220, guid: 80142aee67d25654ab91d139f3f868e3, type: 3}
   flashDuration: 0.1
+  blueTeam: 0
 --- !u!114 &-8174002363625170442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +152,9 @@ MonoBehaviour:
   target: 0
   gameManager: {fileID: 0}
   blueTeam: 1
+  slown: 0
+  slowTime: 0
+  slowStrength: 0
 --- !u!61 &4578192734660917154
 BoxCollider2D:
   m_ObjectHideFlags: 0

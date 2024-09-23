@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxhealth: 10
   health: 0
-  damage: 10
+  damage: 5
   speed: 1
   ground: 1
   gameManager: {fileID: 0}
@@ -264,6 +264,7 @@ MonoBehaviour:
   reward: 2
   explosion: {fileID: 5567741904827571220, guid: 80142aee67d25654ab91d139f3f868e3, type: 3}
   flashDuration: 0.1
+  blueTeam: 0
 --- !u!95 &656625304518894283
 Animator:
   serializedVersion: 5
@@ -398,6 +399,9 @@ MonoBehaviour:
   target: 0
   gameManager: {fileID: 0}
   blueTeam: 1
+  slown: 0
+  slowTime: 0
+  slowStrength: 0
 --- !u!50 &7001520986380476615
 Rigidbody2D:
   serializedVersion: 4

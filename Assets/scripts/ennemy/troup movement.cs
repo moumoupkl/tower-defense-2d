@@ -96,6 +96,7 @@ public class TroupMovement : MonoBehaviour
                 if (target >= path.Length)
                 {
                     Destroy(gameObject); // Destroy the object when it reaches the final destination
+                    gameManager.DamageToPlayer(enemyStats.damage, enemyStats.blueTeam);
                     return;
                 }
             }
