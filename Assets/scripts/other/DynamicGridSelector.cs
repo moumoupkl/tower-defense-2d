@@ -18,6 +18,7 @@ public class DynamicGridSelector : MonoBehaviour
     public InputActionReference movep2;
     public InputActionReference buyAction; // Input action for purchasing turrets
     private InputActionReference move;
+    public GameManager gameManager;
 
     // Initial position of the player
     [SerializeField]
@@ -28,6 +29,9 @@ public class DynamicGridSelector : MonoBehaviour
 
     void Start()
     {
+        Camera mainCamera = Camera.main;
+        gameManager = mainCamera.GetComponent<GameManager>();
+
         // Initialize the selection GameObject at the starting position
         if (selectionPrefab != null)
         {
@@ -85,7 +89,6 @@ public class DynamicGridSelector : MonoBehaviour
             var tileScript = lastSelectedObject.GetComponent<tiles>();
             if (tileScript != null && tileScript.hover && !tileScript.activeConstruction)
             {
-                GameManager gameManager = tileScript.gameManager;
 
                 // Check if the player can afford the turret
                 if (blueTeam)
@@ -127,21 +130,24 @@ public class DynamicGridSelector : MonoBehaviour
 
     void MoveSelection(Vector2 direction)
     {
-        // Calculate the new position by moving one unit in the desired direction
-        Vector2 newPosition = currentPosition + new Vector2(direction.x, direction.y);
-
-        // Clamp the position to keep within boundaries
-        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
-        newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
-
-        // Update the current position and move the selection GameObject
-        currentPosition = newPosition;
-        if (selection != null)
+        if (!gameManager.pause)
         {
-            selection.transform.position = currentPosition;
-        }
+            // Calculate the new position by moving one unit in the desired direction
+            Vector2 newPosition = currentPosition + new Vector2(direction.x, direction.y);
 
-        UpdateSelection();
+            // Clamp the position to keep within boundaries
+            newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+            newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
+
+            // Update the current position and move the selection GameObject
+            currentPosition = newPosition;
+            if (selection != null)
+            {
+                selection.transform.position = currentPosition;
+            }
+
+            UpdateSelection();
+        }
     }
 
     void UpdateSelection()
