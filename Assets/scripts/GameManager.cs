@@ -105,10 +105,7 @@ public class GameManager : MonoBehaviour
         Instantiate(flyingtroup, new Vector2(1000, 1000), Quaternion.identity);
         }
     }
-
-    // --------------------- red team ---------------------
     
-
     public void AddCoins(int coinsToAdd, bool blueTeam)
     {
         if (blueTeam)
