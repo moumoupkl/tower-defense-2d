@@ -13,9 +13,15 @@ public class GameManager : MonoBehaviour
     public bool pause;
     public GameObject troup;
     public GameObject flyingtroup;
-    public int currentCoins;
+    public int blueCoins;
+    public float bluecoinspersecs;
+    private float bluecoinsfloat;
+    public int redCoins;
+    public float redcoinspersecs;
+    private float redcoinsfloat;
     public int startingCoins;
-    public TMP_Text Coins;
+    public TMP_Text BlueCoinstxt;
+    public TMP_Text RedCoinstxt;
     public UnityEngine.UI.Button summon;
     public GameObject pauseImage;
     public bool pausing;
@@ -27,14 +33,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentCoins = startingCoins;
+        blueCoins = startingCoins;
+        redCoins = startingCoins;
     }
 
     // Update is called once per frame
     void Update()
     {
         previousPauseState = pause;
-        Coins.text = currentCoins.ToString();
+        BlueCoinstxt.text = blueCoins.ToString();
+        RedCoinstxt.text = redCoins.ToString();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -72,6 +80,13 @@ public class GameManager : MonoBehaviour
             move2.action.Enable();
             Debug.Log("Re-enabled move action after tile deactivation.");
         }
+
+        bluecoinsfloat += bluecoinspersecs * Time.deltaTime;
+        redcoinsfloat += redcoinspersecs * Time.deltaTime;
+
+        blueCoins = (int) bluecoinsfloat;
+        redCoins = (int) redcoinsfloat;
+
         
     }
     // --------------------- blue team ---------------------
@@ -94,9 +109,12 @@ public class GameManager : MonoBehaviour
     // --------------------- red team ---------------------
     
 
-    public void AddCoins(int coinsToAdd)
+    public void AddCoins(int coinsToAdd, bool blueTeam)
     {
-        currentCoins += coinsToAdd;
+        if (blueTeam)
+            bluecoinsfloat += coinsToAdd;
+        else
+            redcoinsfloat += coinsToAdd;
     }
 
 }

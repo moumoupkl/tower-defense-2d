@@ -18,6 +18,7 @@ public class enemyStats : MonoBehaviour
 
     // Flash duration in seconds
     public float flashDuration = 0.1f;
+    public bool blueTeam;
 
     void Start()
     {
@@ -29,10 +30,6 @@ public class enemyStats : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
     }
 
-    void Update()
-    {
-        
-    }
 
     public void TakeDamage(int damageAmount)
     {
@@ -47,7 +44,9 @@ public class enemyStats : MonoBehaviour
         else
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
-            gameManager.AddCoins(reward);
+
+            gameManager.AddCoins(reward, !blueTeam);
+
             Destroy(gameObject);
             FindObjectOfType<AudioManager>().Play("Enemy_death");
         }

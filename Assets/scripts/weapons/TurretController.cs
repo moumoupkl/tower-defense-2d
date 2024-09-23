@@ -90,7 +90,7 @@ public class TurretController : MonoBehaviour
         // Iterate through all enemies to find the closest one within range
         foreach (GameObject enemy in enemies)
         {
-            TroupMovement enemyStats = enemy.GetComponent<TroupMovement>();
+            enemyStats enemyStats = enemy.GetComponent<enemyStats>();
             if (enemyStats.blueTeam != blueTeam)
             {
                 float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);

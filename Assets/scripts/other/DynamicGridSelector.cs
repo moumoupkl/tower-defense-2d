@@ -88,18 +88,38 @@ public class DynamicGridSelector : MonoBehaviour
                 GameManager gameManager = tileScript.gameManager;
 
                 // Check if the player can afford the turret
-                if (!gameManager.pause && gameManager.currentCoins >= tileScript.weaponPrice)
+                if (blueTeam)
                 {
-                    // Trigger turret construction and deduct currency
-                    tileScript.activeConstruction = true;
-                    gameManager.AddCoins(-tileScript.weaponPrice);
-                    StartCoroutine(tileScript.SpawnObject(tileScript.turret1)); // Trigger construction
+                    if (!gameManager.pause && gameManager.blueCoins >= tileScript.weaponPrice)
+                    {
+                        // Trigger turret construction and deduct currency
+                        tileScript.activeConstruction = true;
+                        gameManager.AddCoins(-tileScript.weaponPrice, blueTeam);
+                        StartCoroutine(tileScript.SpawnObject(tileScript.turret1)); // Trigger construction
 
-                    Debug.Log("Turret purchased and construction started!");
+                        Debug.Log("Turret purchased and construction started!");
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough coins or game is paused.");
+                    }
                 }
+
                 else
                 {
-                    Debug.Log("Not enough coins or game is paused.");
+                    if (!gameManager.pause && gameManager.redCoins >= tileScript.weaponPrice)
+                    {
+                        // Trigger turret construction and deduct currency
+                        tileScript.activeConstruction = true;
+                        gameManager.AddCoins(-tileScript.weaponPrice, blueTeam);
+                        StartCoroutine(tileScript.SpawnObject(tileScript.turret1)); // Trigger construction
+
+                        Debug.Log("Turret purchased and construction started! reteam");
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough coins or game is paused.");
+                    }
                 }
             }
         }

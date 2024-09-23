@@ -31,11 +31,13 @@ public class ObjectSpawner : MonoBehaviour
 
             // Get the TroupMovement component from the spawned object
             TroupMovement troupMovement = troup.GetComponent<TroupMovement>();
+            enemyStats enemyStats = troup.GetComponent<enemyStats>();
 
             // Set the blueTeam bool in the TroupMovement script
             if (troupMovement != null)
             {
                 troupMovement.blueTeam = blueTeam;
+                enemyStats.blueTeam = blueTeam;
             }
             else
             {
