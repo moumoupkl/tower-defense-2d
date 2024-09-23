@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public int startingCoins;
     public TMP_Text BlueCoinstxt;
     public TMP_Text RedCoinstxt;
+    public TMP_Text Winner;
+    public GameObject gameover;
     public TMP_Text BluePV;
     public TMP_Text RedPV;
     public UnityEngine.UI.Button summon;
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         blueCoins = startingCoins;
         redCoins = startingCoins;
+        gameover.SetActive(false);
     }
 
     // Update is called once per frame
@@ -122,10 +125,36 @@ public class GameManager : MonoBehaviour
 
     public void DamageToPlayer(int Damage, bool blueTeam)
     {
-        if (!blueTeam)
-            bluePV -= Damage;
+        if (!blueTeam){
+            if(bluePV-Damage>=0)
+                bluePV -= Damage;
+            else
+            {
+                bluePV=0;
+                GameOver(blueTeam);
+            }
+                
+            
+        }
         else
-            redPV -= Damage;
+            if(redPV-Damage<=0)
+                redPV -= Damage;
+            else
+            {
+                redPV=0;
+                GameOver(blueTeam);
+            }
+            
     }
 
+public void GameOver(bool blueTeam){
+    if(!blueTeam)
+    Winner.text = "Red Team Wins";
+    else
+    Winner.text = "Blue Team Wins";
+    gameover.SetActive(true);
 }
+
+
+}
+
