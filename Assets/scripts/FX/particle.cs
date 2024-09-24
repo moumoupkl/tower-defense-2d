@@ -41,8 +41,7 @@ public class Particle : MonoBehaviour
             mainModule.duration = lifetime;
 
             // You can also ensure that the particle system is destroyed after its lifetime, if needed
-            Destroy(gameObject, lifetime + 2);
-            
+            Destroy(gameObject, lifetime + 2);            
         }
         
     }

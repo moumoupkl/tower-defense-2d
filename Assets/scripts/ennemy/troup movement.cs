@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class TroupMovement : MonoBehaviour
     private float Startspeed;
     public GameManager gameManager;
     public bool blueTeam;
+    public GameObject spawnParticule;
     public bool slown;
     public float slowTime;
     private float slowtimer;
@@ -62,6 +64,8 @@ public class TroupMovement : MonoBehaviour
         {
             Debug.LogError("No waypoints found in 'path'.");
         }
+        Instantiate(spawnParticule,transform.position,Quaternion.identity);
+
     }
 
     void Update()
