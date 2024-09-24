@@ -15,8 +15,8 @@ public class DynamicGridSelector : MonoBehaviour
     public float inputDelay = 0.5f; // Delay to prevent rapid selection changes
     private float inputTimer;
     public InputActionReference movep1;
-    public InputActionReference movep2;
-    public InputActionReference buyAction; // Input action for purchasing turrets
+    //public InputActionReference movep2;
+    public InputActionReference buyTurret1; // Input action for purchasing turrets
     private InputActionReference move;
     public GameManager gameManager;
 
@@ -38,15 +38,14 @@ public class DynamicGridSelector : MonoBehaviour
             selection = Instantiate(selectionPrefab, currentPosition, Quaternion.identity);
         }
         UpdateSelection(); // Update selection state at the start
-        buyAction.action.performed += OnBuyActionPerformed; // Subscribe to the purchase input action
+        buyTurret1.action.performed += OnBuyActionPerformed; // Subscribe to the purchase input action
     }
 
     void Update()
     {
-        if (blueTeam)
-            move = movep1;
-        else    
-            move = movep2;
+        move = movep1;
+       // else    
+           // move = movep2;
                
         inputTimer -= Time.deltaTime;
 
@@ -198,6 +197,6 @@ public class DynamicGridSelector : MonoBehaviour
     private void OnDestroy()
     {
         // Unsubscribe from the buy action event when this object is destroyed
-        buyAction.action.performed -= OnBuyActionPerformed;
+        buyTurret1.action.performed -= OnBuyActionPerformed;
     }
 }

@@ -117,11 +117,11 @@ GameObject:
   - component: {fileID: 1474837461805857911}
   - component: {fileID: 8099018401263337578}
   - component: {fileID: -2579866735009179921}
-  - component: {fileID: 6287904850573101409}
   - component: {fileID: 656625304518894283}
   - component: {fileID: 3336460405227934395}
-  - component: {fileID: -1532291254800093776}
   - component: {fileID: 7001520986380476615}
+  - component: {fileID: 6287904850573101409}
+  - component: {fileID: -1532291254800093776}
   m_Layer: 11
   m_Name: ennemy
   m_TagString: Enemy
@@ -242,29 +242,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.88943756, y: 0.9526162}
   m_EdgeRadius: 0
---- !u!114 &6287904850573101409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2966670713212227299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05bb6e1102ab61e4eb3156fa8e88044f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxhealth: 10
-  health: 0
-  damage: 5
-  speed: 1
-  ground: 1
-  gameManager: {fileID: 0}
-  price: 3
-  reward: 2
-  explosion: {fileID: 5567741904827571220, guid: 80142aee67d25654ab91d139f3f868e3, type: 3}
-  flashDuration: 0.1
-  blueTeam: 0
 --- !u!95 &656625304518894283
 Animator:
   serializedVersion: 5
@@ -382,26 +359,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-1532291254800093776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2966670713212227299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13c89f8bcec58f2449a9260366f57011, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyStats: {fileID: 6287904850573101409}
-  path: []
-  target: 0
-  gameManager: {fileID: 0}
-  blueTeam: 1
-  slown: 0
-  slowTime: 0
-  slowStrength: 0
 --- !u!50 &7001520986380476615
 Rigidbody2D:
   serializedVersion: 4
@@ -429,3 +386,46 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6287904850573101409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966670713212227299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05bb6e1102ab61e4eb3156fa8e88044f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxhealth: 10
+  health: 0
+  damage: 5
+  speed: 2
+  ground: 1
+  gameManager: {fileID: 0}
+  price: 3
+  reward: 2
+  explosion: {fileID: 5567741904827571220, guid: 80142aee67d25654ab91d139f3f868e3, type: 3}
+  flashDuration: 0.1
+  blueTeam: 0
+--- !u!114 &-1532291254800093776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966670713212227299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c89f8bcec58f2449a9260366f57011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStats: {fileID: 6287904850573101409}
+  path: []
+  target: 0
+  gameManager: {fileID: 0}
+  blueTeam: 1
+  slown: 0
+  slowTime: 0
+  slowStrength: 0

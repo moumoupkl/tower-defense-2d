@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxhealth: 20
   health: 0
-  damage: 10
+  damage: 20
   speed: 0.5
   ground: 0
   gameManager: {fileID: 0}

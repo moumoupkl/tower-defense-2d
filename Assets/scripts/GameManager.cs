@@ -11,6 +11,7 @@ using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {
     public bool pause;
+    public bool gameisover;
     public GameObject troup;
     public GameObject flyingtroup;
     public int blueCoins;
@@ -39,8 +40,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        blueCoins = startingCoins;
-        redCoins = startingCoins;
+        bluecoinsfloat = startingCoins;
+        redcoinsfloat = startingCoins;
+
         gameover.SetActive(false);
     }
 
@@ -53,12 +55,12 @@ public class GameManager : MonoBehaviour
         BluePV.text = bluePV.ToString();
         RedPV.text = redPV.ToString();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameisover)
         {
             pause = !pause;
         }
 
-        if (pause)
+        if (pause && !gameisover)
         {
             pauseImage.SetActive(true);
         }
@@ -95,7 +97,6 @@ public class GameManager : MonoBehaviour
 
         blueCoins = (int) bluecoinsfloat;
         redCoins = (int) redcoinsfloat;
-
         
     }
     // --------------------- blue team ---------------------
@@ -126,7 +127,7 @@ public class GameManager : MonoBehaviour
     public void DamageToPlayer(int Damage, bool blueTeam)
     {
         if (!blueTeam){
-            if(bluePV-Damage>=0)
+            if(bluePV-Damage >= 0)
                 bluePV -= Damage;
             else
             {
@@ -137,7 +138,7 @@ public class GameManager : MonoBehaviour
             
         }
         else
-            if(redPV-Damage<=0)
+            if(redPV-Damage >= 0)
                 redPV -= Damage;
             else
             {
@@ -147,13 +148,18 @@ public class GameManager : MonoBehaviour
             
     }
 
-public void GameOver(bool blueTeam){
-    if(!blueTeam)
-    Winner.text = "Red Team Wins";
-    else
-    Winner.text = "Blue Team Wins";
-    gameover.SetActive(true);
-}
+    public void GameOver(bool blueTeam)
+    {
+        if(!blueTeam)
+            Winner.text = "Red Team Wins";
+
+        else
+            Winner.text = "Blue Team Wins";
+
+        gameover.SetActive(true);
+        gameisover = true;
+        pause = true;
+    }
 
 
 }

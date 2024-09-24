@@ -2418,8 +2418,8 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420033}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420033}
   - component: {fileID: 519420034}
   - component: {fileID: 519420036}
   m_Layer: 0
@@ -2516,13 +2516,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: 0
+  gameisover: 0
   troup: {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
   flyingtroup: {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
   blueCoins: 0
   bluecoinspersecs: 0.5
   redCoins: 0
   redcoinspersecs: 0.5
-  startingCoins: 0
+  startingCoins: 10
   BlueCoinstxt: {fileID: 1014240216}
   RedCoinstxt: {fileID: 1631254715}
   Winner: {fileID: 126528329}
@@ -2557,8 +2558,7 @@ MonoBehaviour:
   minY: 0.5
   inputDelay: 0.5
   movep1: {fileID: -5076617840867599235, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
-  movep2: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
-  buyAction: {fileID: 311487145620473931, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  buyTurret1: {fileID: 0}
   gameManager: {fileID: 0}
   currentPosition: {x: 1.5, y: 5.5}
 --- !u!114 &519420035
@@ -2612,9 +2612,8 @@ MonoBehaviour:
   maxY: 10.5
   minY: 0.5
   inputDelay: 0.5
-  movep1: {fileID: -5076617840867599235, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
-  movep2: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
-  buyAction: {fileID: -3269377568202801211, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  movep1: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  buyTurret1: {fileID: 0}
   gameManager: {fileID: 0}
   currentPosition: {x: 1.5, y: 5.5}
 --- !u!1001 &522869547
