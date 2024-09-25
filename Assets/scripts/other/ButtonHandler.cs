@@ -1,31 +1,54 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class ButtonHandler : MonoBehaviour
 {
-    public Button button1;
-    public Button button2;
-    public Button button3;
-    public Button button4;
-
     public GameObject groundTroup;
     public GameObject flyingTroup;
 
     private ObjectSpawner objectSpawner;
 
+    // Input actions for troop spawning
+    public InputActionReference spawnGroundTroupP1;     // Reference for player ground troop spawn
+    public InputActionReference spawnFlyingTroupP1;     // Reference for player flying troop spawn
+    public InputActionReference spawnGroundTroupP2;   // Reference for opponent ground troop spawn
+    public InputActionReference spawnFlyingTroupP2;   // Reference for opponent flying troop spawn
+
     void Start()
     {
         objectSpawner = GetComponent<ObjectSpawner>();
 
-        // Add listener to Button 1 to spawn Object 1
-        button1.onClick.AddListener(() => objectSpawner.SpawnObject(groundTroup, true));
+        // Subscribe to the input actions
+        spawnGroundTroupP1.action.performed += ctx => objectSpawner.SpawnTroups(groundTroup, true);
+        spawnFlyingTroupP1.action.performed += ctx => objectSpawner.SpawnTroups(flyingTroup, true);
+        spawnGroundTroupP2.action.performed += ctx => objectSpawner.SpawnTroups(groundTroup, false);
+        spawnFlyingTroupP2.action.performed += ctx => objectSpawner.SpawnTroups(flyingTroup, false);
+    }
 
-        // Add listener to Button 2 to spawn Object 2
-        button2.onClick.AddListener(() => objectSpawner.SpawnObject(flyingTroup, true));
+    void OnEnable()
+    {
+        // Enable input actions
+        spawnGroundTroupP1.action.Enable();
+        spawnFlyingTroupP1.action.Enable();
+        spawnGroundTroupP2.action.Enable();
+        spawnFlyingTroupP2.action.Enable();
+    }
 
-        button3.onClick.AddListener(() => objectSpawner.SpawnObject(groundTroup, false));
+    void OnDisable()
+    {
+        // Disable input actions
+        spawnGroundTroupP1.action.Disable();
+        spawnFlyingTroupP1.action.Disable();
+        spawnGroundTroupP2.action.Disable();
+        spawnFlyingTroupP2.action.Disable();
+    }
 
-        button4.onClick.AddListener(() => objectSpawner.SpawnObject(flyingTroup, false));
-
+    void OnDestroy()
+    {
+        // Unsubscribe when the object is destroyed
+        spawnGroundTroupP1.action.performed -= ctx => objectSpawner.SpawnTroups(groundTroup, true);
+        spawnFlyingTroupP1.action.performed -= ctx => objectSpawner.SpawnTroups(flyingTroup, true);
+        spawnGroundTroupP2.action.performed -= ctx => objectSpawner.SpawnTroups(groundTroup, false);
+        spawnFlyingTroupP2.action.performed -= ctx => objectSpawner.SpawnTroups(flyingTroup, false);
     }
 }

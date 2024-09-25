@@ -15,16 +15,15 @@ public class DynamicGridSelector : MonoBehaviour
     public float inputDelay = 0.5f; // Delay to prevent rapid selection changes
     private float inputTimer;
     public InputActionReference movep1;
-    //public InputActionReference movep2;
-    public InputActionReference buyTurret1; // Input action for purchasing turrets
+    public InputActionReference buyTurret1; // Input action for purchasing turret 1
+    public InputActionReference buyTurret2; // Input action for purchasing turret 2
     private InputActionReference move;
     public GameManager gameManager;
+    public ObjectSpawner objectSpawner;
 
-    // Initial position of the player
     [SerializeField]
     private Vector2 currentPosition = new Vector2(1.5f, 5.5f);
 
-    // Reference to the last selected object
     private GameObject lastSelectedObject;
 
     void Start()
@@ -37,24 +36,22 @@ public class DynamicGridSelector : MonoBehaviour
         {
             selection = Instantiate(selectionPrefab, currentPosition, Quaternion.identity);
         }
-        UpdateSelection(); // Update selection state at the start
-        buyTurret1.action.performed += OnBuyActionPerformed; // Subscribe to the purchase input action
+        UpdateSelection();
+
+        // Subscribe to both turret purchase actions, and differentiate between them using parameters
+        buyTurret1.action.performed += ctx => OnBuyActionPerformed(1); // Pass turret type 1
+        buyTurret2.action.performed += ctx => OnBuyActionPerformed(2); // Pass turret type 2
     }
 
     void Update()
     {
         move = movep1;
-       // else    
-           // move = movep2;
-               
         inputTimer -= Time.deltaTime;
 
-        // Read joystick input
         Vector2 movedirection = move.action.ReadValue<Vector2>();
         float horizontal = movedirection.x;
         float vertical = movedirection.y;
-        
-        // Normalize input to move only in one direction at a time
+
         if (Mathf.Abs(horizontal) > Mathf.Abs(vertical))
         {
             vertical = 0; // Prioritize horizontal movement
@@ -63,10 +60,7 @@ public class DynamicGridSelector : MonoBehaviour
         {
             horizontal = 0; // Prioritize vertical movement
         }
-        else
-            horizontal = 0; // Prioritize vertical movement if equal
 
-        // Check for input and ensure there's a delay between moves
         if (inputTimer <= 0 && (horizontal != 0 || vertical != 0))
         {
             Vector2 direction = new Vector2(horizontal, vertical).normalized;
@@ -80,48 +74,31 @@ public class DynamicGridSelector : MonoBehaviour
         }
     }
 
-    // Triggered when the purchase key is pressed
-    private void OnBuyActionPerformed(InputAction.CallbackContext context)
+    // Handle the turret purchase based on the turretType parameter
+    private void OnBuyActionPerformed(int turretType)
     {
         if (lastSelectedObject != null)
         {
             var tileScript = lastSelectedObject.GetComponent<tiles>();
             if (tileScript != null && tileScript.hover && !tileScript.activeConstruction)
             {
+                int weaponPrice = tileScript.weaponPrice;
+                bool hasEnoughCoins = blueTeam ? gameManager.blueCoins >= weaponPrice : gameManager.redCoins >= weaponPrice;
 
-                // Check if the player can afford the turret
-                if (blueTeam)
+                if (!gameManager.pause && hasEnoughCoins)
                 {
-                    if (!gameManager.pause && gameManager.blueCoins >= tileScript.weaponPrice)
-                    {
-                        // Trigger turret construction and deduct currency
-                        tileScript.activeConstruction = true;
-                        gameManager.AddCoins(-tileScript.weaponPrice, blueTeam);
-                        StartCoroutine(tileScript.SpawnObject(tileScript.turret1)); // Trigger construction
+                    tileScript.activeConstruction = true;
+                    gameManager.AddCoins(-weaponPrice, blueTeam);
 
-                        Debug.Log("Turret purchased and construction started!");
-                    }
-                    else
-                    {
-                        Debug.Log("Not enough coins or game is paused.");
-                    }
+                    // Select the correct turret to spawn based on the turretType
+                    GameObject turretToSpawn = turretType == 1 ? tileScript.turret1 : tileScript.turret2;
+                    StartCoroutine(tileScript.SpawnObject(turretToSpawn)); // Spawn the chosen turret
+
+                    Debug.Log($"Turret {turretType} purchased and construction started!");
                 }
-
                 else
                 {
-                    if (!gameManager.pause && gameManager.redCoins >= tileScript.weaponPrice)
-                    {
-                        // Trigger turret construction and deduct currency
-                        tileScript.activeConstruction = true;
-                        gameManager.AddCoins(-tileScript.weaponPrice, blueTeam);
-                        StartCoroutine(tileScript.SpawnObject(tileScript.turret1)); // Trigger construction
-
-                        Debug.Log("Turret purchased and construction started! reteam");
-                    }
-                    else
-                    {
-                        Debug.Log("Not enough coins or game is paused.");
-                    }
+                    Debug.Log("Not enough coins or game is paused.");
                 }
             }
         }
@@ -131,14 +108,10 @@ public class DynamicGridSelector : MonoBehaviour
     {
         if (!gameManager.pause)
         {
-            // Calculate the new position by moving one unit in the desired direction
             Vector2 newPosition = currentPosition + new Vector2(direction.x, direction.y);
-
-            // Clamp the position to keep within boundaries
             newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
             newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
 
-            // Update the current position and move the selection GameObject
             currentPosition = newPosition;
             if (selection != null)
             {
@@ -151,21 +124,17 @@ public class DynamicGridSelector : MonoBehaviour
 
     void UpdateSelection()
     {
-        // Raycast to check if we are over a tile
         RaycastHit2D hit = Physics2D.Raycast(currentPosition, Vector2.zero);
 
-        // Deselect the previous object
         if (lastSelectedObject != null)
         {
             DeselectObject(lastSelectedObject);
             lastSelectedObject = null;
         }
 
-        // Check if we hit a tile
         if (hit.collider != null)
         {
             GameObject hitObject = hit.collider.gameObject;
-
             if (hitObject.CompareTag(tileTag))
             {
                 SelectObject(hitObject);
@@ -176,27 +145,25 @@ public class DynamicGridSelector : MonoBehaviour
 
     void SelectObject(GameObject obj)
     {
-        // Check for the tile component and set the hover status to true
-        var tileScript = obj.GetComponent<tiles>(); 
+        var tileScript = obj.GetComponent<tiles>();
         if (tileScript != null)
         {
-            tileScript.hover = true; // Set hover to true for selected tile
+            tileScript.hover = true;
         }
     }
 
     void DeselectObject(GameObject obj)
     {
-        // Check for the tile component and set the hover status to false
-        var tileScript = obj.GetComponent<tiles>(); 
+        var tileScript = obj.GetComponent<tiles>();
         if (tileScript != null)
         {
-            tileScript.hover = false; // Set hover to false for deselected tile
+            tileScript.hover = false;
         }
     }
 
     private void OnDestroy()
     {
-        // Unsubscribe from the buy action event when this object is destroyed
-        buyTurret1.action.performed -= OnBuyActionPerformed;
+        buyTurret1.action.performed -= ctx => OnBuyActionPerformed(1);
+        buyTurret2.action.performed -= ctx => OnBuyActionPerformed(2);
     }
 }

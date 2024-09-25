@@ -13,8 +13,32 @@ public class ObjectSpawner : MonoBehaviour
         gameManager = mainCamera.GetComponent<GameManager>();
     }
 
-    public void SpawnObject(GameObject objectToSpawn, bool blueTeam)
+    public void SpawnTroups(GameObject objectToSpawn, bool blueTeam)
     {
+        if (blueTeam)
+        {
+            if (gameManager.blueCoins < 2)
+            {
+                return;
+            }
+            else
+            {
+                gameManager.bluecoinsfloat -= 2;
+            }
+        }
+
+        else
+        {
+            if (gameManager.redCoins < 2)
+            {
+                return;
+            }
+            else
+            {
+                gameManager.redcoinsfloat -= 2;
+            }
+        }
+        
         if (blueTeam)
         {
             spawnPoint = BlueSpawnPoint;

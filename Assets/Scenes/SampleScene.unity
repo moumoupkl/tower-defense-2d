@@ -1639,12 +1639,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23625a9562ee5f44d9d1b4b1f4e8a371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button1: {fileID: 1877289647}
-  button2: {fileID: 561759189}
-  button3: {fileID: 1587708732}
-  button4: {fileID: 531502714}
   groundTroup: {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
   flyingTroup: {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
+  spawnGroundTroupP1: {fileID: -3029517933396479112, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  spawnFlyingTroupP1: {fileID: -1236154855465603294, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  spawnGroundTroupP2: {fileID: 8481140839399988061, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  spawnFlyingTroupP2: {fileID: 5498560180084704931, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
 --- !u!114 &291955502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,8 +2517,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pause: 0
   gameisover: 0
-  troup: {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  flyingtroup: {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
   blueCoins: 0
   bluecoinspersecs: 0.5
   redCoins: 0
@@ -2530,7 +2528,6 @@ MonoBehaviour:
   gameover: {fileID: 1805112953}
   BluePV: {fileID: 219644028}
   RedPV: {fileID: 728904020}
-  summon: {fileID: 1877289647}
   pauseImage: {fileID: 162068513}
   pausing: 0
   resuming: 0
@@ -2558,8 +2555,10 @@ MonoBehaviour:
   minY: 0.5
   inputDelay: 0.5
   movep1: {fileID: -5076617840867599235, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
-  buyTurret1: {fileID: 0}
+  buyTurret1: {fileID: 311487145620473931, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  buyTurret2: {fileID: -4437109822688778639, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   gameManager: {fileID: 0}
+  objectSpawner: {fileID: 0}
   currentPosition: {x: 1.5, y: 5.5}
 --- !u!114 &519420035
 MonoBehaviour:
@@ -2613,8 +2612,10 @@ MonoBehaviour:
   minY: 0.5
   inputDelay: 0.5
   movep1: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
-  buyTurret1: {fileID: 0}
+  buyTurret1: {fileID: -3269377568202801211, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  buyTurret2: {fileID: 4181767097764530651, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   gameManager: {fileID: 0}
+  objectSpawner: {fileID: 0}
   currentPosition: {x: 1.5, y: 5.5}
 --- !u!1001 &522869547
 PrefabInstance:

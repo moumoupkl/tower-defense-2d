@@ -12,15 +12,13 @@ public class GameManager : MonoBehaviour
 {
     public bool pause;
     public bool gameisover;
-    public GameObject troup;
-    public GameObject flyingtroup;
     public int blueCoins;
     public float bluecoinspersecs;
-    private float bluecoinsfloat;
+    public float bluecoinsfloat;
     private int bluePV= 100;
     public int redCoins;
     public float redcoinspersecs;
-    private float redcoinsfloat;
+    public float redcoinsfloat;
     private int redPV= 100;
     public int startingCoins;
     public TMP_Text BlueCoinstxt;
@@ -29,7 +27,6 @@ public class GameManager : MonoBehaviour
     public GameObject gameover;
     public TMP_Text BluePV;
     public TMP_Text RedPV;
-    public UnityEngine.UI.Button summon;
     public GameObject pauseImage;
     public bool pausing;
     public bool resuming;
@@ -100,21 +97,6 @@ public class GameManager : MonoBehaviour
         
     }
     // --------------------- blue team ---------------------
-    public void GroundTroupBlue()
-    {
-        if (!pause)
-        {
-        Instantiate(troup, new Vector2(1000, 1000), Quaternion.identity);
-        }
-    }
-
-    public void FlyingTroupBlue()
-    {
-        if (!pause)
-        {
-        Instantiate(flyingtroup, new Vector2(1000, 1000), Quaternion.identity);
-        }
-    }
     
     public void AddCoins(int coinsToAdd, bool blueTeam)
     {
