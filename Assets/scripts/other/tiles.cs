@@ -6,74 +6,54 @@ public class tiles : MonoBehaviour
     public GameObject turret1;
     public GameObject turret2;
     public Animator animator;
-    public int weaponPrice;            // The price of the weapon, still used for game balance but not for buying logic here
-    public GameManager gameManager;    // Reference to the game manager for currency, still used for starting construction
-    public bool hover;                 // Set to true when this tile is hovered over by the selector
-    public bool activeConstruction;    // True when construction is active, prevents new construction until it's done
     public float constructionTime;     // Time it takes to construct the turret
     public GameObject particles;       // Visual effect for turret construction
-    public bool blueTeam;
+    public bool activeConstruction;    // True when construction is active
+    public bool blueTeam;              // For determining which team the turret belongs to
+    public bool hover;                 // Set to true when this tile is hovered over by the selector
 
     void Start()
     {
         hover = false;
-        Camera mainCamera = Camera.main;
-        gameManager = mainCamera.GetComponent<GameManager>();
     }
 
     void Update()
     {
-        // Set the animator's "ishover" parameter based on the hover state
-        if (hover && !activeConstruction)
-        {
-            animator.SetBool("ishover", true);
-        }
-        else
-        {
-            animator.SetBool("ishover", false);
-        }
+        // Update the animation based on hover and construction state
+        animator.SetBool("ishover", hover && !activeConstruction);
     }
 
-    // Start the construction of the turret (triggered externally by DynamicGridSelector)
-    public IEnumerator SpawnObject(GameObject turret)
+    // Start the construction of the turret (called externally by DynamicGridSelector)
+    public IEnumerator SpawnObject(GameObject turretPrefab)
     {
-        // Reduce coins in GameManager (done externally in DynamicGridSelector)
         if (particles != null)
         {
-            Debug.Log("Spawning particles at: " + transform.position);
             GameObject spawnedParticles = Instantiate(particles, transform.position, Quaternion.identity);
             Particle particleScript = spawnedParticles.GetComponent<Particle>();
-
             if (particleScript != null)
             {
                 particleScript.SetLifetime(constructionTime);
             }
         }
 
+        // Simulate construction time
         float elapsedTime = 0f;
-
-        // Timer for construction time
         while (elapsedTime < constructionTime)
         {
-            if (!gameManager.pause)
-            {
-                elapsedTime += Time.deltaTime;
-            }
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        GameObject turretInstance = Instantiate(turret, transform.position, Quaternion.identity);
-        
+        // Instantiate the turret
+        GameObject turretInstance = Instantiate(turretPrefab, transform.position, Quaternion.identity);
         TurretController turretController = turretInstance.GetComponent<TurretController>();
-
         if (turretController != null)
         {
-            if (blueTeam)
-                turretController.blueTeam = true;
-            else
-                turretController.blueTeam = false;
+            turretController.blueTeam = blueTeam;  // Assign the team
         }
 
+        // Mark tile as inactive after construction
+        activeConstruction = false;
         gameObject.SetActive(false);
     }
 }

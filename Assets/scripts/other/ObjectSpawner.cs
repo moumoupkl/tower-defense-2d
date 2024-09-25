@@ -24,6 +24,7 @@ public class ObjectSpawner : MonoBehaviour
             else
             {
                 gameManager.bluecoinsfloat -= 2;
+                gameManager.bluecoinspersecs += 0.5f;
             }
         }
 
@@ -36,6 +37,7 @@ public class ObjectSpawner : MonoBehaviour
             else
             {
                 gameManager.redcoinsfloat -= 2;
+                gameManager.redcoinspersecs += 0.5f;
             }
         }
         
