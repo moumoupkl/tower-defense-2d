@@ -426,6 +426,7 @@ MonoBehaviour:
   target: 0
   gameManager: {fileID: 0}
   blueTeam: 1
+  spawnParticule: {fileID: 6834623002979728507, guid: 7c11fdbf1ff409e4cabf1bdb55360968, type: 3}
   slown: 0
   slowTime: 0
   slowStrength: 0
