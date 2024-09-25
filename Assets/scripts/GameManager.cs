@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.WSA;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -96,6 +97,11 @@ public class GameManager : MonoBehaviour
 
         blueCoins = (int) bluecoinsfloat;
         redCoins = (int) redcoinsfloat;
+
+        if (gameisover && Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadCurrentScene();
+        }
         
     }
     // --------------------- blue team ---------------------
@@ -145,6 +151,10 @@ public class GameManager : MonoBehaviour
         pause = true;
     }
 
-
+    public void ReloadCurrentScene()
+    {
+        // Get the active scene's build index and reload it
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
 
