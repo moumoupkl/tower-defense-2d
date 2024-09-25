@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.WSA;
 
 
 public class GameManager : MonoBehaviour
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
         redcoinsfloat = startingCoins;
 
         gameover.SetActive(false);
+        UnityEngine.Cursor.visible = false;
     }
 
     // Update is called once per frame
