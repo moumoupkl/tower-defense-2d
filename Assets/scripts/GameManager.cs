@@ -1,14 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-using UnityEngine.WSA;
 using UnityEngine.SceneManagement;
-
 
 public class GameManager : MonoBehaviour
 {
@@ -17,11 +10,11 @@ public class GameManager : MonoBehaviour
     public int blueCoins;
     public float bluecoinspersecs;
     public float bluecoinsfloat;
-    private int bluePV= 100;
+    private int bluePV = 100;
     public int redCoins;
     public float redcoinspersecs;
     public float redcoinsfloat;
-    private int redPV= 100;
+    private int redPV = 100;
     public int startingCoins;
     public TMP_Text BlueCoinstxt;
     public TMP_Text RedCoinstxt;
@@ -30,82 +23,67 @@ public class GameManager : MonoBehaviour
     public TMP_Text BluePV;
     public TMP_Text RedPV;
     public GameObject pauseImage;
-    public bool pausing;
-    public bool resuming;
-    private bool previousPauseState;
     public InputActionReference move1;
     public InputActionReference move2;
 
-    // Start is called before the first frame update
+    private bool previousPauseState;
+
     void Start()
     {
         bluecoinsfloat = startingCoins;
         redcoinsfloat = startingCoins;
-
         gameover.SetActive(false);
-        UnityEngine.Cursor.visible = false;
+        Cursor.visible = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        previousPauseState = pause;
         BlueCoinstxt.text = blueCoins.ToString();
         RedCoinstxt.text = redCoins.ToString();
         BluePV.text = bluePV.ToString();
         RedPV.text = redPV.ToString();
 
+        // Toggle pause on Escape key
         if (Input.GetKeyDown(KeyCode.Escape) && !gameisover)
         {
             pause = !pause;
         }
 
-        if (pause && !gameisover)
-        {
-            pauseImage.SetActive(true);
-        }
-        else
-        {
-            pauseImage.SetActive(false);
-        }
+        // Show/hide pause image
+        pauseImage.SetActive(pause && !gameisover);
 
-        if (previousPauseState == pause)
+        // Detect pausing or resuming
+        if (previousPauseState != pause)
         {
-            resuming = false;
-            pausing = false;
+            if (pause)
+                Debug.Log("Game Paused");
+            else
+                Debug.Log("Game Resumed");
         }
+        previousPauseState = pause;
 
-        else if (previousPauseState == false && pause == true)
-        {
-            pausing = true;
-        }
-
-        else
-        {
-            resuming = false;
-        }
-
+        // Enable move actions if disabled
         if (!move1.action.enabled || !move2.action.enabled)
         {
             move1.action.Enable();
             move2.action.Enable();
-            Debug.Log("Re-enabled move action after tile deactivation.");
         }
 
+        // Update coins over time
         bluecoinsfloat += bluecoinspersecs * Time.deltaTime;
         redcoinsfloat += redcoinspersecs * Time.deltaTime;
 
-        blueCoins = (int) bluecoinsfloat;
-        redCoins = (int) redcoinsfloat;
+        blueCoins = (int)bluecoinsfloat;
+        redCoins = (int)redcoinsfloat;
 
+        // Reload scene on 'R' key if the game is over
         if (gameisover && Input.GetKeyDown(KeyCode.R))
         {
             ReloadCurrentScene();
         }
-        
     }
-    // --------------------- blue team ---------------------
-    
+
+    // Add coins to the respective team
     public void AddCoins(int coinsToAdd, bool blueTeam)
     {
         if (blueTeam)
@@ -114,47 +92,33 @@ public class GameManager : MonoBehaviour
             redcoinsfloat += coinsToAdd;
     }
 
-    public void DamageToPlayer(int Damage, bool blueTeam)
+    // Apply damage to the player, check for game over
+    public void DamageToPlayer(int damage, bool blueTeam)
     {
-        if (!blueTeam){
-            if(bluePV-Damage >= 0)
-                bluePV -= Damage;
-            else
-            {
-                bluePV=0;
-                GameOver(blueTeam);
-            }
-                
-            
+        if (!blueTeam)
+        {
+            bluePV = Mathf.Max(0, bluePV - damage);
+            if (bluePV == 0) GameOver(blueTeam);
         }
         else
-            if(redPV-Damage >= 0)
-                redPV -= Damage;
-            else
-            {
-                redPV=0;
-                GameOver(blueTeam);
-            }
-            
+        {
+            redPV = Mathf.Max(0, redPV - damage);
+            if (redPV == 0) GameOver(blueTeam);
+        }
     }
 
+    // Handle game over state
     public void GameOver(bool blueTeam)
     {
-        if(!blueTeam)
-            Winner.text = "Red Team Wins";
-
-        else
-            Winner.text = "Blue Team Wins";
-
+        Winner.text = blueTeam ? "Blue Team Wins" : "Red Team Wins";
         gameover.SetActive(true);
         gameisover = true;
         pause = true;
     }
 
+    // Reload the current scene
     public void ReloadCurrentScene()
     {
-        // Get the active scene's build index and reload it
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
-

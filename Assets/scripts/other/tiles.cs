@@ -6,11 +6,11 @@ public class tiles : MonoBehaviour
     public GameObject turret1;
     public GameObject turret2;
     public Animator animator;
-    public float constructionTime;     // Time it takes to construct the turret
-    public GameObject particles;       // Visual effect for turret construction
-    public bool activeConstruction;    // True when construction is active
-    public bool blueTeam;              // For determining which team the turret belongs to
-    public bool hover;                 // Set to true when this tile is hovered over by the selector
+    public float constructionTime;
+    public GameObject particles;
+    public bool activeConstruction;
+    public bool blueTeam;
+    public bool hover;
 
     void Start()
     {
@@ -19,11 +19,11 @@ public class tiles : MonoBehaviour
 
     void Update()
     {
-        // Update the animation based on hover and construction state
+        // Update animation based on hover and construction state
         animator.SetBool("ishover", hover && !activeConstruction);
     }
 
-    // Start the construction of the turret (called externally by DynamicGridSelector)
+    // Start turret construction
     public IEnumerator SpawnObject(GameObject turretPrefab)
     {
         if (particles != null)
@@ -36,20 +36,15 @@ public class tiles : MonoBehaviour
             }
         }
 
-        // Simulate construction time
-        float elapsedTime = 0f;
-        while (elapsedTime < constructionTime)
-        {
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+        // Wait for construction to complete
+        yield return new WaitForSeconds(constructionTime);
 
-        // Instantiate the turret
+        // Instantiate the turret and assign team
         GameObject turretInstance = Instantiate(turretPrefab, transform.position, Quaternion.identity);
         TurretController turretController = turretInstance.GetComponent<TurretController>();
         if (turretController != null)
         {
-            turretController.blueTeam = blueTeam;  // Assign the team
+            turretController.blueTeam = blueTeam;
         }
 
         // Mark tile as inactive after construction
