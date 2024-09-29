@@ -24,67 +24,62 @@ public class DynamicGridSelector : MonoBehaviour
     private Vector2 currentPosition = new Vector2(1.5f, 5.5f);
 
     private GameObject lastSelectedObject;
+    private Tile lastSelectedTile;
+    private const int WEAPON_PRICE = 5;
 
     void Start()
     {
-        Camera mainCamera = Camera.main;
-        gameManager = mainCamera.GetComponent<GameManager>();
-
-        if (selectionPrefab != null)
-        {
-            selection = Instantiate(selectionPrefab, currentPosition, Quaternion.identity);
-        }
-        UpdateSelection();
-
-        // Subscribe to both turret purchase actions
-        buyTurret1.action.performed += ctx => OnBuyActionPerformed(1); // For turret type 1
-        buyTurret2.action.performed += ctx => OnBuyActionPerformed(2); // For turret type 2
+        move = movep1;
+        selection = Instantiate(selectionPrefab, currentPosition, Quaternion.identity);
+        inputTimer = 0;
     }
 
     void Update()
+{
+    move = movep1;
+    inputTimer -= Time.deltaTime;
+
+    Vector2 movedirection = move.action.ReadValue<Vector2>();
+    float horizontal = movedirection.x;
+    float vertical = movedirection.y;
+
+    if (Mathf.Abs(horizontal) > Mathf.Abs(vertical)) vertical = 0;
+    else if (Mathf.Abs(vertical) > Mathf.Abs(horizontal)) horizontal = 0;
+
+    if (inputTimer <= 0 && (horizontal != 0 || vertical != 0))
     {
-        move = movep1;
-        inputTimer -= Time.deltaTime;
-
-        Vector2 movedirection = move.action.ReadValue<Vector2>();
-        float horizontal = movedirection.x;
-        float vertical = movedirection.y;
-
-        if (Mathf.Abs(horizontal) > Mathf.Abs(vertical)) vertical = 0;
-        else if (Mathf.Abs(vertical) > Mathf.Abs(horizontal)) horizontal = 0;
-
-        if (inputTimer <= 0 && (horizontal != 0 || vertical != 0))
-        {
-            Vector2 direction = new Vector2(horizontal, vertical).normalized;
-            MoveSelection(direction);
-            inputTimer = inputDelay;
-        }
-
-        if (horizontal == 0 && vertical == 0) inputTimer = 0;
-
-        // Check if the selector is out of bounds or misaligned and reset if necessary
-        CheckAndCorrectSelectorPosition();
+        Vector2 direction = new Vector2(horizontal, vertical).normalized;
+        MoveSelection(direction);
+        inputTimer = inputDelay;
     }
 
-    // Handle the turret purchase
+    if (horizontal == 0 && vertical == 0) inputTimer = 0;
+
+    // Check if the selector is out of bounds or misaligned and reset if necessary
+    CheckAndCorrectSelectorPosition();
+}
+
     private void OnBuyActionPerformed(int turretType)
     {
         if (lastSelectedObject != null)
         {
-            var tileScript = lastSelectedObject.GetComponent<tiles>();
-            if (tileScript != null && tileScript.hover && !tileScript.activeConstruction)
+            if (lastSelectedTile == null)
             {
-                int weaponPrice = 5;  // Adjust price for balance
-                bool hasEnoughCoins = blueTeam ? gameManager.blueCoins >= weaponPrice : gameManager.redCoins >= weaponPrice;
+                lastSelectedTile = lastSelectedObject.GetComponent<Tile>();
+            }
+
+            if (lastSelectedTile != null && lastSelectedTile.hover && !lastSelectedTile.activeConstruction)
+            {
+                bool hasEnoughCoins = blueTeam ? gameManager.blueCoins >= WEAPON_PRICE : gameManager.redCoins >= WEAPON_PRICE;
 
                 if (!gameManager.pause && hasEnoughCoins)
                 {
-                    tileScript.activeConstruction = true;
-                    gameManager.AddCoins(-weaponPrice, blueTeam);
+                    lastSelectedTile.activeConstruction = true;
+                    gameManager.AddCoins(-WEAPON_PRICE, blueTeam);
 
                     // Select the correct turret to spawn
-                    GameObject turretToSpawn = turretType == 1 ? tileScript.turret1 : tileScript.turret2;
-                    StartCoroutine(tileScript.SpawnObject(turretToSpawn));  // Start construction
+                    GameObject turretToSpawn = turretType == 1 ? lastSelectedTile.turretPrefab1 : lastSelectedTile.turretPrefab2;
+                    StartCoroutine(lastSelectedTile.SpawnObject(turretToSpawn));  // Start construction
 
                     Debug.Log($"Turret {turretType} purchased and construction started!");
                 }
@@ -101,94 +96,39 @@ public class DynamicGridSelector : MonoBehaviour
         if (!gameManager.pause)
         {
             Vector2 newPosition = currentPosition + direction;
+            // Ensure the new position is within bounds
             newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
             newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
 
+            // Update the selection position
+            selection.transform.position = newPosition;
             currentPosition = newPosition;
-            if (selection != null)
+
+            // Update the last selected object
+            lastSelectedObject = GetTileAtPosition(newPosition);
+            if (lastSelectedObject != null)
             {
-                selection.transform.position = currentPosition;
-            }
-
-            UpdateSelection();
-        }
-    }
-
-    void UpdateSelection()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(currentPosition, Vector2.zero);
-
-        if (lastSelectedObject != null)
-        {
-            DeselectObject(lastSelectedObject);
-            lastSelectedObject = null;
-        }
-
-        if (hit.collider != null)
-        {
-            GameObject hitObject = hit.collider.gameObject;
-            if (hitObject.CompareTag(tileTag))
-            {
-                SelectObject(hitObject);
-                lastSelectedObject = hitObject;
+                lastSelectedTile = lastSelectedObject.GetComponent<Tile>();
             }
         }
     }
 
-    void SelectObject(GameObject obj)
+    private GameObject GetTileAtPosition(Vector2 position)
     {
-        var tileScript = obj.GetComponent<tiles>();
-        if (tileScript != null)
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero);
+        if (hit.collider != null && hit.collider.CompareTag(tileTag))
         {
-            tileScript.hover = true;
+            return hit.collider.gameObject;
         }
+        return null;
     }
 
-    void DeselectObject(GameObject obj)
+    private void CheckAndCorrectSelectorPosition()
     {
-        var tileScript = obj.GetComponent<tiles>();
-        if (tileScript != null)
-        {
-            tileScript.hover = false;
-        }
-    }
-
-    // Check if the selector is misaligned or out of bounds and reset it
-    void CheckAndCorrectSelectorPosition()
-    {
-        bool isMisaligned = (currentPosition.x % 1f != 0.5f || currentPosition.y % 1f != 0.5f);
-        bool isOutOfBounds = (currentPosition.x < minX || currentPosition.x > maxX || currentPosition.y < minY || currentPosition.y > maxY);
-
-        if (isMisaligned || isOutOfBounds)
-        {
-            Debug.Log("Selector misaligned or out of bounds, resetting position.");
-            ResetSelectorPosition();
-        }
-    }
-
-    // Reset the selector to the nearest valid grid position
-    void ResetSelectorPosition()
-    {
-        float clampedX = Mathf.Clamp(currentPosition.x, minX, maxX);
-        float clampedY = Mathf.Clamp(currentPosition.y, minY, maxY);
-
-        // Snap the position to the nearest valid tile center (assuming tile centers are at 0.5 intervals)
-        float snappedX = Mathf.Round(clampedX - 0.5f) + 0.5f;
-        float snappedY = Mathf.Round(clampedY - 0.5f) + 0.5f;
-
-        currentPosition = new Vector2(snappedX, snappedY);
-
-        if (selection != null)
+        if (selection.transform.position.x < minX || selection.transform.position.x > maxX ||
+            selection.transform.position.y < minY || selection.transform.position.y > maxY)
         {
             selection.transform.position = currentPosition;
         }
-
-        UpdateSelection();
-    }
-
-    private void OnDestroy()
-    {
-        buyTurret1.action.performed -= ctx => OnBuyActionPerformed(1);
-        buyTurret2.action.performed -= ctx => OnBuyActionPerformed(2);
     }
 }

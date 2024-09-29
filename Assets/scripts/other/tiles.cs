@@ -1,19 +1,20 @@
 using UnityEngine;
 using System.Collections;
 
-public class tiles : MonoBehaviour
+public class Tile : MonoBehaviour
 {
-    public GameObject turret1;
-    public GameObject turret2;
-    public Animator animator;
-    public float constructionTime;
-    public GameObject particles;
-    public bool activeConstruction;
-    public bool blueTeam;
+    public GameObject turretPrefab1;
+    public GameObject turretPrefab2;
+    private Animator animator;
     public bool hover;
+    public bool activeConstruction;
+    private float constructionTime;
+    private GameObject particles;
+    private bool blueTeam;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         hover = false;
     }
 
@@ -29,8 +30,7 @@ public class tiles : MonoBehaviour
         if (particles != null)
         {
             GameObject spawnedParticles = Instantiate(particles, transform.position, Quaternion.identity);
-            Particle particleScript = spawnedParticles.GetComponent<Particle>();
-            if (particleScript != null)
+            if (spawnedParticles.TryGetComponent(out Particle particleScript))
             {
                 particleScript.SetLifetime(constructionTime);
             }
@@ -41,8 +41,7 @@ public class tiles : MonoBehaviour
 
         // Instantiate the turret and assign team
         GameObject turretInstance = Instantiate(turretPrefab, transform.position, Quaternion.identity);
-        TurretController turretController = turretInstance.GetComponent<TurretController>();
-        if (turretController != null)
+        if (turretInstance.TryGetComponent(out TurretController turretController))
         {
             turretController.blueTeam = blueTeam;
         }
