@@ -5,7 +5,7 @@ public class TowerControler : MonoBehaviour
     public GameManager gameManager;
     public Animator animator;
     public float constructionTime;
-    private ObjectStats objectStats;
+    public ObjectStats objectStats;
 
 
     protected virtual void Start()

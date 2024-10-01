@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class CDDamageTower : TurretController
+public class CDDamageDower : TurretController
 {
-    public ShootBehavior shootBehavior; // Reference to the ShootBehavior script
-    private SpriteRenderer rangeRenderer;
+    public ShootBehavior shootBehavior; // Reference to the ShootBehavior scrip
     private float fireTimer; // Timer to track cooldown
     public float fireCooldown = 1f; // Cooldown time between shots in seconds
-    private ObjectStats objectStats;
+    public bool readyToShoot;
+
 
     protected override void Start()
     {
-   
 
         if (shootBehavior == null)
         {
@@ -29,7 +28,7 @@ public class CDDamageTower : TurretController
 
             // Find the closest enemy within range
 
-            if (targetEnemy != null && aimingAtEnnemy)
+            if (targetEnemy != null && readyToShoot)
             {
                 animator.speed = 1f / fireCooldown * 10;
                 animator.SetBool("fight", true);
@@ -40,7 +39,7 @@ public class CDDamageTower : TurretController
                 {
                     if (shootBehavior != null)
                     {
-                        if (aimingAtEnnemy)
+                        if (readyToShoot)
                         {
                             shootBehavior.Shoot();
                             fireTimer = 0f; // Reset the cooldown timer after shooting
@@ -57,6 +56,7 @@ public class CDDamageTower : TurretController
         {
             animator.speed = 0;
         }
+
 
     }
 

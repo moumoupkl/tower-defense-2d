@@ -66,7 +66,7 @@ public class TurretRotation : MonoBehaviour
         // Set the readyToShoot property of the TurretController
         if (turretController != null)
         {
-            turretController.readyToShoot = isReadyToShoot;
+            turretController.aimingAtEnnemy = isReadyToShoot;
         }
     }
 }
