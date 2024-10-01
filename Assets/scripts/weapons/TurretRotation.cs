@@ -1,20 +1,34 @@
 using UnityEngine;
 
-public class TurretRotation : TurretController
+public class TurretRotation : MonoBehaviour
 {
     public Transform gun; // The part of the turret that rotates, e.g., a barrel or gun
+    public Transform targetEnemy; // The target enemy to aim at
     public float aimingTolerance = 5f; // Degrees tolerance to consider the turret "facing" the target
     public float rotationSpeed = 100f;
+    private TurretController turretController;
 
-    protected override void Update()
+    void Start()
     {
+        // Get the TurretController component on the same GameObject
+        turretController = GetComponent<TurretController>();
+        if (turretController == null)
+        {
+            Debug.LogError("TurretController component is missing!");
+        }
+    }
+
+    void Update()
+    {
+        //get the target enemy from the TurretController
+        targetEnemy = turretController.targetEnemy;
+        
         // Only aim if there is a target
         if (targetEnemy != null)
         {
+            Debug.Log("Aiming at target");
             AimAtTarget();
         }
-
-        base.Update(); // Call the shooting logic in the base class
     }
 
     private void AimAtTarget()
@@ -38,7 +52,6 @@ public class TurretRotation : TurretController
         CheckIfReadyToShoot(targetAngle);
     }
 
-
     private void CheckIfReadyToShoot(float targetAngle)
     {
         // Get the current rotation angle of the gun
@@ -48,13 +61,12 @@ public class TurretRotation : TurretController
         float angleDifference = Mathf.Abs(Mathf.DeltaAngle(currentAngle, targetAngle + 180));
 
         // If the difference is within the tolerance, the turret is ready to shoot
-        if (angleDifference <= aimingTolerance)
+        bool isReadyToShoot = angleDifference <= aimingTolerance;
+
+        // Set the readyToShoot property of the TurretController
+        if (turretController != null)
         {
-            readyToShoot = true;
-        }
-        else
-        {
-            readyToShoot = false;
+            turretController.readyToShoot = isReadyToShoot;
         }
     }
 }

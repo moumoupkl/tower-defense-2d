@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6020338073771051614}
   - component: {fileID: 7813812893658758326}
   - component: {fileID: 6215630075680163944}
+  - component: {fileID: 1513642657020257857}
   - component: {fileID: 4534215733928129937}
   m_Layer: 0
   m_Name: tile blue
@@ -184,6 +185,20 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1513642657020257857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4754017930273626563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0a558cba07a384e9e3acef326aa0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: 0
+  blueTeam: 1
 --- !u!114 &4534215733928129937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,13 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1d930022f56894fbc0e63d64c638a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret1: {fileID: 4927421271642273980, guid: 2d242dc0f2a177f47abd3080744f746b, type: 3}
-  turret2: {fileID: 7540767241916947676, guid: 9c4c7ef4c8a887d4588b88b72f14ec84, type: 3}
-  animator: {fileID: 7813812893658758326}
-  weaponPrice: 5
-  gameManager: {fileID: 0}
-  hover: 0
+  turretPrefab1: {fileID: 4927421271642273980, guid: 2d242dc0f2a177f47abd3080744f746b, type: 3}
+  turretPrefab2: {fileID: 7540767241916947676, guid: 9c4c7ef4c8a887d4588b88b72f14ec84, type: 3}
   activeConstruction: 0
-  constructionTime: 3
   particles: {fileID: 2278256178577447766, guid: 12d3d41155bc33d4ca03d3c0bec4dcfc, type: 3}
-  blueTeam: 1

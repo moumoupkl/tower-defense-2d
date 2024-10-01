@@ -28,6 +28,7 @@ public class ButtonHandler : MonoBehaviour
     void OnEnable()
     {
         // Enable input actions
+        Debug.Log("OnEnable button handler");
         spawnGroundTroupP1.action.Enable();
         spawnFlyingTroupP1.action.Enable();
         spawnGroundTroupP2.action.Enable();
@@ -37,6 +38,7 @@ public class ButtonHandler : MonoBehaviour
     void OnDisable()
     {
         // Disable input actions
+        Debug.Log("OnDisable button handler");
         spawnGroundTroupP1.action.Disable();
         spawnFlyingTroupP1.action.Disable();
         spawnGroundTroupP2.action.Disable();

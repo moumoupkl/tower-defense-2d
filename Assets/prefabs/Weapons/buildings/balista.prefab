@@ -233,6 +233,8 @@ GameObject:
   - component: {fileID: 807903951255619236}
   - component: {fileID: 3615796414722197583}
   - component: {fileID: 65986397816820227}
+  - component: {fileID: 111477996359910634}
+  - component: {fileID: -5307665719023068740}
   - component: {fileID: 4714086141955713434}
   - component: {fileID: 4363836100148014676}
   m_Layer: 0
@@ -346,6 +348,41 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &111477996359910634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927421271642273980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0a558cba07a384e9e3acef326aa0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: 0
+--- !u!114 &-5307665719023068740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927421271642273980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103017632d6caff4cbcfe07bf7c2dd1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootBehavior: {fileID: 4363836100148014676}
+  range: 3
+  rangeIndicator: {fileID: 2748925899457052646}
+  targetEnemy: {fileID: 0}
+  gameManager: {fileID: 0}
+  animator: {fileID: 6197773509319548437}
+  fireCooldown: 1
+  readyToShoot: 0
+  blueTeam: 0
+  constructionTime: 2
 --- !u!114 &4714086141955713434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,17 +395,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d3a9ddf100a6d42b04948f21a972f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootBehavior: {fileID: 4363836100148014676}
-  range: 4
-  rangeIndicator: {fileID: 2748925899457052646}
-  gameManager: {fileID: 0}
-  animator: {fileID: 6197773509319548437}
-  hover: 0
-  fireCooldown: 0.5
-  readyToShoot: 0
   gun: {fileID: 3431796013622484512}
+  targetEnemy: {fileID: 0}
   aimingTolerance: 5
-  rotationSpeed: 100
+  rotationSpeed: 10000
 --- !u!114 &4363836100148014676
 MonoBehaviour:
   m_ObjectHideFlags: 0

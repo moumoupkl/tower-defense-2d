@@ -152,8 +152,8 @@ MonoBehaviour:
   target: 0
   gameManager: {fileID: 0}
   blueTeam: 1
-  spawnParticule: {fileID: 6834623002979728507, guid: 7c11fdbf1ff409e4cabf1bdb55360968, type: 3}
-  slown: 0
+  spawnParticle: {fileID: 6834623002979728507, guid: 7c11fdbf1ff409e4cabf1bdb55360968, type: 3}
+  isSlowed: 0
   slowTime: 0
   slowStrength: 0
 --- !u!61 &4578192734660917154
@@ -213,7 +213,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5b4f98d0e9e79724fb326a52418442a4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0

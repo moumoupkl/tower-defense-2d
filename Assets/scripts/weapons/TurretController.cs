@@ -6,19 +6,22 @@ public class TurretController : MonoBehaviour
     public float range = 10f; // Detection range for enemies
     public GameObject rangeIndicator; // Reference to the range indicator (circle)
     
-    protected Transform targetEnemy;
+    public Transform targetEnemy;
     private SpriteRenderer rangeRenderer;
     public GameManager gameManager;
     public Animator animator;
-    public bool hover;
-
     private float fireTimer; // Timer to track cooldown
     public float fireCooldown = 1f; // Cooldown time between shots in seconds
     public bool readyToShoot;
-    public bool blueTeam;
+    public float constructionTime;
+    private ObjectStats objectStats;
+    public bool teamHover;
 
     protected virtual void Start()
     {
+        //get isseelected component
+        objectStats = GetComponent<ObjectStats>();
+        objectStats.hover = false;
         Camera mainCamera = Camera.main;
         gameManager = mainCamera.GetComponent<GameManager>();
 
@@ -91,7 +94,7 @@ public class TurretController : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             enemyStats enemyStats = enemy.GetComponent<enemyStats>();
-            if (enemyStats.blueTeam != blueTeam)
+            if (enemyStats.blueTeam != objectStats.blueTeam)
             {
                 float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
                 if (distanceToEnemy < closestDistance && distanceToEnemy <= range)
@@ -108,7 +111,7 @@ public class TurretController : MonoBehaviour
 
     protected void selected()
     {
-        if (hover)
+        if (objectStats.hover)
         {
             if (rangeRenderer != null)
             {

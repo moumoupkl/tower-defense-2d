@@ -8,24 +8,26 @@ public class TroupMovement : MonoBehaviour
     public enemyStats enemyStats;
     public Transform[] path;
     public int target;
-    private float currentspeed;
-    private float Startspeed;
+    private float currentSpeed;
+    private float startSpeed;
     public GameManager gameManager;
     public bool blueTeam;
-    public GameObject spawnParticule;
-    public bool slown;
+    public GameObject spawnParticle;
+    public bool isSlowed;
     public float slowTime;
-    private float slowtimer;
+    private float slowTimer;
     public float slowStrength;
 
     void Start()
     {
-
+        // Get the main camera and the GameManager component
         Camera mainCamera = Camera.main;
         gameManager = mainCamera.GetComponent<GameManager>();
 
-        Startspeed = enemyStats.speed;
-        currentspeed = Startspeed;
+        // Initialize speed values
+        startSpeed = enemyStats.speed;
+        currentSpeed = startSpeed;
+
         // Find the GameObject named "troup path" in the scene
         GameObject troupPath = GameObject.Find("troup path");
         if (troupPath == null)
@@ -64,25 +66,29 @@ public class TroupMovement : MonoBehaviour
         {
             Debug.LogError("No waypoints found in 'path'.");
         }
-        Instantiate(spawnParticule,transform.position,Quaternion.identity);
 
+        // Instantiate spawn particle effect at the starting position
+        Instantiate(spawnParticle, transform.position, Quaternion.identity);
     }
 
     void Update()
     {
-        if (slown)
+        // Handle slowing effect
+        if (isSlowed)
         {
-            slowtimer += Time.deltaTime;
-            currentspeed = Startspeed * slowStrength;
-            if (slowtimer >= slowTime)
+            slowTimer += Time.deltaTime;
+            currentSpeed = startSpeed * slowStrength;
+            if (slowTimer >= slowTime)
             {
-                slown = false;
+                isSlowed = false;
             }
         }
         else
-            currentspeed = Startspeed;
-            
+        {
+            currentSpeed = startSpeed;
+        }
 
+        // If the game is not paused, move towards the target
         if (!gameManager.pause)
         {
             if (path.Length == 0) return; // If there are no waypoints, exit early
@@ -90,7 +96,7 @@ public class TroupMovement : MonoBehaviour
             // Move towards the target position
             Vector2 currentPosition = transform.position;
             Vector2 targetPosition = path[target].position;
-            transform.position = Vector2.MoveTowards(currentPosition, targetPosition, currentspeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(currentPosition, targetPosition, currentSpeed * Time.deltaTime);
 
             // Check if the object has reached the target position
             if (currentPosition == targetPosition)
@@ -110,18 +116,14 @@ public class TroupMovement : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Calculate angle in degrees
             transform.rotation = Quaternion.Euler(0, 0, angle - 90); // Apply rotation to the object
         }
-
-        if (slown)
-        {
-            
-        }
     }
 
-    public void Slow (float SlowTime, float SlowStrength)
+    // Method to apply a slowing effect
+    public void Slow(float slowTime, float slowStrength)
     {
-        slown = true;
-        slowtimer = 0f;
-        slowTime = SlowTime;
-        slowStrength = SlowStrength;
+        isSlowed = true;
+        slowTimer = 0f;
+        this.slowTime = slowTime;
+        this.slowStrength = slowStrength;
     }
 }

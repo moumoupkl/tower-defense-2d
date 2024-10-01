@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
     public int blueCoins;
     public float bluecoinspersecs;
     public float bluecoinsfloat;
-    private int bluePV = 100;
+    public int bluePV = 100;
     public int redCoins;
     public float redcoinspersecs;
     public float redcoinsfloat;
-    private int redPV = 100;
+    public int redPV = 100;
     public int startingCoins;
     public TMP_Text BlueCoinstxt;
     public TMP_Text RedCoinstxt;

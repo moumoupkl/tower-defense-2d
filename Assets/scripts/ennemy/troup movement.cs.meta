@@ -6,7 +6,7 @@ MonoImporter:
   defaultReferences:
   - enemyStats: {instanceID: 0}
   - gameManager: {instanceID: 0}
-  - spawnParticule: {fileID: 6834623002979728507, guid: 7c11fdbf1ff409e4cabf1bdb55360968, type: 3}
+  - spawnParticle: {fileID: 6834623002979728507, guid: 7c11fdbf1ff409e4cabf1bdb55360968, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
