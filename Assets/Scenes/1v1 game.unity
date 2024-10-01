@@ -1524,8 +1524,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  BlueSpawnPoint: {fileID: 916213186}
-  RedSpawnPoint: {fileID: 2095337617}
+  blueSpawnPoint: {fileID: 916213186}
+  redSpawnPoint: {fileID: 2095337617}
+  blueEnnemyUpgrade: {fileID: 291955504}
+  redEnnemyUpgrade: {fileID: 291955503}
 --- !u!114 &291955503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1539,9 +1541,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueTeam: 0
-  ennemies: []
-  upgradeCosts: 
-  upgradeCounter: 
+  ennemies:
+  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
+  - {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
+  upgradeCosts: 0200000004000000
   upgradeLevels: 
   maxUpgradeLevel: 2
 --- !u!114 &291955504
@@ -1557,9 +1560,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueTeam: 1
-  ennemies: []
-  upgradeCosts: 
-  upgradeCounter: 
+  ennemies:
+  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
+  - {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
+  upgradeCosts: 0200000004000000
   upgradeLevels: 
   maxUpgradeLevel: 2
 --- !u!1001 &297714516
@@ -2476,11 +2480,11 @@ MonoBehaviour:
   pause: 0
   gameisover: 0
   blueCoins: 0
-  bluecoinspersecs: 0.5
+  blueCoinsPerSec: 0
   bluecoinsfloat: 0
   bluePV: 100
   redCoins: 0
-  redcoinspersecs: 0.5
+  redCoinsPerSec: 0
   redcoinsfloat: 0
   redPV: 100
   startingCoins: 10

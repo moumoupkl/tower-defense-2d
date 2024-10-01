@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
     public bool pause;
     public bool gameisover;
     public int blueCoins;
-    public float bluecoinspersecs;
+    public float blueCoinsPerSec;
     public float bluecoinsfloat;
     public int bluePV = 100;
     public int redCoins;
-    public float redcoinspersecs;
+    public float redCoinsPerSec;
     public float redcoinsfloat;
     public int redPV = 100;
     public int startingCoins;
@@ -70,8 +70,8 @@ public class GameManager : MonoBehaviour
         }
 
         // Update coins over time
-        bluecoinsfloat += bluecoinspersecs * Time.deltaTime;
-        redcoinsfloat += redcoinspersecs * Time.deltaTime;
+        bluecoinsfloat += blueCoinsPerSec * Time.deltaTime;
+        redcoinsfloat += redCoinsPerSec * Time.deltaTime;
 
         blueCoins = (int)bluecoinsfloat;
         redCoins = (int)redcoinsfloat;

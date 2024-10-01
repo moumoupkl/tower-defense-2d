@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnnemyUpgrade : MonoBehaviour
 {
@@ -12,12 +13,12 @@ public class EnnemyUpgrade : MonoBehaviour
     public List<int> upgradeCosts = new List<int>();
 
     //list that show how many time a unity has been bought
-    public List<int> upgradeCounter = new List<int>();
+    private List<int> upgradeCounter = new List<int>();
     
     // list that show the current upgrade level of the ennemy
     public List<int> upgradeLevels = new List<int>();
     //max upgrade levels
-    public int maxUpgradeLevel = 2;
+    public int maxUpgradeLevel = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -32,25 +33,36 @@ public class EnnemyUpgrade : MonoBehaviour
     }
 
     // increment the upgrade counter of a given ennemy
-    public void incrementUpgradeCounter(GameObject ennemy)
+    public void incrementUpgradeCounter(GameObject ennemy, bool spawnIsBlueTeam)
     {
-        int index = ennemies.IndexOf(ennemy);
-        upgradeCounter[index]++;
-
-        //if ennemy has been bought enough time upgrade it
-        if (upgradeCounter[index] >= upgradeCosts[index])
+        //only do this if right team
+        if (blueTeam == spawnIsBlueTeam)
         {
-            upgradeCounter[index] = 0;
-            upgradeLevels[index]++;
+            int index = ennemies.IndexOf(ennemy);
+            upgradeCounter[index]++;
 
-            //if ennemy has reached max upgrade level set it to max upgrade level
-            if (upgradeLevels[index] >= maxUpgradeLevel)
+            //if ennemy has been bought enough time upgrade it
+            if (upgradeCounter[index] >= upgradeCosts[index])
             {
-                upgradeLevels[index] = maxUpgradeLevel;
-            }
-            else
-            {
-                Debug.Log(ennemy.name + " has been upgraded to level " + upgradeLevels[index]);
+                upgradeCounter[index] = 0;
+                upgradeLevels[index]++;
+
+                //if ennemy has reached max upgrade level set it to max upgrade level
+                if (upgradeLevels[index] > maxUpgradeLevel)
+                {
+                    upgradeLevels[index] = maxUpgradeLevel;
+                }
+                else
+                {
+                    if (blueTeam)
+                    {
+                        Debug.Log("blueteam's" + ennemy.name + " has been upgraded to level " + upgradeLevels[index]);
+                    }
+                    else
+                    {
+                        Debug.Log("redteam's" + ennemy.name + " has been upgraded to level " + upgradeLevels[index]);
+                    }
+                }
             }
         }
     }

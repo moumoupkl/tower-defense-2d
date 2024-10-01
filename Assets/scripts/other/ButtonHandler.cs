@@ -19,10 +19,10 @@ public class ButtonHandler : MonoBehaviour
         objectSpawner = GetComponent<ObjectSpawner>();
 
         // Subscribe to the input actions
-        spawnGroundTroupP1.action.performed += ctx => objectSpawner.SpawnTroups(groundTroup, true);
-        spawnFlyingTroupP1.action.performed += ctx => objectSpawner.SpawnTroups(flyingTroup, true);
-        spawnGroundTroupP2.action.performed += ctx => objectSpawner.SpawnTroups(groundTroup, false);
-        spawnFlyingTroupP2.action.performed += ctx => objectSpawner.SpawnTroups(flyingTroup, false);
+        spawnGroundTroupP1.action.performed += ctx => objectSpawner.SpawnTroops(groundTroup, true);
+        spawnFlyingTroupP1.action.performed += ctx => objectSpawner.SpawnTroops(flyingTroup, true);
+        spawnGroundTroupP2.action.performed += ctx => objectSpawner.SpawnTroops(groundTroup, false);
+        spawnFlyingTroupP2.action.performed += ctx => objectSpawner.SpawnTroops(flyingTroup, false);
     }
 
     void OnEnable()
@@ -48,9 +48,9 @@ public class ButtonHandler : MonoBehaviour
     void OnDestroy()
     {
         // Unsubscribe when the object is destroyed
-        spawnGroundTroupP1.action.performed -= ctx => objectSpawner.SpawnTroups(groundTroup, true);
-        spawnFlyingTroupP1.action.performed -= ctx => objectSpawner.SpawnTroups(flyingTroup, true);
-        spawnGroundTroupP2.action.performed -= ctx => objectSpawner.SpawnTroups(groundTroup, false);
-        spawnFlyingTroupP2.action.performed -= ctx => objectSpawner.SpawnTroups(flyingTroup, false);
+        spawnGroundTroupP1.action.performed -= ctx => objectSpawner.SpawnTroops(groundTroup, true);
+        spawnFlyingTroupP1.action.performed -= ctx => objectSpawner.SpawnTroops(flyingTroup, true);
+        spawnGroundTroupP2.action.performed -= ctx => objectSpawner.SpawnTroops(groundTroup, false);
+        spawnFlyingTroupP2.action.performed -= ctx => objectSpawner.SpawnTroops(flyingTroup, false);
     }
 }

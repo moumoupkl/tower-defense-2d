@@ -3,9 +3,12 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     public GameManager gameManager;
-    public Transform BlueSpawnPoint;
-    public Transform RedSpawnPoint;
+    public Transform blueSpawnPoint;
+    public Transform redSpawnPoint;
     private Transform spawnPoint;
+    public EnnemyUpgrade blueEnnemyUpgrade;
+    public EnnemyUpgrade redEnnemyUpgrade;
+    
 
     void Start()
     {
@@ -13,62 +16,61 @@ public class ObjectSpawner : MonoBehaviour
         gameManager = mainCamera.GetComponent<GameManager>();
     }
 
-    public void SpawnTroups(GameObject objectToSpawn, bool blueTeam)
+    public void SpawnTroops(GameObject objectToSpawn, bool blueTeam)
     {
         if (blueTeam)
         {
+            // Check if the player has enough coins to spawn the object
             if (gameManager.blueCoins < 2)
             {
                 return;
             }
-            else
-            {
-                gameManager.bluecoinsfloat -= 2;
-                gameManager.bluecoinspersecs += 0.5f;
-            }
-        }
+            gameManager.blueCoins -= 2;
+            gameManager.blueCoinsPerSec += 0.5f;
 
+            //increase upgrade counter
+            blueEnnemyUpgrade.incrementUpgradeCounter(objectToSpawn, blueTeam);
+
+        }
         else
         {
             if (gameManager.redCoins < 2)
             {
                 return;
             }
-            else
-            {
-                gameManager.redcoinsfloat -= 2;
-                gameManager.redcoinspersecs += 0.5f;
-            }
+            gameManager.redCoins -= 2;
+            gameManager.redCoinsPerSec += 0.5f;
+
+            //increase upgrade counter
+            redEnnemyUpgrade.incrementUpgradeCounter(objectToSpawn, blueTeam);
+            
         }
-        
-        if (blueTeam)
-        {
-            spawnPoint = BlueSpawnPoint;
-        }
-        else
-        {
-            spawnPoint = RedSpawnPoint;
-        }
+
+        spawnPoint = blueTeam ? blueSpawnPoint : redSpawnPoint;
 
         if (!gameManager.pause)
         {
             // Spawn the object at the correct spawn point
-            GameObject troup = Instantiate(objectToSpawn, spawnPoint.position, Quaternion.identity);
+            GameObject troop = Instantiate(objectToSpawn, spawnPoint.position, Quaternion.identity);
 
-            // Get the TroupMovement component from the spawned object
-            TroupMovement troupMovement = troup.GetComponent<TroupMovement>();
-            enemyStats enemyStats = troup.GetComponent<enemyStats>();
+            // Get the TroopMovement component from the spawned object
+            TroupMovement troopMovement = troop.GetComponent<TroupMovement>();
+            enemyStats enemyStats = troop.GetComponent<enemyStats>();
 
-            // Set the blueTeam bool in the TroupMovement script
-            if (troupMovement != null)
+            // Set the blueTeam bool in the TroopMovement script
+            if (troopMovement != null)
             {
-                troupMovement.blueTeam = blueTeam;
-                enemyStats.blueTeam = blueTeam;
+                troopMovement.blueTeam = blueTeam;
+                if (enemyStats != null)
+                {
+                    enemyStats.blueTeam = blueTeam;
+                }
             }
             else
             {
-                Debug.LogError("TroupMovement component not found on the spawned object.");
+                Debug.LogError("TroopMovement component not found on the spawned object.");
             }
         }
     }
+
 }
