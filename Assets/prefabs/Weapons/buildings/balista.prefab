@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: -5307665719023068740}
   - component: {fileID: 4714086141955713434}
   - component: {fileID: 4363836100148014676}
+  - component: {fileID: 7452632334292346157}
   m_Layer: 0
   m_Name: balista
   m_TagString: Weapon
@@ -361,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hover: 0
+  blueTeam: 0
 --- !u!114 &-5307665719023068740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,8 +383,8 @@ MonoBehaviour:
   animator: {fileID: 6197773509319548437}
   fireCooldown: 1
   readyToShoot: 0
-  blueTeam: 0
-  constructionTime: 2
+  constructionTime: 0
+  teamHover: 0
 --- !u!114 &4714086141955713434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,3 +416,18 @@ MonoBehaviour:
   boltPrefab: {fileID: 796141500590053754, guid: ac22edd51e1bf15488d021a200e5a831, type: 3}
   firePoint: {fileID: 8187382357189360362}
   boltSpeed: 10
+--- !u!114 &7452632334292346157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927421271642273980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce44e61d2992774bb1313b8642cdaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  animator: {fileID: 6197773509319548437}
+  constructionTime: 3

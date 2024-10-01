@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TurretController : MonoBehaviour
+public class ConstantDamageDower : MonoBehaviour
 {
     public ShootBehavior shootBehavior; // Reference to the ShootBehavior script
     public float range = 10f; // Detection range for enemies
@@ -13,6 +13,7 @@ public class TurretController : MonoBehaviour
     private float fireTimer; // Timer to track cooldown
     public float fireCooldown = 1f; // Cooldown time between shots in seconds
     public bool readyToShoot;
+    public float constructionTime;
     private ObjectStats objectStats;
     public bool teamHover;
 

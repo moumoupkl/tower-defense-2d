@@ -29,7 +29,7 @@ public class Tile : MonoBehaviour
     public IEnumerator SpawnObject(GameObject turretPrefab)
     {
         //set constructiontime to the construction time of the prefab
-        constructionTime = turretPrefab.GetComponent<TurretController>().constructionTime;
+        constructionTime = turretPrefab.GetComponent<TowerControler>().constructionTime;
         
         //set particle time to construction time of the prefab
         if (particles != null)
