@@ -13,6 +13,7 @@ public class WaveHandler : MonoBehaviour
     public int currentTroopCapacity;
     public float spawnInterval;
     public bool wavestarted;
+    private int troopLength;
     public ObjectSpawner objectSpawner;
     //lisst of troops that were bought
     public List<GameObject> troops;
@@ -113,10 +114,13 @@ public class WaveHandler : MonoBehaviour
         spawnInterval = Mathf.Min(MaxTimeBetweenTroops, waveTimer.waveSpawnDuration / troops.Count);
 
         // Spawn all troops in the list
-        foreach (GameObject troop in troops)
+        //get the amount of troops in the list
+        troopLength = troops.Count;
+        //loop trooplenth times
+        for (int i = 0; i < troopLength; i++)
         {
             Debug.Log("Spawning troop");
-            objectSpawner.SpawnTroops(troop, blueTeam);
+            objectSpawner.SpawnTroops(troops[i], blueTeam);
             // Wait for the spawn interval
             yield return new WaitForSeconds(spawnInterval);
         }
