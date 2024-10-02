@@ -11,6 +11,7 @@ public class enemyStats : MonoBehaviour
     public GameManager gameManager;
     public int price;
     public int reward;
+    public int capacity;
     public GameObject explosion;
 
     // Reference to the enemy's renderer
