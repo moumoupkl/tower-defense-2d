@@ -379,12 +379,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2181028394002360745}
-  - component: {fileID: 4564384986012861220}
   - component: {fileID: 1665274115624832727}
   - component: {fileID: 3688451453414409004}
+  - component: {fileID: 4564384986012861220}
   - component: {fileID: 5651269816708902518}
-  - component: {fileID: -2746278463803282724}
   - component: {fileID: 837917564916408193}
+  - component: {fileID: -3177656823138755771}
   m_Layer: 0
   m_Name: freezer
   m_TagString: Weapon
@@ -409,22 +409,6 @@ Transform:
   - {fileID: 2804104066940607362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -178.705}
---- !u!114 &4564384986012861220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8372406137674051238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35d3a9ddf100a6d42b04948f21a972f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun: {fileID: 2804104066940607362}
-  targetEnemy: {fileID: 0}
-  aimingTolerance: 20
-  rotationSpeed: 100
 --- !u!212 &1665274115624832727
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -512,6 +496,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4564384986012861220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372406137674051238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d3a9ddf100a6d42b04948f21a972f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 2804104066940607362}
+  targetEnemy: {fileID: 0}
+  aimingTolerance: 20
+  rotationSpeed: 1000
 --- !u!114 &5651269816708902518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,28 +527,6 @@ MonoBehaviour:
   triangRange: {fileID: 9086077882954359423}
   slowDuration: 1.5
   slowStrength: 0.66
---- !u!114 &-2746278463803282724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8372406137674051238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 103017632d6caff4cbcfe07bf7c2dd1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootBehavior: {fileID: 0}
-  range: 10
-  rangeIndicator: {fileID: 0}
-  targetEnemy: {fileID: 0}
-  gameManager: {fileID: 0}
-  animator: {fileID: 0}
-  fireCooldown: 1
-  readyToShoot: 0
-  constructionTime: 0
-  teamHover: 0
 --- !u!114 &837917564916408193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,3 +541,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hover: 0
   blueTeam: 0
+--- !u!114 &-3177656823138755771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372406137674051238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a2ee30d5413eb45a871d790fa74f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  animator: {fileID: 3890406406613334069}
+  constructionTime: 3
+  objectStats: {fileID: 837917564916408193}
+  range: 10
+  rangeIndicator: {fileID: 1241440930303061266}
+  targetEnemy: {fileID: 0}
+  aimingAtEnnemy: 0
+  teamHover: 0
+  shootBehavior: {fileID: 5651269816708902518}

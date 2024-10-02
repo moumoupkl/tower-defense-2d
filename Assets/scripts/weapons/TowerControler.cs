@@ -21,7 +21,6 @@ public class TowerControler : MonoBehaviour
 
     protected virtual void Update()
     {
-        Debug.Log("TowerController Update");
         if (!gameManager.pause)
         {
    
