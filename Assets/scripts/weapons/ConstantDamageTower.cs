@@ -6,7 +6,7 @@ public class CDDamageTower : TurretController
     private SpriteRenderer rangeRenderer;
     private float fireTimer; // Timer to track cooldown
     public float fireCooldown = 1f; // Cooldown time between shots in seconds
-    private ObjectStats objectStats;
+
 
     protected override void Start()
     {
