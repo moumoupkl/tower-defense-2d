@@ -12,13 +12,17 @@ public class WaveHandler : MonoBehaviour
     public int MaxTroopCapacity;
     public int currentTroopCapacity;
     public float spawnInterval;
-    private bool wavestarted;
+    public bool wavestarted;
     public ObjectSpawner objectSpawner;
     //lisst of troops that were bought
     public List<GameObject> troops;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
+        //get the gameManager component from the main camera
+        Camera mainCamera = Camera.main;
+        gameManager = mainCamera.GetComponent<GameManager>();
         //initialize the list of troops
         troops = new List<GameObject>();
         //initialize the current troop capacity
@@ -36,8 +40,13 @@ public class WaveHandler : MonoBehaviour
         //if sapwnphase true than spawnwave once
         if (waveTimer.spawnPhase && !wavestarted)
         {
+            Debug.Log("wave started");
             StartCoroutine(spawnWave());
             wavestarted = true;
+        }
+        if (!waveTimer.spawnPhase)
+        {
+            wavestarted = false;
         }
         
     }
@@ -45,6 +54,29 @@ public class WaveHandler : MonoBehaviour
     //add troops to the list and their capacity to the current capacity
     public void AddTroop(GameObject troop)
     {
+        //check if the player has enough coins to buy the troop
+        if (blueTeam)
+        {
+            if (gameManager.blueCoins < 2)
+            {
+                return;
+            }
+
+            gameManager.bluecoinsfloat -= 2;
+            gameManager.blueCoinsPerSec += 0.05f;
+        }
+        
+        else 
+        {
+            if (gameManager.redCoins < 2)
+            {
+                return;
+            }
+            gameManager.redcoinsfloat -= 2;
+            gameManager.redCoinsPerSec += 0.05f;
+        }
+
+        //check if the current capacity is enough to add the troop
         if (currentTroopCapacity + troop.GetComponent<enemyStats>().capacity <= MaxTroopCapacity)
         {
             troops.Add(troop);
@@ -90,6 +122,9 @@ public class WaveHandler : MonoBehaviour
         }
 
         // Remove all troops from the list
-        troops.Clear();
+        troops = new List<GameObject>();
+
+        //reset the wave started flag
+        wavestarted = false;
     }
 }

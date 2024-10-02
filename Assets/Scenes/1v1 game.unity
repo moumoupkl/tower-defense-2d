@@ -1509,7 +1509,7 @@ MonoBehaviour:
   blueTeam: 0
   groundTroup: {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
   flyingTroup: {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
-  waveHandler: {fileID: 0}
+  waveHandler: {fileID: 519420038}
   spawnGroundTroup: {fileID: 8481140839399988061, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   spawnFlyingTroup: {fileID: 5498560180084704931, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
 --- !u!114 &291955502
@@ -1582,7 +1582,7 @@ MonoBehaviour:
   blueTeam: 1
   groundTroup: {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
   flyingTroup: {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
-  waveHandler: {fileID: 0}
+  waveHandler: {fileID: 519420037}
   spawnGroundTroup: {fileID: -3029517933396479112, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   spawnFlyingTroup: {fileID: -1236154855465603294, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
 --- !u!1001 &297714516
@@ -2550,6 +2550,7 @@ GameObject:
   - component: {fileID: 519420034}
   - component: {fileID: 519420036}
   - component: {fileID: 519420037}
+  - component: {fileID: 519420038}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2654,6 +2655,7 @@ MonoBehaviour:
   redcoinsfloat: 0
   redPV: 100
   startingCoins: 10
+  startingCoinsPerSec: 0.5
   BlueCoinstxt: {fileID: 1014240216}
   RedCoinstxt: {fileID: 1631254715}
   Winner: {fileID: 126528329}
@@ -2763,28 +2765,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueTeam: 1
   waveTimer: {fileID: 737636672}
-  MaxTimeBetweenTroops: 0.5
+  MaxTimeBetweenTroops: 2
   waveNumber: 0
   MaxTroopCapacity: 15
   currentTroopCapacity: 0
   spawnInterval: 0
+  wavestarted: 0
   objectSpawner: {fileID: 291955502}
-  troops:
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
+  troops: []
+--- !u!114 &519420038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f588adb65859304abe8f7ef27f9bb29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueTeam: 0
+  waveTimer: {fileID: 737636672}
+  MaxTimeBetweenTroops: 2
+  waveNumber: 0
+  MaxTroopCapacity: 15
+  currentTroopCapacity: 0
+  spawnInterval: 0
+  wavestarted: 0
+  objectSpawner: {fileID: 291955502}
+  troops: []
 --- !u!1001 &522869547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3759,7 +3769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveDuration: 5
-  waveSpawnDuration: 5
+  waveSpawnDuration: 10
   blinkInterval: 0.1
   postShrinkDelay: 1
   fillRight: {fileID: 1670951854}

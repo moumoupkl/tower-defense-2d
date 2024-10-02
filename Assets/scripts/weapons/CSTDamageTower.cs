@@ -24,7 +24,7 @@ public class CSTDamageTower : TurretController
     protected override void Update()
     {   
         base.Update();
-        Debug.Log("constant");
+        //Debug.Log("constant");
         if (!gameManager.pause)
         {
 
