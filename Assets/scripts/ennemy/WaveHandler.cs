@@ -79,8 +79,10 @@ public class WaveHandler : MonoBehaviour
             objectSpawner.SpawnTroops(troop, blueTeam);
             //wait for the spawn interval
             StartCoroutine(WaitForSpawnInterval());
-            RemoveTroop(troop);
         }
+        
+        //remove all troops from the list
+        troops.Clear();
     }
 
     //wait for the spawn interval
