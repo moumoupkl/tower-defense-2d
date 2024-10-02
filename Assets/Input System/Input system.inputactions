@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "buy tower 3 p1",
+                    "type": "Button",
+                    "id": "6954ff0f-2303-40de-a791-b0a9ffb3efa6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "buy troupe 1 p1",
                     "type": "Button",
                     "id": "b18f3781-ecd6-4004-b7f2-9fcf8a3fa145",
@@ -424,6 +433,17 @@
                     "processors": "",
                     "groups": "keyboard",
                     "action": "buy troupe 1 p1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "245a1879-4464-486d-a415-ad6180398778",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "buy tower 3 p1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
