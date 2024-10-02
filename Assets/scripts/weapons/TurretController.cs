@@ -10,7 +10,7 @@ public class TurretController : TowerControler
     public bool aimingAtEnnemy;
     public bool teamHover;
 
-    protected override void Start()
+    public override void Start()
     {
         aimingAtEnnemy=true;
 
@@ -24,8 +24,9 @@ public class TurretController : TowerControler
 
     }
 
-    protected override void Update()
+    public override void Update()
     {
+        Debug.Log("TurretController Update");
         if (!gameManager.pause)
         {
             // Find the closest enemy within range
