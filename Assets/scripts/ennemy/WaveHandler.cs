@@ -20,7 +20,7 @@ public class WaveHandler : MonoBehaviour
     void Start()
     {
         //initialize the list of troops
-        //troops = new List<GameObject>();
+        troops = new List<GameObject>();
         //initialize the current troop capacity
         currentTroopCapacity = 0;
         //initialize the wave number

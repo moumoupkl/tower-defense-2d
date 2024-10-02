@@ -1509,6 +1509,7 @@ MonoBehaviour:
   blueTeam: 0
   groundTroup: {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
   flyingTroup: {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
+  waveHandler: {fileID: 0}
   spawnGroundTroup: {fileID: 8481140839399988061, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   spawnFlyingTroup: {fileID: 5498560180084704931, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
 --- !u!114 &291955502
@@ -1581,6 +1582,7 @@ MonoBehaviour:
   blueTeam: 1
   groundTroup: {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
   flyingTroup: {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
+  waveHandler: {fileID: 0}
   spawnGroundTroup: {fileID: -3029517933396479112, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   spawnFlyingTroup: {fileID: -1236154855465603294, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
 --- !u!1001 &297714516
@@ -2702,7 +2704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f588adb65859304abe8f7ef27f9bb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueTeam: 0
+  blueTeam: 1
   waveTimer: {fileID: 737636672}
   MaxTimeBetweenTroops: 0.5
   waveNumber: 0

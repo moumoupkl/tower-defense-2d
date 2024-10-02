@@ -6,6 +6,7 @@ public class ButtonHandler : MonoBehaviour
     public bool blueTeam;
     public GameObject groundTroup;
     public GameObject flyingTroup;
+    public WaveHandler waveHandler;
 
     private ObjectSpawner objectSpawner;
 
@@ -18,8 +19,8 @@ public class ButtonHandler : MonoBehaviour
         objectSpawner = GetComponent<ObjectSpawner>();
 
         // Subscribe to the input actions
-        spawnGroundTroup.action.performed += ctx => objectSpawner.SpawnTroops(groundTroup, blueTeam);
-        spawnFlyingTroup.action.performed += ctx => objectSpawner.SpawnTroops(flyingTroup, blueTeam);
+        spawnGroundTroup.action.performed += ctx => waveHandler.AddTroop(groundTroup);
+        spawnFlyingTroup.action.performed += ctx => waveHandler.AddTroop(flyingTroup);
     }
 
     void OnEnable()
@@ -41,7 +42,7 @@ public class ButtonHandler : MonoBehaviour
     void OnDestroy()
     {
         // Unsubscribe when the object is destroyed
-        spawnGroundTroup.action.performed -= ctx => objectSpawner.SpawnTroops(groundTroup, blueTeam);
-        spawnFlyingTroup.action.performed -= ctx => objectSpawner.SpawnTroops(flyingTroup, blueTeam);
+        spawnGroundTroup.action.performed -= ctx => waveHandler.AddTroop(groundTroup);
+        spawnFlyingTroup.action.performed -= ctx => waveHandler.AddTroop(flyingTroup);
     }
 }
