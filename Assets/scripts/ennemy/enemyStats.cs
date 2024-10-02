@@ -20,6 +20,47 @@ public class enemyStats : MonoBehaviour
     // Flash duration in seconds
     public float flashDuration = 0.1f;
     public bool blueTeam;
+    // Struct to store enemy stats for level ups
+    public struct EnemyStats
+    {
+        public int maxHealth;
+        public int damage;
+        public float speed;
+        public bool ground;
+        public int price;
+        public float reward;
+        public int capacity;
+    }
+    public EnemyStats level1 = new EnemyStats
+    {
+        maxHealth = 10,
+        damage = 5,
+        speed = 1.5f,
+        ground = true,
+        price = 2,
+        reward = 1,
+        capacity = 1
+    };
+    public EnemyStats level2 = new EnemyStats
+    {
+        maxHealth = 10,
+        damage = 20,
+        speed = 1.5f,
+        ground = true,
+        price = 2,
+        reward = 1,
+        capacity = 1
+    };
+    public EnemyStats level3 = new EnemyStats
+    {
+        maxHealth = 300,
+        damage = 30,
+        speed = 1.5f,
+        ground = true,
+        price = 2,
+        reward = 1,
+        capacity = 1
+    };
 
     void Start()
     {

@@ -45,7 +45,7 @@ public class CSTDamageTower : TurretController
                     {
                         if (aimingAtEnnemy)
                         {
-                            Debug.Log("shoot csnt");
+                            //Debug.Log("shoot csnt");
                             shootBehavior.Shoot();
                         }
                     }

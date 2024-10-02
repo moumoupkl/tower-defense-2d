@@ -119,7 +119,6 @@ public class WaveHandler : MonoBehaviour
         //loop trooplenth times
         for (int i = 0; i < troopLength; i++)
         {
-            Debug.Log("Spawning troop");
             objectSpawner.SpawnTroops(troops[i], blueTeam);
             // Wait for the spawn interval
             yield return new WaitForSeconds(spawnInterval);

@@ -17,6 +17,7 @@ public class Wavetimer : MonoBehaviour
     private float postShrinkTimer; // Timer for the delay after shrinking
     private GameObject sliderRight; // Right slider component
     private GameObject sliderLeft; // Left slider component
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class Wavetimer : MonoBehaviour
         //get waveHandler component from main camera
         Camera mainCamera = Camera.main;
         WaveHandler waveHandler = mainCamera.GetComponent<WaveHandler>();
+        gameManager = mainCamera.GetComponent<GameManager>();
         spawnPhase = false;
         sliderRight = GameObject.Find("Slider right");
         sliderLeft = GameObject.Find("Slider left");
@@ -36,6 +38,15 @@ public class Wavetimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.pause)
+        {
+            if(spawnPhase)
+            {
+                HandleBlinking();
+            }
+            return;
+        }
+
         if (!spawnPhase)
         {
             HandleWave();
@@ -72,17 +83,8 @@ public class Wavetimer : MonoBehaviour
     {
         if (waveTimer < waveSpawnDuration)
         {
-
             waveTimer += Time.deltaTime;
-            blinkTimer += Time.deltaTime;
-
-            // Blink logic
-            if (blinkTimer >= blinkInterval)
-            {
-                fillRight.SetActive(!fillRight.activeSelf);
-                fillLeft.SetActive(!fillLeft.activeSelf);
-                blinkTimer = 0; // Reset blink timer
-            }
+            HandleBlinking();
 
             // Shrink slider value logic
             float sliderValue = 1 - (waveTimer / waveSpawnDuration);
@@ -102,6 +104,20 @@ public class Wavetimer : MonoBehaviour
             sliderRight.GetComponent<UnityEngine.UI.Slider>().value = 0; // Reset slider value
             sliderLeft.GetComponent<UnityEngine.UI.Slider>().value = 0; // Reset slider value
             postShrinkTimer = 0; // Reset post-shrink timer
+        }
+    }
+
+    // Handles the blinking logic
+    private void HandleBlinking()
+    {
+        blinkTimer += Time.deltaTime;
+
+        // Blink logic
+        if (blinkTimer >= blinkInterval)
+        {
+            fillRight.SetActive(!fillRight.activeSelf);
+            fillLeft.SetActive(!fillLeft.activeSelf);
+            blinkTimer = 0; // Reset blink timer
         }
     }
 }

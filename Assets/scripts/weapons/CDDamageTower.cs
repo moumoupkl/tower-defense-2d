@@ -44,7 +44,7 @@ public class CDDamageDower : TurretController
                     {
                         if (aimingAtEnnemy)
                         {
-                            Debug.Log("shoot cd");
+                            //Debug.Log("shoot cd");
                             shootBehavior.Shoot();
                             fireTimer = 0f; // Reset the cooldown timer after shooting
                         }

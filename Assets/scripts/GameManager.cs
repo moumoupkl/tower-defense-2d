@@ -58,13 +58,6 @@ public class GameManager : MonoBehaviour
         pauseImage.SetActive(pause && !gameisover);
 
         // Detect pausing or resuming
-        if (previousPauseState != pause)
-        {
-            if (pause)
-                Debug.Log("Game Paused");
-            else
-                Debug.Log("Game Resumed");
-        }
         previousPauseState = pause;
 
         // Enable move actions if disabled
