@@ -19,7 +19,14 @@ public class WaveHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //initialize the list of troops
+        //troops = new List<GameObject>();
+        //initialize the current troop capacity
+        currentTroopCapacity = 0;
+        //initialize the wave number
+        waveNumber = 0;
+        //initialize the wave started
+        wavestarted = false;
         
     }
 
@@ -29,7 +36,7 @@ public class WaveHandler : MonoBehaviour
         //if sapwnphase true than spawnwave once
         if (waveTimer.spawnPhase && !wavestarted)
         {
-            spawnWave();
+            StartCoroutine(spawnWave());
             wavestarted = true;
         }
         
@@ -68,26 +75,21 @@ public class WaveHandler : MonoBehaviour
         }
     }
 
-    public void spawnWave()
+    public IEnumerator spawnWave()
     {
-        //set spawn ineterval to minimum between the max time between troops and waveSpawnDuration/amount of troops in list
+        // Set spawn interval to minimum between the max time between troops and waveSpawnDuration/amount of troops in list
         spawnInterval = Mathf.Min(MaxTimeBetweenTroops, waveTimer.waveSpawnDuration / troops.Count);
-        //spawn all troops in the list
+
+        // Spawn all troops in the list
         foreach (GameObject troop in troops)
         {
             Debug.Log("Spawning troop");
             objectSpawner.SpawnTroops(troop, blueTeam);
-            //wait for the spawn interval
-            StartCoroutine(WaitForSpawnInterval());
+            // Wait for the spawn interval
+            yield return new WaitForSeconds(spawnInterval);
         }
-        
-        //remove all troops from the list
-        troops.Clear();
-    }
 
-    //wait for the spawn interval
-    private IEnumerator WaitForSpawnInterval()
-    {
-        yield return new WaitForSeconds(spawnInterval);
+        // Remove all troops from the list
+        troops.Clear();
     }
 }

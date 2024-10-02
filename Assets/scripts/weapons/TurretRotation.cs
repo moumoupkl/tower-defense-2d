@@ -26,7 +26,6 @@ public class TurretRotation : MonoBehaviour
         // Only aim if there is a target
         if (targetEnemy != null)
         {
-
             AimAtTarget();
         }
     }
