@@ -234,9 +234,7 @@ GameObject:
   - component: {fileID: 6651702805822522716}
   - component: {fileID: 3944325035045683862}
   - component: {fileID: 5249158856713146951}
-  - component: {fileID: -2580013974242588154}
   - component: {fileID: 5613230004537787480}
-  - component: {fileID: -4307925185947808343}
   m_Layer: 0
   m_Name: tesla
   m_TagString: Weapon
@@ -362,27 +360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hover: 0
   blueTeam: 0
---- !u!114 &-2580013974242588154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7540767241916947676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 103017632d6caff4cbcfe07bf7c2dd1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootBehavior: {fileID: 5613230004537787480}
-  range: 1.5
-  rangeIndicator: {fileID: 1643741950899246531}
-  targetEnemy: {fileID: 0}
-  gameManager: {fileID: 0}
-  animator: {fileID: 3046215988583805933}
-  fireCooldown: 3
-  readyToShoot: 1
-  teamHover: 0
 --- !u!114 &5613230004537787480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,18 +374,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 3560568825590547721, guid: 7ee058f359d6e51489839c2387931cac, type: 3}
   firePoint: {fileID: 7846716874702216518}
---- !u!114 &-4307925185947808343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7540767241916947676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce44e61d2992774bb1313b8642cdaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  animator: {fileID: 0}
-  constructionTime: 2

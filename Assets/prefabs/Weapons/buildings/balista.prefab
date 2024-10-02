@@ -234,10 +234,9 @@ GameObject:
   - component: {fileID: 3615796414722197583}
   - component: {fileID: 65986397816820227}
   - component: {fileID: 111477996359910634}
-  - component: {fileID: -5307665719023068740}
   - component: {fileID: 4714086141955713434}
-  - component: {fileID: 4363836100148014676}
-  - component: {fileID: 7452632334292346157}
+  - component: {fileID: -6387288546725819741}
+  - component: {fileID: 6647077597974995211}
   m_Layer: 0
   m_Name: balista
   m_TagString: Weapon
@@ -363,28 +362,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hover: 0
   blueTeam: 0
---- !u!114 &-5307665719023068740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4927421271642273980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 103017632d6caff4cbcfe07bf7c2dd1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootBehavior: {fileID: 4363836100148014676}
-  range: 3
-  rangeIndicator: {fileID: 2748925899457052646}
-  targetEnemy: {fileID: 0}
-  gameManager: {fileID: 0}
-  animator: {fileID: 6197773509319548437}
-  fireCooldown: 1
-  readyToShoot: 0
-  constructionTime: 0
-  teamHover: 0
 --- !u!114 &4714086141955713434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +378,31 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   aimingTolerance: 5
   rotationSpeed: 10000
---- !u!114 &4363836100148014676
+--- !u!114 &-6387288546725819741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927421271642273980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26dd75b6a9120244afea4c5be6e36be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  animator: {fileID: 6197773509319548437}
+  constructionTime: 3
+  objectStats: {fileID: 0}
+  range: 10
+  rangeIndicator: {fileID: 2748925899457052646}
+  targetEnemy: {fileID: 0}
+  aimingAtEnnemy: 0
+  teamHover: 0
+  shootBehavior: {fileID: 6647077597974995211}
+  fireCooldown: 1
+  readyToShoot: 0
+--- !u!114 &6647077597974995211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -413,21 +414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a084ccbbc22fd543a028283ef88779c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boltPrefab: {fileID: 796141500590053754, guid: ac22edd51e1bf15488d021a200e5a831, type: 3}
-  firePoint: {fileID: 8187382357189360362}
-  boltSpeed: 10
---- !u!114 &7452632334292346157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4927421271642273980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce44e61d2992774bb1313b8642cdaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  animator: {fileID: 6197773509319548437}
-  constructionTime: 3
+  boltPrefab: {fileID: 0}
+  firePoint: {fileID: 0}
+  boltSpeed: 0

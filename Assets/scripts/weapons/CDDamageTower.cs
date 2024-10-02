@@ -20,7 +20,8 @@ public class CDDamageDower : TurretController
     }
 
     protected override void Update()
-    {
+    {   
+        Debug.Log(gameManager);
         if (!gameManager.pause)
         {
             // Update the cooldown timer
