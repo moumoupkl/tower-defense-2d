@@ -8,9 +8,10 @@ public class CDDamageDower : TurretController
     public bool readyToShoot;
 
 
-    public override void Start()
+    protected override void Start()
     {
-
+        base.Start();
+        
         if (shootBehavior == null)
         {
             shootBehavior = GetComponent<ShootBehavior>();
@@ -19,9 +20,10 @@ public class CDDamageDower : TurretController
         fireTimer = fireCooldown; // Initialize the timer
     }
 
-    public override void Update()
+    protected override void Update()
     {   
-        Debug.Log("CDDamageTower Update");
+        base.Update();
+        
         if (!gameManager.pause)
         {
             // Update the cooldown timer

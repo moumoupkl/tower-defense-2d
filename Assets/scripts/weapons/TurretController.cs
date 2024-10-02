@@ -10,8 +10,9 @@ public class TurretController : TowerControler
     public bool aimingAtEnnemy;
     public bool teamHover;
 
-    public override void Start()
+    protected override void Start()
     {
+        base.Start();
         aimingAtEnnemy=true;
 
         // Set up the range indicator
@@ -24,8 +25,9 @@ public class TurretController : TowerControler
 
     }
 
-    public override void Update()
+    protected override void Update()
     {
+        base.Update();
         Debug.Log("TurretController Update");
         if (!gameManager.pause)
         {

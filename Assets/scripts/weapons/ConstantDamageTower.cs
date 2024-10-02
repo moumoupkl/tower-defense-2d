@@ -8,7 +8,7 @@ public class CDDamageTower : TurretController
     public float fireCooldown = 1f; // Cooldown time between shots in seconds
 
 
-    public override void Start()
+    protected override void Start()
     {
    
 
@@ -20,7 +20,7 @@ public class CDDamageTower : TurretController
         fireTimer = fireCooldown; // Initialize the timer
     }
 
-    public override void Update()
+    protected override void Update()
     {
         if (!gameManager.pause)
         {

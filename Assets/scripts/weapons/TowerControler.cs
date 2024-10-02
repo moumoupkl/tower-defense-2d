@@ -8,7 +8,7 @@ public class TowerControler : MonoBehaviour
     public ObjectStats objectStats;
 
 
-    public virtual void Start()
+    protected virtual void Start()
     {
         //get isseelected component
         objectStats = GetComponent<ObjectStats>();
@@ -19,7 +19,7 @@ public class TowerControler : MonoBehaviour
 
     }
 
-    public virtual void Update()
+    protected virtual void Update()
     {
         Debug.Log("TowerController Update");
         if (!gameManager.pause)
