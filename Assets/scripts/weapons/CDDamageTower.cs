@@ -4,8 +4,7 @@ public class CDDamageDower : TurretController
 {
     public ShootBehavior shootBehavior; // Reference to the ShootBehavior scrip
     private float fireTimer; // Timer to track cooldown
-    public float fireCooldown = 1f; // Cooldown time between shots in seconds
-    public bool readyToShoot;
+    public float fireCooldown = 1f; // Cooldown time between shots in second
 
 
     protected override void Start()
@@ -26,12 +25,13 @@ public class CDDamageDower : TurretController
         
         if (!gameManager.pause)
         {
+
             // Update the cooldown timer
             fireTimer += Time.deltaTime;
 
             // Find the closest enemy within range
 
-            if (targetEnemy != null && readyToShoot)
+            if (targetEnemy != null && aimingAtEnnemy)
             {
                 animator.speed = 1f / fireCooldown * 10;
                 animator.SetBool("fight", true);
@@ -42,8 +42,9 @@ public class CDDamageDower : TurretController
                 {
                     if (shootBehavior != null)
                     {
-                        if (readyToShoot)
+                        if (aimingAtEnnemy)
                         {
+                            Debug.Log("shoot cd");
                             shootBehavior.Shoot();
                             fireTimer = 0f; // Reset the cooldown timer after shooting
                         }

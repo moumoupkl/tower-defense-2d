@@ -26,7 +26,7 @@ public class TurretRotation : MonoBehaviour
         // Only aim if there is a target
         if (targetEnemy != null)
         {
-            Debug.Log("Aiming at target");
+
             AimAtTarget();
         }
     }
