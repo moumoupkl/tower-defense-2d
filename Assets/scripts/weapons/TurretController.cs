@@ -28,7 +28,6 @@ public class TurretController : TowerControler
     protected override void Update()
     {
         base.Update();
-        Debug.Log("TurretController Update");
         if (!gameManager.pause)
         {
             // Find the closest enemy within range
