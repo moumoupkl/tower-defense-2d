@@ -20,30 +20,13 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (blueTeam)
         {
-            // Check if the player has enough coins to spawn the object
-            if (gameManager.blueCoins < 2)
-            {
-                return;
-            }
-            gameManager.blueCoins -= 2;
-            gameManager.blueCoinsPerSec += 0.5f;
-
             //increase upgrade counter
             blueEnnemyUpgrade.incrementUpgradeCounter(objectToSpawn, blueTeam);
 
         }
         else
         {
-            if (gameManager.redCoins < 2)
-            {
-                return;
-            }
-            gameManager.redCoins -= 2;
-            gameManager.redCoinsPerSec += 0.5f;
-
-            //increase upgrade counter
             redEnnemyUpgrade.incrementUpgradeCounter(objectToSpawn, blueTeam);
-            
         }
 
         spawnPoint = blueTeam ? blueSpawnPoint : redSpawnPoint;

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public float redcoinsfloat;
     public int redPV = 100;
     public int startingCoins;
+    public float startingCoinsPerSec;
     public TMP_Text BlueCoinstxt;
     public TMP_Text RedCoinstxt;
     public TMP_Text Winner;
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviour
     {
         bluecoinsfloat = startingCoins;
         redcoinsfloat = startingCoins;
+
+        blueCoinsPerSec = startingCoinsPerSec;
+        redCoinsPerSec = startingCoinsPerSec;
+
         gameover.SetActive(false);
         Cursor.visible = false;
     }
@@ -53,13 +58,6 @@ public class GameManager : MonoBehaviour
         pauseImage.SetActive(pause && !gameisover);
 
         // Detect pausing or resuming
-        if (previousPauseState != pause)
-        {
-            if (pause)
-                Debug.Log("Game Paused");
-            else
-                Debug.Log("Game Resumed");
-        }
         previousPauseState = pause;
 
         // Enable move actions if disabled
