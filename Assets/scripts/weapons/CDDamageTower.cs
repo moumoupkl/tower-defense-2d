@@ -5,6 +5,7 @@ public class CDDamageDower : TurretController
     public ShootBehavior shootBehavior; // Reference to the ShootBehavior scrip
     private float fireTimer; // Timer to track cooldown
     public float fireCooldown = 1f; // Cooldown time between shots in second
+    public int damage = 1; // Damage dealt to enemies
 
 
     protected override void Start()
@@ -22,7 +23,6 @@ public class CDDamageDower : TurretController
     protected override void Update()
     {   
         base.Update();
-        
         if (!gameManager.pause)
         {
 

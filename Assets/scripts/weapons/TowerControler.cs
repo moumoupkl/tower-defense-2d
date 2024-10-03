@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TowerControler : MonoBehaviour
 {
+    [HideInInspector]
     public GameManager gameManager;
     public Animator animator;
     public float constructionTime;

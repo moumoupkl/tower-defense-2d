@@ -389,7 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   animator: {fileID: 3046215988583805933}
-  constructionTime: 3
+  constructionTime: 5
   objectStats: {fileID: 0}
   range: 2
   rangeIndicator: {fileID: 1643741950899246531}
@@ -397,4 +397,4 @@ MonoBehaviour:
   aimingAtEnnemy: 0
   teamHover: 0
   shootBehavior: {fileID: 5613230004537787480}
-  fireCooldown: 1
+  fireCooldown: 3

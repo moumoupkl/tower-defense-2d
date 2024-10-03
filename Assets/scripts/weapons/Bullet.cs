@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float destroyAfterSeconds = 2f;
-    public int damageAmount = 10;
+    private float destroyAfterSeconds = 2f;
+    public int damage;
     private bool hasHitEnemy = false; // Flag to track if the bullet has hit an enemy
     private GameManager gameManager;
     private Rigidbody2D rb;
@@ -64,7 +64,7 @@ public class Bullet : MonoBehaviour
             enemyStats enemy = collision.GetComponent<enemyStats>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damageAmount);
+                enemy.TakeDamage(damage);
             }
 
             // Destroy the bullet

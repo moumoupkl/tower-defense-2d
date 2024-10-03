@@ -5,9 +5,13 @@ public class TurretController : TowerControler
     public float range = 10f; // Detection range for enemies
     public GameObject rangeIndicator; // Reference to the range indicator (circle)
     
+    [HideInInspector]
     public Transform targetEnemy;
     private SpriteRenderer rangeRenderer;
+
+    [HideInInspector]
     public bool aimingAtEnnemy;
+    [HideInInspector]
     public bool teamHover;
 
     protected override void Start()
@@ -27,6 +31,12 @@ public class TurretController : TowerControler
 
     protected override void Update()
     {
+        //set aiming at ennemy to false if there are no ennemies
+        if (targetEnemy == null)
+        {
+            aimingAtEnnemy = false;
+        }
+
         base.Update();
         if (!gameManager.pause)
         {
