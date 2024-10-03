@@ -381,10 +381,10 @@ GameObject:
   - component: {fileID: 2181028394002360745}
   - component: {fileID: 1665274115624832727}
   - component: {fileID: 3688451453414409004}
-  - component: {fileID: 4564384986012861220}
-  - component: {fileID: 5651269816708902518}
   - component: {fileID: 837917564916408193}
+  - component: {fileID: 4564384986012861220}
   - component: {fileID: -3177656823138755771}
+  - component: {fileID: 5651269816708902518}
   m_Layer: 0
   m_Name: freezer
   m_TagString: Weapon
@@ -496,6 +496,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &837917564916408193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372406137674051238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0a558cba07a384e9e3acef326aa0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: 0
+  blueTeam: 0
 --- !u!114 &4564384986012861220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,36 +525,7 @@ MonoBehaviour:
   gun: {fileID: 2804104066940607362}
   targetEnemy: {fileID: 0}
   aimingTolerance: 20
-  rotationSpeed: 1000
---- !u!114 &5651269816708902518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8372406137674051238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced469fc4c2ab52439ddbeb3bca8f13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triangRange: {fileID: 9086077882954359423}
-  slowDuration: 1.5
-  slowStrength: 0.66
---- !u!114 &837917564916408193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8372406137674051238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f0a558cba07a384e9e3acef326aa0d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: 0
-  blueTeam: 0
+  rotationSpeed: 10000
 --- !u!114 &-3177656823138755771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,10 +541,25 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   animator: {fileID: 3890406406613334069}
   constructionTime: 3
-  objectStats: {fileID: 837917564916408193}
+  objectStats: {fileID: 0}
   range: 10
   rangeIndicator: {fileID: 1241440930303061266}
   targetEnemy: {fileID: 0}
   aimingAtEnnemy: 0
   teamHover: 0
   shootBehavior: {fileID: 5651269816708902518}
+--- !u!114 &5651269816708902518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372406137674051238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced469fc4c2ab52439ddbeb3bca8f13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triangRange: {fileID: 9086077882954359423}
+  slowDuration: 1.5
+  slowStrength: 0.66
