@@ -397,4 +397,5 @@ MonoBehaviour:
   aimingAtEnnemy: 0
   teamHover: 0
   shootBehavior: {fileID: 5613230004537787480}
-  fireCooldown: 3
+  fireCooldown: 1
+  damage: 1

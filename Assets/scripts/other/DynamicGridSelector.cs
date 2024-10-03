@@ -10,10 +10,10 @@ public class DynamicGridSelector : MonoBehaviour
     public string weaponTag;
     public GameObject selectionPrefab;
     public GameObject selection;
-    public float maxX = 10f;
-    public float minX = 0f;
-    public float maxY = 10f;
-    public float minY = 0f;
+    public float maxX = 5.5f;
+    public float minX = -4.5f;
+    public float maxY = 10.5f;
+    public float minY = 0.5f;
     public float inputDelay = 0.5f;
     private float inputTimer;
     public InputActionReference movep1;
@@ -28,22 +28,24 @@ public class DynamicGridSelector : MonoBehaviour
 
     private GameObject lastSelectedObject;
     private const int WEAPON_PRICE = 5;
+    private TroopsAndTowers troopsAndTowers;
 
     void Start()
     {
+        troopsAndTowers = GetComponent<TroopsAndTowers>();
         InitializeSelection();
     }
 
     private void OnEnable()//subscribe to the input actions
     {
-        buyTurret1.action.performed += context => OnBuyActionPerformed(1);
-        buyTurret2.action.performed += context => OnBuyActionPerformed(2);
+        buyTurret1.action.performed += context => OnBuyActionPerformed(0);
+        buyTurret2.action.performed += context => OnBuyActionPerformed(1);
     }
 
     private void OnDisable()//unsubscribe from the input actions
     {
-        buyTurret1.action.performed -= context => OnBuyActionPerformed(1);
-        buyTurret2.action.performed -= context => OnBuyActionPerformed(2);
+        buyTurret1.action.performed -= context => OnBuyActionPerformed(0);
+        buyTurret2.action.performed -= context => OnBuyActionPerformed(1);
     }
 
     void Update()
@@ -91,7 +93,7 @@ public class DynamicGridSelector : MonoBehaviour
         return new Vector2(horizontal, vertical).normalized;
     }
 
-    private void OnBuyActionPerformed(int turretType)//buy a turret
+    private void OnBuyActionPerformed(int turretType) // buy a turret
     {
         if (lastSelectedObject == null) return;
 
@@ -104,9 +106,25 @@ public class DynamicGridSelector : MonoBehaviour
             {
                 lastSelectedTile.activeConstruction = true;
                 gameManager.AddCoins(-WEAPON_PRICE, blueTeam);
-                GameObject turretToSpawn = turretType == 1 ? lastSelectedTile.turretPrefab1 : lastSelectedTile.turretPrefab2;
-                StartCoroutine(lastSelectedTile.SpawnObject(turretToSpawn));
-                lastSelectedObject = null;
+
+                if (turretType >= 0 && turretType < troopsAndTowers.towerPrefabs.Count)
+                {
+                    GameObject turretToSpawn = troopsAndTowers.towerPrefabs[turretType];
+                    GameObject spawnedTurret = Instantiate(turretToSpawn, lastSelectedTile.transform.position, Quaternion.identity);
+                    //set the team of the turret
+                    spawnedTurret.GetComponent<ObjectStats>().blueTeam = blueTeam;
+                    
+                    //disable the tile
+                    lastSelectedTile.gameObject.SetActive(false);
+
+                    lastSelectedObject = null;
+                }
+                else
+                {
+                    Debug.Log("Invalid turret type.");
+                    Debug.Log("Turret type: " + turretType);
+                    Debug.Log("Tower Prefabs Count: " + troopsAndTowers.towerPrefabs.Count);
+                }
             }
             else
             {

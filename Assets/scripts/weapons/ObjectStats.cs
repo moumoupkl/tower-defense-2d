@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectStats : MonoBehaviour
 {
-     public bool hover;
+    public bool hover;
     public bool blueTeam;
 
     public void setHoversTrue()

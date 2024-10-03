@@ -2504,6 +2504,7 @@ GameObject:
   - component: {fileID: 519420036}
   - component: {fileID: 519420037}
   - component: {fileID: 519420038}
+  - component: {fileID: 519420039}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2748,6 +2749,26 @@ MonoBehaviour:
   wavestarted: 0
   objectSpawner: {fileID: 291955502}
   troops: []
+--- !u!114 &519420039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470f2313610dfda4996ba22552a67110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPrefabs:
+  - {fileID: 4927421271642273980, guid: 2d242dc0f2a177f47abd3080744f746b, type: 3}
+  - {fileID: 7540767241916947676, guid: 9c4c7ef4c8a887d4588b88b72f14ec84, type: 3}
+  - {fileID: 8372406137674051238, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
+  - {fileID: 4411097325702905010, guid: 1168cb5bd2e93c449addee9bc8c3ed6a, type: 3}
+  troopPrefabs:
+  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
+  - {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
 --- !u!1001 &522869547
 PrefabInstance:
   m_ObjectHideFlags: 0

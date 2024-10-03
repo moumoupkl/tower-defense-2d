@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Tile : MonoBehaviour
 {
-    public GameObject turretPrefab1;
-    public GameObject turretPrefab2;
     private Animator animator;
     public bool activeConstruction;
     private float constructionTime;
@@ -13,7 +11,7 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
-        //get isseelected component
+        // Get ObjectStats and Animator components
         objectStats = GetComponent<ObjectStats>();
         animator = GetComponent<Animator>();
         objectStats.hover = false;
@@ -26,12 +24,12 @@ public class Tile : MonoBehaviour
     }
 
     // Start turret construction
-    public IEnumerator SpawnObject(GameObject turretPrefab)
+    public IEnumerator StartConstruction(GameObject turretPrefab)
     {
-        //set constructiontime to the construction time of the prefab
+        // Set construction time to the construction time of the prefab
         constructionTime = turretPrefab.GetComponent<TowerControler>().constructionTime;
-        
-        //set particle time to construction time of the prefab
+
+        // Set particle time to construction time of the prefab
         if (particles != null)
         {
             GameObject spawnedParticles = Instantiate(particles, transform.position, Quaternion.identity);
@@ -55,5 +53,4 @@ public class Tile : MonoBehaviour
         activeConstruction = false;
         gameObject.SetActive(false);
     }
-
 }
