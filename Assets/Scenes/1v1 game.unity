@@ -1543,11 +1543,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueTeam: 0
-  ennemies:
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
-  upgradeCosts: 0200000004000000
-  upgradeLevels: 
+  ennemiesData:
+  - ennemy: {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
+    upgradeCost: 30
+    upgradeCounter: 0
+    upgradeLevel: 0
+  - ennemy: {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
+    upgradeCost: 20
+    upgradeCounter: 0
+    upgradeLevel: 0
   maxUpgradeLevel: 2
 --- !u!114 &291955504
 MonoBehaviour:
@@ -1562,11 +1566,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueTeam: 1
-  ennemies:
-  - {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
-  - {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
-  upgradeCosts: 0200000004000000
-  upgradeLevels: 
+  ennemiesData:
+  - ennemy: {fileID: 2966670713212227299, guid: fc69e136c346cc94e98e653395311b79, type: 3}
+    upgradeCost: 30
+    upgradeCounter: 0
+    upgradeLevel: 0
+  - ennemy: {fileID: 2595443483497414959, guid: 41daa5b4fd21f7b46a190f8c1b2fa58d, type: 3}
+    upgradeCost: 20
+    upgradeCounter: 0
+    upgradeLevel: 0
   maxUpgradeLevel: 2
 --- !u!114 &291955505
 MonoBehaviour:
@@ -2380,63 +2388,6 @@ Transform:
   - {fileID: 219644027}
   m_Father: {fileID: 388423542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &479617985
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2181028394002360745, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.7230096
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181028394002360745, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.8378136
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181028394002360745, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181028394002360745, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.011303268
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181028394002360745, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181028394002360745, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181028394002360745, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.99993616
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181028394002360745, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181028394002360745, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181028394002360745, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -178.705
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372406137674051238, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
-      propertyPath: m_Name
-      value: freezer
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a88cec0594ca7024193baaf2c7aead03, type: 3}
 --- !u!1 &492878289
 GameObject:
   m_ObjectHideFlags: 0
@@ -3920,7 +3871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e18327f7ae2a14a9038cdb5366d01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveDuration: 5
+  waveDuration: 30
   waveSpawnDuration: 10
   blinkInterval: 0.1
   postShrinkDelay: 1
@@ -13045,4 +12996,3 @@ SceneRoots:
   - {fileID: 1294564913}
   - {fileID: 1102458344}
   - {fileID: 1366264343}
-  - {fileID: 479617985}

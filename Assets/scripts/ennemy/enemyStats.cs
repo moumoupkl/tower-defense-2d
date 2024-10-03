@@ -20,6 +20,7 @@ public class enemyStats : MonoBehaviour
     // Flash duration in seconds
     public float flashDuration = 0.1f;
     public bool blueTeam;
+    public float level;
     // Struct to store enemy stats for level ups
     public struct EnemyStats
     {

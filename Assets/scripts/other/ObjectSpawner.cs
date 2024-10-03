@@ -8,7 +8,7 @@ public class ObjectSpawner : MonoBehaviour
     private Transform spawnPoint;
     public EnnemyUpgrade blueEnnemyUpgrade;
     public EnnemyUpgrade redEnnemyUpgrade;
-    
+    //blue list of ennemies and their levels
 
     void Start()
     {

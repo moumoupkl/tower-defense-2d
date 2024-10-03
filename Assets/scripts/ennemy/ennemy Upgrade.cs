@@ -6,68 +6,69 @@ using UnityEngine.UI;
 public class EnnemyUpgrade : MonoBehaviour
 {
     public bool blueTeam;
-    //list of all ennemies
-    public List<GameObject> ennemies = new List<GameObject>();
 
-    //list that represent how many time a unity needs to be bought before upgrading
-    public List<int> upgradeCosts = new List<int>();
+    // Class to hold ennemy data
+    [System.Serializable]
+    public class EnnemyData
+    {
+        public GameObject ennemy;
+        public int upgradeCost;
+        public int upgradeCounter;
+        public int upgradeLevel;
+    }
 
-    //list that show how many time a unity has been bought
-    private List<int> upgradeCounter = new List<int>();
-    
-    // list that show the current upgrade level of the ennemy
-    public List<int> upgradeLevels = new List<int>();
-    //max upgrade levels
+    // List of all ennemies with their data
+    public List<EnnemyData> ennemiesData = new List<EnnemyData>();
+
+    // Max upgrade levels
     public int maxUpgradeLevel = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        //set upgradecounter and upgradelevel to 0 and to same size as ennemies
-        for (int i = 0; i < ennemies.Count; i++)
+        // Initialize upgradeCounter and upgradeLevel to 0 for each ennemy
+        foreach (var ennemyData in ennemiesData)
         {
-            upgradeCounter.Add(0);
-            upgradeLevels.Add(0);
+            ennemyData.upgradeCounter = 0;
+            ennemyData.upgradeLevel = 0;
         }
-        
     }
 
-    // increment the upgrade counter of a given ennemy
+    // Increment the upgrade counter of a given ennemy
     public void incrementUpgradeCounter(GameObject ennemy, bool spawnIsBlueTeam)
     {
-        //only do this if right team
+        // Only do this if right team
         if (blueTeam == spawnIsBlueTeam)
         {
-            int index = ennemies.IndexOf(ennemy);
-            upgradeCounter[index]++;
-
-            //if ennemy has been bought enough time upgrade it
-            if (upgradeCounter[index] >= upgradeCosts[index])
+            var ennemyData = ennemiesData.Find(e => e.ennemy == ennemy);
+            if (ennemyData != null)
             {
-                upgradeCounter[index] = 0;
-                upgradeLevels[index]++;
+                ennemyData.upgradeCounter++;
 
-                //if ennemy has reached max upgrade level set it to max upgrade level
-                if (upgradeLevels[index] > maxUpgradeLevel)
+                // If ennemy has been bought enough times, upgrade it
+                if (ennemyData.upgradeCounter >= ennemyData.upgradeCost)
                 {
-                    upgradeLevels[index] = maxUpgradeLevel;
-                }
-                else
-                {
-                    if (blueTeam)
+                    ennemyData.upgradeCounter = 0;
+                    ennemyData.upgradeLevel++;
+
+                    // If ennemy has reached max upgrade level, set it to max upgrade level
+                    if (ennemyData.upgradeLevel > maxUpgradeLevel)
                     {
-                        Debug.Log("blueteam's" + ennemy.name + " has been upgraded to level " + upgradeLevels[index]);
+                        ennemyData.upgradeLevel = maxUpgradeLevel;
                     }
                     else
                     {
-                        Debug.Log("redteam's" + ennemy.name + " has been upgraded to level " + upgradeLevels[index]);
+                        if (blueTeam)
+                        {
+                            Debug.Log("blueteam's " + ennemy.name + " has been upgraded to level " + ennemyData.upgradeLevel);
+                        }
+                        else
+                        {
+                            Debug.Log("redteam's " + ennemy.name + " has been upgraded to level " + ennemyData.upgradeLevel);
+                        }
                     }
                 }
             }
         }
     }
-
-
-
-    
 }
