@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -110,12 +111,9 @@ public class DynamicGridSelector : MonoBehaviour
                 if (turretType >= 0 && turretType < troopsAndTowers.towerPrefabs.Count)
                 {
                     GameObject turretToSpawn = troopsAndTowers.towerPrefabs[turretType];
-                    GameObject spawnedTurret = Instantiate(turretToSpawn, lastSelectedTile.transform.position, Quaternion.identity);
-                    //set the team of the turret
-                    spawnedTurret.GetComponent<ObjectStats>().blueTeam = blueTeam;
                     
-                    //disable the tile
-                    lastSelectedTile.gameObject.SetActive(false);
+                    // Start the construction coroutine
+                    StartCoroutine(StartConstruction(lastSelectedTile, turretToSpawn));
 
                     lastSelectedObject = null;
                 }
@@ -131,6 +129,37 @@ public class DynamicGridSelector : MonoBehaviour
                 Debug.Log("Not enough coins or game is paused.");
             }
         }
+    }
+
+    // Start turret construction
+    private IEnumerator StartConstruction(Tile tile, GameObject turretPrefab)
+    {
+        // Set construction time to the construction time of the prefab
+        float constructionTime = turretPrefab.GetComponent<TowerControler>().constructionTime;
+
+        // Set particle time to construction time of the prefab
+        if (tile.particles != null)
+        {
+            GameObject spawnedParticles = Instantiate(tile.particles, tile.transform.position, Quaternion.identity);
+            if (spawnedParticles.TryGetComponent(out Particle particleScript))
+            {
+                particleScript.SetLifetime(constructionTime);
+            }
+        }
+
+        // Wait for construction to complete
+        yield return new WaitForSeconds(constructionTime);
+
+        // Instantiate the turret and assign team
+        GameObject turretInstance = Instantiate(turretPrefab, tile.transform.position, Quaternion.identity);
+        if (turretInstance.TryGetComponent(out ObjectStats turretStats))
+        {
+            turretStats.blueTeam = tile.objectStats.blueTeam;
+        }
+
+        // Mark tile as inactive after construction
+        tile.activeConstruction = false;
+        tile.gameObject.SetActive(false);
     }
 
     private bool CanAffordTurret()//check if the player can afford the turret

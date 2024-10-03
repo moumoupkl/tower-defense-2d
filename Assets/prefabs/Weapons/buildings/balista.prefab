@@ -394,7 +394,7 @@ MonoBehaviour:
   animator: {fileID: 6197773509319548437}
   constructionTime: 3
   objectStats: {fileID: 0}
-  range: 5
+  range: 3.5
   rangeIndicator: {fileID: 2748925899457052646}
   targetEnemy: {fileID: 0}
   aimingAtEnnemy: 0
