@@ -165,7 +165,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -876546973899608171, guid: 5306362b30d839e41b3ec3b6cef223a0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -404,11 +404,13 @@ MonoBehaviour:
   speed: 2
   ground: 1
   gameManager: {fileID: 0}
-  price: 3
+  price: 4
   reward: 2
+  capacity: 0
   explosion: {fileID: 5567741904827571220, guid: 80142aee67d25654ab91d139f3f868e3, type: 3}
   flashDuration: 0.1
   blueTeam: 0
+  level: 0
 --- !u!114 &-1532291254800093776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,3 +432,4 @@ MonoBehaviour:
   isSlowed: 0
   slowTime: 0
   slowStrength: 0
+  progress: 0

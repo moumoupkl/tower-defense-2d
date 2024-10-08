@@ -2636,10 +2636,10 @@ MonoBehaviour:
   weaponTag: Weapon
   selectionPrefab: {fileID: 3327746968061140628, guid: 64c33c344f2335144aa58d97c5b5ecea, type: 3}
   selection: {fileID: 0}
-  maxX: 5.5
-  minX: -4.5
-  maxY: 10.5
-  minY: 0.5
+  maxX: 7.5
+  minX: -6.5
+  maxY: 12.5
+  minY: -2.5
   inputDelay: 0.5
   movep1: {fileID: -5076617840867599235, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret1: {fileID: 311487145620473931, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
@@ -2694,10 +2694,10 @@ MonoBehaviour:
   weaponTag: Weapon
   selectionPrefab: {fileID: 441018496117029159, guid: 4a0790132aeb8fa4681fa4108ae8f533, type: 3}
   selection: {fileID: 0}
-  maxX: 5.5
-  minX: -4.5
-  maxY: 10.5
-  minY: 0.5
+  maxX: 7.5
+  minX: -6.5
+  maxY: 12.5
+  minY: -2.5
   inputDelay: 0.5
   movep1: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret1: {fileID: -3269377568202801211, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
@@ -4040,25 +4040,25 @@ MonoBehaviour:
   - name: Main_theme
     clip: {fileID: 8300000, guid: 93e00bca8f963704caf7bbd69558f249, type: 3}
     pitch: 1
-    volume: 0
+    volume: 0.8
     loop: 1
     source: {fileID: 0}
   - name: Ballista_reload
     clip: {fileID: 8300000, guid: a45515f015251524fa8bd9c6bf3a13a1, type: 3}
     pitch: 1
-    volume: 0
+    volume: 0.8
     loop: 0
     source: {fileID: 0}
   - name: Ballista_release
     clip: {fileID: 8300000, guid: 2eef0ef8b19464c4190b0b4e69f1fcd6, type: 3}
     pitch: 1
-    volume: 0
+    volume: 0.8
     loop: 0
     source: {fileID: 0}
   - name: Enemy_hit
     clip: {fileID: 8300000, guid: d1368dbacb1e95a40961784072552908, type: 3}
     pitch: 1
-    volume: 0
+    volume: 0.8
     loop: 0
     source: {fileID: 0}
   - name: Enemy_death

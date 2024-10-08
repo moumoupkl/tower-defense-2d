@@ -5,18 +5,22 @@ using UnityEngine;
 
 public class TroupMovement : MonoBehaviour
 {
+    // Public variables
     public enemyStats enemyStats;
     public Transform[] path;
     public int target;
-    private float currentSpeed;
-    private float startSpeed;
     public GameManager gameManager;
     public bool blueTeam;
     public GameObject spawnParticle;
     public bool isSlowed;
     public float slowTime;
-    private float slowTimer;
     public float slowStrength;
+    public float progress;
+
+    // Private variables
+    private float currentSpeed;
+    private float startSpeed;
+    private float slowTimer;
 
     void Start()
     {
@@ -36,7 +40,7 @@ public class TroupMovement : MonoBehaviour
             return;
         }
 
-        // Check if the blueTeam bool is true to determine the correct path
+        // Determine the correct path based on the team
         string teamPath = blueTeam ? "blue" : "red";
 
         // Find the child object for the corresponding team inside "troup path"
@@ -50,7 +54,6 @@ public class TroupMovement : MonoBehaviour
         // Get all child transforms inside the team path and assign them to the path array
         int childCount = teamPathTransform.childCount;
         path = new Transform[childCount];
-
         for (int i = 0; i < childCount; i++)
         {
             path[i] = teamPathTransform.GetChild(i);
@@ -73,6 +76,7 @@ public class TroupMovement : MonoBehaviour
 
     void Update()
     {
+        CalculateProgress();
         // Handle slowing effect
         if (isSlowed)
         {
@@ -102,10 +106,10 @@ public class TroupMovement : MonoBehaviour
             if (currentPosition == targetPosition)
             {
                 target++;
-
                 if (target >= path.Length)
                 {
-                    Destroy(gameObject); // Destroy the object when it reaches the final destination
+                    // Destroy the object when it reaches the final destination
+                    Destroy(gameObject);
                     gameManager.DamageToPlayer(enemyStats.damage, enemyStats.blueTeam);
                     return;
                 }
@@ -125,5 +129,13 @@ public class TroupMovement : MonoBehaviour
         slowTimer = 0f;
         this.slowTime = slowTime;
         this.slowStrength = slowStrength;
+    }
+
+    //calculate the progress of the troop
+    public void CalculateProgress()
+    {
+        // Calculate the progress based on the current target and the distance to the next target
+        float distanceToNextTarget = Vector2.Distance(transform.position, path[target].position);
+        progress = target*1000 + (1 - distanceToNextTarget);
     }
 }

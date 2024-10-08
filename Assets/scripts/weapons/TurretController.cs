@@ -13,6 +13,7 @@ public class TurretController : TowerControler
     public bool aimingAtEnnemy;
     [HideInInspector]
     public bool teamHover;
+    public bool aimingAtClosestEnnemy;
 
     protected override void Start()
     {
@@ -41,7 +42,14 @@ public class TurretController : TowerControler
         if (!gameManager.pause)
         {
             // Find the closest enemy within range
-            FindClosestEnemy();
+            if (aimingAtClosestEnnemy)
+            {
+                FindClosestEnemy();
+            }
+            else
+            {
+                FindFurthestEnemyOnTrack();
+            }
         }
 
         selected();
@@ -71,6 +79,33 @@ public class TurretController : TowerControler
 
         // Set the closest enemy as the target
         targetEnemy = closestEnemy;
+    }
+
+    protected void FindFurthestEnemyOnTrack()
+    {
+        // Find all enemies in the scene
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        float highestProgress = -Mathf.Infinity;
+        Transform furthestEnemy = null;
+
+        // Iterate through all enemies to find the one furthest on the track within range
+        foreach (GameObject enemy in enemies)
+        {
+            enemyStats enemyStats = enemy.GetComponent<enemyStats>();
+            TroupMovement TroupMovement = enemy.GetComponent<TroupMovement>();
+            if (enemyStats.blueTeam != objectStats.blueTeam)
+            {
+                float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
+                if (distanceToEnemy <= range && TroupMovement.progress > highestProgress)
+                {
+                    highestProgress = TroupMovement.progress;
+                    furthestEnemy = enemy.transform;
+                }
+            }
+        }
+
+        // Set the furthest enemy as the target
+        targetEnemy = furthestEnemy;
     }
 
     protected void selected()
