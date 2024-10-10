@@ -55,15 +55,6 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""buy tower 3 p1"",
-                    ""type"": ""Button"",
-                    ""id"": ""6954ff0f-2303-40de-a791-b0a9ffb3efa6"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""buy troupe 1 p1"",
                     ""type"": ""Button"",
                     ""id"": ""b18f3781-ecd6-4004-b7f2-9fcf8a3fa145"",
@@ -73,7 +64,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""buy troupe 2 p 1"",
+                    ""name"": ""buy troupe 2 p1"",
                     ""type"": ""Button"",
                     ""id"": ""5874a2f0-155f-4170-9489-fb6f872bcd7b"",
                     ""expectedControlType"": ""Button"",
@@ -109,7 +100,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""buy troupe 1 p 2"",
+                    ""name"": ""buy troupe 1 p2"",
                     ""type"": ""Button"",
                     ""id"": ""1f2e61d2-a805-4200-bdc7-35f55ae41dcb"",
                     ""expectedControlType"": ""Button"",
@@ -118,7 +109,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""buy troupe 2 p 2"",
+                    ""name"": ""buy troupe 2 p2"",
                     ""type"": ""Button"",
                     ""id"": ""db8a229d-4555-42df-9e1c-5a41a7c2e461"",
                     ""expectedControlType"": ""Button"",
@@ -272,6 +263,61 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""e0789f6d-e7ac-451b-8162-e91d2b1111e6"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""buy tower 2  p1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2344a5e0-1227-435c-93d4-0e6e0edf0209"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""buy troupe 1 p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5449221a-5369-4aa1-8c19-a1f25e2d94e5"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""buy troupe 2 p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a592ec7f-976b-4a5f-b1c6-882e563d0368"",
+                    ""path"": ""<Keyboard>/numpad2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""buy troupe 2 p1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69624ce8-aca9-48d3-b460-75a03ed875ff"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""buy troupe 1 p1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""keyboard1"",
                     ""id"": ""43aed0b2-1e25-46e4-ae7a-4f966d4672e2"",
                     ""path"": ""2DVector"",
@@ -383,17 +429,6 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e0789f6d-e7ac-451b-8162-e91d2b1111e6"",
-                    ""path"": ""<Keyboard>/enter"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""buy tower 2  p1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""597cf8b1-955e-48d7-b4c4-e7552e05d33a"",
                     ""path"": ""<Keyboard>/rightShift"",
                     ""interactions"": """",
@@ -411,61 +446,6 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""controller"",
                     ""action"": ""buy tower 1 p1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2344a5e0-1227-435c-93d4-0e6e0edf0209"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""keyboard"",
-                    ""action"": ""buy troupe 1 p 2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5449221a-5369-4aa1-8c19-a1f25e2d94e5"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""keyboard"",
-                    ""action"": ""buy troupe 2 p 2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a592ec7f-976b-4a5f-b1c6-882e563d0368"",
-                    ""path"": ""<Keyboard>/numpad2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""keyboard"",
-                    ""action"": ""buy troupe 2 p 1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""69624ce8-aca9-48d3-b460-75a03ed875ff"",
-                    ""path"": ""<Keyboard>/numpad1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""keyboard"",
-                    ""action"": ""buy troupe 1 p1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""245a1879-4464-486d-a415-ad6180398778"",
-                    ""path"": ""<Keyboard>/rightCtrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""keyboard"",
-                    ""action"": ""buy tower 3 p1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -502,14 +482,13 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         m_Gameplay_movep1 = m_Gameplay.FindAction("move p1", throwIfNotFound: true);
         m_Gameplay_buytower1p1 = m_Gameplay.FindAction("buy tower 1 p1", throwIfNotFound: true);
         m_Gameplay_buytower2p1 = m_Gameplay.FindAction("buy tower 2  p1", throwIfNotFound: true);
-        m_Gameplay_buytower3p1 = m_Gameplay.FindAction("buy tower 3 p1", throwIfNotFound: true);
         m_Gameplay_buytroupe1p1 = m_Gameplay.FindAction("buy troupe 1 p1", throwIfNotFound: true);
-        m_Gameplay_buytroupe2p1 = m_Gameplay.FindAction("buy troupe 2 p 1", throwIfNotFound: true);
+        m_Gameplay_buytroupe2p1 = m_Gameplay.FindAction("buy troupe 2 p1", throwIfNotFound: true);
         m_Gameplay_movep2 = m_Gameplay.FindAction("move p2", throwIfNotFound: true);
         m_Gameplay_buytower1p2 = m_Gameplay.FindAction("buy tower 1 p2", throwIfNotFound: true);
         m_Gameplay_buytower2p2 = m_Gameplay.FindAction("buy tower 2 p2", throwIfNotFound: true);
-        m_Gameplay_buytroupe1p2 = m_Gameplay.FindAction("buy troupe 1 p 2", throwIfNotFound: true);
-        m_Gameplay_buytroupe2p2 = m_Gameplay.FindAction("buy troupe 2 p 2", throwIfNotFound: true);
+        m_Gameplay_buytroupe1p2 = m_Gameplay.FindAction("buy troupe 1 p2", throwIfNotFound: true);
+        m_Gameplay_buytroupe2p2 = m_Gameplay.FindAction("buy troupe 2 p2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -574,7 +553,6 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_movep1;
     private readonly InputAction m_Gameplay_buytower1p1;
     private readonly InputAction m_Gameplay_buytower2p1;
-    private readonly InputAction m_Gameplay_buytower3p1;
     private readonly InputAction m_Gameplay_buytroupe1p1;
     private readonly InputAction m_Gameplay_buytroupe2p1;
     private readonly InputAction m_Gameplay_movep2;
@@ -589,7 +567,6 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         public InputAction @movep1 => m_Wrapper.m_Gameplay_movep1;
         public InputAction @buytower1p1 => m_Wrapper.m_Gameplay_buytower1p1;
         public InputAction @buytower2p1 => m_Wrapper.m_Gameplay_buytower2p1;
-        public InputAction @buytower3p1 => m_Wrapper.m_Gameplay_buytower3p1;
         public InputAction @buytroupe1p1 => m_Wrapper.m_Gameplay_buytroupe1p1;
         public InputAction @buytroupe2p1 => m_Wrapper.m_Gameplay_buytroupe2p1;
         public InputAction @movep2 => m_Wrapper.m_Gameplay_movep2;
@@ -615,9 +592,6 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytower2p1.started += instance.OnBuytower2p1;
             @buytower2p1.performed += instance.OnBuytower2p1;
             @buytower2p1.canceled += instance.OnBuytower2p1;
-            @buytower3p1.started += instance.OnBuytower3p1;
-            @buytower3p1.performed += instance.OnBuytower3p1;
-            @buytower3p1.canceled += instance.OnBuytower3p1;
             @buytroupe1p1.started += instance.OnBuytroupe1p1;
             @buytroupe1p1.performed += instance.OnBuytroupe1p1;
             @buytroupe1p1.canceled += instance.OnBuytroupe1p1;
@@ -652,9 +626,6 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytower2p1.started -= instance.OnBuytower2p1;
             @buytower2p1.performed -= instance.OnBuytower2p1;
             @buytower2p1.canceled -= instance.OnBuytower2p1;
-            @buytower3p1.started -= instance.OnBuytower3p1;
-            @buytower3p1.performed -= instance.OnBuytower3p1;
-            @buytower3p1.canceled -= instance.OnBuytower3p1;
             @buytroupe1p1.started -= instance.OnBuytroupe1p1;
             @buytroupe1p1.performed -= instance.OnBuytroupe1p1;
             @buytroupe1p1.canceled -= instance.OnBuytroupe1p1;
@@ -716,7 +687,6 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         void OnMovep1(InputAction.CallbackContext context);
         void OnBuytower1p1(InputAction.CallbackContext context);
         void OnBuytower2p1(InputAction.CallbackContext context);
-        void OnBuytower3p1(InputAction.CallbackContext context);
         void OnBuytroupe1p1(InputAction.CallbackContext context);
         void OnBuytroupe2p1(InputAction.CallbackContext context);
         void OnMovep2(InputAction.CallbackContext context);

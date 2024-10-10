@@ -33,15 +33,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "buy tower 3 p1",
-                    "type": "Button",
-                    "id": "6954ff0f-2303-40de-a791-b0a9ffb3efa6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "buy troupe 1 p1",
                     "type": "Button",
                     "id": "b18f3781-ecd6-4004-b7f2-9fcf8a3fa145",
@@ -51,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "buy troupe 2 p 1",
+                    "name": "buy troupe 2 p1",
                     "type": "Button",
                     "id": "5874a2f0-155f-4170-9489-fb6f872bcd7b",
                     "expectedControlType": "Button",
@@ -87,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "buy troupe 1 p 2",
+                    "name": "buy troupe 1 p2",
                     "type": "Button",
                     "id": "1f2e61d2-a805-4200-bdc7-35f55ae41dcb",
                     "expectedControlType": "Button",
@@ -96,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "buy troupe 2 p 2",
+                    "name": "buy troupe 2 p2",
                     "type": "Button",
                     "id": "db8a229d-4555-42df-9e1c-5a41a7c2e461",
                     "expectedControlType": "Button",
@@ -250,6 +241,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "",
+                    "id": "e0789f6d-e7ac-451b-8162-e91d2b1111e6",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "buy tower 2  p1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2344a5e0-1227-435c-93d4-0e6e0edf0209",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "buy troupe 1 p2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5449221a-5369-4aa1-8c19-a1f25e2d94e5",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "buy troupe 2 p2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a592ec7f-976b-4a5f-b1c6-882e563d0368",
+                    "path": "<Keyboard>/numpad2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "buy troupe 2 p1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69624ce8-aca9-48d3-b460-75a03ed875ff",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "buy troupe 1 p1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "keyboard1",
                     "id": "43aed0b2-1e25-46e4-ae7a-4f966d4672e2",
                     "path": "2DVector",
@@ -361,17 +407,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e0789f6d-e7ac-451b-8162-e91d2b1111e6",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "buy tower 2  p1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "597cf8b1-955e-48d7-b4c4-e7552e05d33a",
                     "path": "<Keyboard>/rightShift",
                     "interactions": "",
@@ -389,61 +424,6 @@
                     "processors": "",
                     "groups": "controller",
                     "action": "buy tower 1 p1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2344a5e0-1227-435c-93d4-0e6e0edf0209",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "buy troupe 1 p 2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5449221a-5369-4aa1-8c19-a1f25e2d94e5",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "buy troupe 2 p 2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a592ec7f-976b-4a5f-b1c6-882e563d0368",
-                    "path": "<Keyboard>/numpad2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "buy troupe 2 p 1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "69624ce8-aca9-48d3-b460-75a03ed875ff",
-                    "path": "<Keyboard>/numpad1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "buy troupe 1 p1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "245a1879-4464-486d-a415-ad6180398778",
-                    "path": "<Keyboard>/rightCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "buy tower 3 p1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -14,19 +14,16 @@ public class enemyStats : MonoBehaviour
     public int capacity;
     public GameObject explosion;
 
-    // Reference to the enemy's renderer
-    private Renderer enemyRenderer;
-
     // Flash duration in seconds
     public float flashDuration = 0.1f;
     public bool blueTeam;
     public float level;
 
-    // Materials for normal, white, blue, and red
-    private Material normalMaterial;
+    // Reference to the TeamColor component
+    private TeamColor teamColor;
+
+    // Materials for white
     public Material whiteMaterial;
-    public Material blueMaterial;
-    public Material redMaterial;
 
     // Struct to store enemy stats for level ups
     public struct EnemyStats
@@ -76,23 +73,13 @@ public class enemyStats : MonoBehaviour
         Camera mainCamera = Camera.main;
         gameManager = mainCamera.GetComponent<GameManager>();
 
-        // Get the renderer of the enemy itself (not the white child object)
-        enemyRenderer = GetComponent<Renderer>();
-
-        // Set normal material based on team color
-        if (blueTeam)
-        {
-            normalMaterial = blueMaterial;
-        }
-        else
-        {
-            normalMaterial = redMaterial;
-        }
+        // Get the TeamColor component
+        teamColor = GetComponent<TeamColor>();
 
         // Apply the normal material to the enemy
-        if (enemyRenderer != null && normalMaterial != null)
+        if (teamColor != null)
         {
-            enemyRenderer.material = normalMaterial;
+            teamColor.SetNormalMaterial();
         }
     }
 
@@ -121,18 +108,18 @@ public class enemyStats : MonoBehaviour
     private IEnumerator FlashWhite()
     {
         // Switch to white material
-        if (enemyRenderer != null && whiteMaterial != null)
+        if (teamColor != null && whiteMaterial != null)
         {
-            enemyRenderer.material = whiteMaterial;
+            teamColor.GetComponent<Renderer>().material = whiteMaterial;
         }
 
         // Wait for the flash duration
         yield return new WaitForSeconds(flashDuration);
 
         // Switch back to normal material
-        if (enemyRenderer != null && normalMaterial != null)
+        if (teamColor != null)
         {
-            enemyRenderer.material = normalMaterial;
+            teamColor.SetNormalMaterial();
         }
     }
 }

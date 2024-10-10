@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7001520986380476615}
   - component: {fileID: 6287904850573101409}
   - component: {fileID: -1532291254800093776}
+  - component: {fileID: -8337965609915311235}
   m_Layer: 11
   m_Name: tank
   m_TagString: Enemy
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: -441259473
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1085941482, guid: 0b5d5e6c1393c4c40bef184d486beffe, type: 3}
+  m_Sprite: {fileID: -765470100, guid: 4d44f9dc1b17cb9419d20adf2482a248, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -305,8 +306,6 @@ MonoBehaviour:
   blueTeam: 0
   level: 0
   whiteMaterial: {fileID: -876546973899608171, guid: 64de2127014a2f646ac726bba4e159e0, type: 3}
-  blueMaterial: {fileID: -876546973899608171, guid: 5306362b30d839e41b3ec3b6cef223a0, type: 3}
-  redMaterial: {fileID: -876546973899608171, guid: f011de148964c2245bca06b0cc65fa7a, type: 3}
 --- !u!114 &-1532291254800093776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,3 +329,17 @@ MonoBehaviour:
   slowStrength: 0
   progress: 0
   animator: {fileID: 0}
+--- !u!114 &-8337965609915311235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966670713212227299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26290072cb0cd2548819c13618a9e13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueMaterial: {fileID: -876546973899608171, guid: 5306362b30d839e41b3ec3b6cef223a0, type: 3}
+  redMaterial: {fileID: -876546973899608171, guid: f011de148964c2245bca06b0cc65fa7a, type: 3}
