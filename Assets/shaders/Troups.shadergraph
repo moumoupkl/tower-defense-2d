@@ -100,9 +100,9 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "d57b4926ba5d431381eddd367b8eee50"
+                    "m_Id": "da477aace53747e88779c0daead12bb2"
                 },
-                "m_SlotId": 4
+                "m_SlotId": 0
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -156,8 +156,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 433.6001281738281,
-            "y": -873.5999145507813
+            "x": 545.599853515625,
+            "y": -72.80005645751953
         },
         "m_Blocks": [
             {
@@ -173,8 +173,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 433.5999755859375,
-            "y": 300.79998779296877
+            "x": 545.599853515625,
+            "y": 314.39996337890627
         },
         "m_Blocks": [
             {
@@ -193,7 +193,7 @@
         "preventRotation": false
     },
     "m_Path": "Shader Graphs",
-    "m_GraphPrecision": 1,
+    "m_GraphPrecision": 0,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": ""
@@ -260,7 +260,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"77f13956eeaee4e4ea85d154c3b560e4\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"0b5d5e6c1393c4c40bef184d486beffe\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -614,12 +614,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.BuiltIn.ShaderGraph.BuiltInUnlitSubTarget",
-    "m_ObjectId": "5f7d7b044f3f4f79842a5cec8f05ede6"
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.ColorRGBMaterialSlot",
     "m_ObjectId": "60cf9636056c40899456f09817704cd3",
     "m_Id": 2,
@@ -664,6 +658,12 @@
         "m_Guid": ""
     },
     "m_DefaultType": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.BuiltIn.ShaderGraph.BuiltInUnlitSubTarget",
+    "m_ObjectId": "6ecde3c4b4a64c3eba1d1fd44bad27a4"
 }
 
 {
@@ -1359,14 +1359,14 @@
     "m_Type": "UnityEditor.Rendering.BuiltIn.ShaderGraph.BuiltInTarget",
     "m_ObjectId": "e4e9cd2eed1247aab86e16874e960fe4",
     "m_ActiveSubTarget": {
-        "m_Id": "5f7d7b044f3f4f79842a5cec8f05ede6"
+        "m_Id": "6ecde3c4b4a64c3eba1d1fd44bad27a4"
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 1,
     "m_ZWriteControl": 0,
     "m_ZTestMode": 4,
     "m_AlphaMode": 0,
-    "m_RenderFace": 2,
+    "m_RenderFace": 0,
     "m_AlphaClip": false,
     "m_CustomEditorGUI": ""
 }
