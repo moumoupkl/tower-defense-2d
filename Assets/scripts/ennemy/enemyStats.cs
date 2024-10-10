@@ -21,6 +21,13 @@ public class enemyStats : MonoBehaviour
     public float flashDuration = 0.1f;
     public bool blueTeam;
     public float level;
+
+    // Materials for normal, white, blue, and red
+    private Material normalMaterial;
+    public Material whiteMaterial;
+    public Material blueMaterial;
+    public Material redMaterial;
+
     // Struct to store enemy stats for level ups
     public struct EnemyStats
     {
@@ -71,8 +78,23 @@ public class enemyStats : MonoBehaviour
 
         // Get the renderer of the enemy itself (not the white child object)
         enemyRenderer = GetComponent<Renderer>();
-    }
 
+        // Set normal material based on team color
+        if (blueTeam)
+        {
+            normalMaterial = blueMaterial;
+        }
+        else
+        {
+            normalMaterial = redMaterial;
+        }
+
+        // Apply the normal material to the enemy
+        if (enemyRenderer != null && normalMaterial != null)
+        {
+            enemyRenderer.material = normalMaterial;
+        }
+    }
 
     public void TakeDamage(int damageAmount)
     {
@@ -98,19 +120,19 @@ public class enemyStats : MonoBehaviour
     // Coroutine to flash white
     private IEnumerator FlashWhite()
     {
-        // Deactivate the renderer to show the white child object
-        if (enemyRenderer != null)
+        // Switch to white material
+        if (enemyRenderer != null && whiteMaterial != null)
         {
-            enemyRenderer.enabled = false;
+            enemyRenderer.material = whiteMaterial;
         }
 
         // Wait for the flash duration
         yield return new WaitForSeconds(flashDuration);
 
-        // Reactivate the renderer to go back to the normal appearance
-        if (enemyRenderer != null)
+        // Switch back to normal material
+        if (enemyRenderer != null && normalMaterial != null)
         {
-            enemyRenderer.enabled = true;
+            enemyRenderer.material = normalMaterial;
         }
     }
 }
