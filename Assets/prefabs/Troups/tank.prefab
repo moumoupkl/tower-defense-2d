@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6287904850573101409}
   - component: {fileID: -1532291254800093776}
   m_Layer: 11
-  m_Name: ennemy
+  m_Name: tank
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,6 +304,9 @@ MonoBehaviour:
   flashDuration: 0.1
   blueTeam: 0
   level: 0
+  whiteMaterial: {fileID: -876546973899608171, guid: 64de2127014a2f646ac726bba4e159e0, type: 3}
+  blueMaterial: {fileID: -876546973899608171, guid: 5306362b30d839e41b3ec3b6cef223a0, type: 3}
+  redMaterial: {fileID: -876546973899608171, guid: f011de148964c2245bca06b0cc65fa7a, type: 3}
 --- !u!114 &-1532291254800093776
 MonoBehaviour:
   m_ObjectHideFlags: 0
