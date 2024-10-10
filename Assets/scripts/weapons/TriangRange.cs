@@ -8,7 +8,6 @@ public class TriangRange : MonoBehaviour
     private void OnTriggerEnter2D (Collider2D other) 
     {
         colliders.Add(other); 
-        Debug.Log("qsygudfqgu");
         
     }
 

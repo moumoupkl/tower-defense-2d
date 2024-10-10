@@ -32,7 +32,7 @@ public class CSTDamageTower : TurretController
 
             // Find the closest enemy within range
 
-            if (targetEnemy != null && aimingAtEnnemy)
+            if (targetEnemy != null)
             {
 
                 animator.SetBool("fight", true);
@@ -43,11 +43,9 @@ public class CSTDamageTower : TurretController
                 {
                     if (shootBehavior != null)
                     {
-                        if (aimingAtEnnemy)
-                        {
-                            //Debug.Log("shoot csnt");
-                            shootBehavior.Shoot();
-                        }
+                        Debug.Log("shoot csnt");
+                        shootBehavior.Shoot();
+                    
                     }
                 }
             }
