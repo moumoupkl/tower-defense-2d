@@ -31,7 +31,7 @@ public class CDDamageDower : TurretController
 
             // Find the closest enemy within range
 
-            if (targetEnemy != null && aimingAtEnnemy)
+            if (targetEnemy != null)
             {
                 animator.speed = 1f / fireCooldown * 10;
                 animator.SetBool("fight", true);
@@ -42,12 +42,10 @@ public class CDDamageDower : TurretController
                 {
                     if (shootBehavior != null)
                     {
-                        if (aimingAtEnnemy)
-                        {
                             //Debug.Log("shoot cd");
                             shootBehavior.Shoot();
                             fireTimer = 0f; // Reset the cooldown timer after shooting
-                        }
+                        
                     }
                 }
             }

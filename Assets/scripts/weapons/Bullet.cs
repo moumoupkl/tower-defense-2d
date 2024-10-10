@@ -44,6 +44,13 @@ public class Bullet : MonoBehaviour
                 rb.velocity = currentVelocity;
             }
             currentVelocity = rb.velocity;
+            //rotate the bullet torwords the target enemy
+            if (rb.velocity != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+
             // Update the destroy timer if not paused
             destroyTimer -= Time.deltaTime;
             if (destroyTimer <= 0f)
