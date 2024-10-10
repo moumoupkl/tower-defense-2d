@@ -9,7 +9,6 @@ public class DynamicGridSelector : MonoBehaviour
     public bool blueTeam;
     public string tileTag;
     public string weaponTag;
-    public GameObject selectionPrefab;
     public GameObject selection;
     public float maxX = 5.5f;
     public float minX = -4.5f;
@@ -23,6 +22,7 @@ public class DynamicGridSelector : MonoBehaviour
     private InputActionReference move;
     public GameManager gameManager;
     public Transform startingPoint;
+    public selector selector; // Reference to the Selector script
 
     [SerializeField]
     private Vector2 currentPosition = new Vector2(1.5f, 5.5f);
@@ -58,7 +58,6 @@ public class DynamicGridSelector : MonoBehaviour
     private void InitializeSelection()//initialize the selection object
     {
         move = movep1;
-        selection = Instantiate(selectionPrefab, currentPosition, Quaternion.identity);
         inputTimer = 0;
         selection.transform.position = startingPoint.position;
         currentPosition = startingPoint.position;
@@ -202,6 +201,12 @@ public class DynamicGridSelector : MonoBehaviour
         {
             if (state) component.setHoversTrue();
             else component.setHoversFalse();
+        }
+
+        // Set hover state of the selector
+        if (selector != null)
+        {
+            selector.hover = state;
         }
     }
 
