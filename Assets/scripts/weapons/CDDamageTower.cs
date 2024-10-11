@@ -30,9 +30,10 @@ public class CDDamageDower : TurretController
             fireTimer += Time.deltaTime;
 
             // Find the closest enemy within range
-
+            Debug.Log(targetEnemy);
             if (targetEnemy != null)
             {
+                
                 animator.speed = 1f / fireCooldown * 10;
                 animator.SetBool("fight", true);
 

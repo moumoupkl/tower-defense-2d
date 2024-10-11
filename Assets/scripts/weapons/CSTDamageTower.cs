@@ -24,17 +24,17 @@ public class CSTDamageTower : TurretController
     protected override void Update()
     {   
         base.Update();
-        //Debug.Log("constant");
+
         if (!gameManager.pause)
         {
 
 
-
+        Debug.Log(targetEnemy);
             // Find the closest enemy within range
 
             if (targetEnemy != null)
             {
-
+                Debug.Log("target");
                 animator.SetBool("fight", true);
 
                 // Check if the enemy is within range and shoot if the cooldown has passed
