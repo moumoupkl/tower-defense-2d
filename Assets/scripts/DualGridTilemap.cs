@@ -72,7 +72,6 @@ public class DualGridTilemap : MonoBehaviour
                     // Offset the position by 0.5 to the left and 0.5 to the top
                     Vector3Int offsetPos = new Vector3Int(x, y - 1, 0);
                     overlayTilemap.SetTile(offsetPos, customTile);
-                    Debug.Log($"Set custom tile at ({offsetPos.x}, {offsetPos.y})");
                 }
             }
         }
