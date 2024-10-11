@@ -8,6 +8,7 @@ public class MenuSystem : MonoBehaviour
     public GameObject selectionMenu;
     //list of the 8 panels of the selection menu
     public GameObject[] panels;
+    public DynamicGridSelector dynamicGridSelector;
     public InputActionReference openMenu;
 
     void Start()
@@ -28,12 +29,16 @@ public class MenuSystem : MonoBehaviour
     {
         //if openMenu is held down, show the selection menu
         if (openMenu.action.triggered)
-        {
+        {   
+            //turn off the dynamic grid selector
+            dynamicGridSelector.enabled = false;
             selectionMenu.SetActive(true);
         }
         
         if (openMenu.action.WasReleasedThisFrame())
         {
+            //turn on the dynamic grid selector
+            dynamicGridSelector.enabled = true;
             selectionMenu.SetActive(false);
         }
         

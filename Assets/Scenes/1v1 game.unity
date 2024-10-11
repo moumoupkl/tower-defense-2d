@@ -3859,6 +3859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionMenu: {fileID: 1329963078}
   panels: []
+  dynamicGridSelector: {fileID: 519420034}
   openMenu: {fileID: -8636266527719622003, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
 --- !u!114 &519420041
 MonoBehaviour:
@@ -3874,6 +3875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionMenu: {fileID: 1112603929}
   panels: []
+  dynamicGridSelector: {fileID: 519420036}
   openMenu: {fileID: 8862358372729145768, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
 --- !u!1001 &522869547
 PrefabInstance:
