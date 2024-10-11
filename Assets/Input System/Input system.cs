@@ -73,6 +73,15 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""open troups p1"",
+                    ""type"": ""Button"",
+                    ""id"": ""8754857c-893a-4e4a-a268-9a76a904e670"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""move p2"",
                     ""type"": ""PassThrough"",
                     ""id"": ""78b2fc71-fb24-4664-bbe9-97a6f5e2db7f"",
@@ -448,6 +457,17 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""action"": ""buy tower 1 p1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96ddbf56-06b6-4e03-86c4-7b71ef9a7c75"",
+                    ""path"": ""<Keyboard>/numpadPlus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""open troups p1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -484,6 +504,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         m_Gameplay_buytower2p1 = m_Gameplay.FindAction("buy tower 2  p1", throwIfNotFound: true);
         m_Gameplay_buytroupe1p1 = m_Gameplay.FindAction("buy troupe 1 p1", throwIfNotFound: true);
         m_Gameplay_buytroupe2p1 = m_Gameplay.FindAction("buy troupe 2 p1", throwIfNotFound: true);
+        m_Gameplay_opentroupsp1 = m_Gameplay.FindAction("open troups p1", throwIfNotFound: true);
         m_Gameplay_movep2 = m_Gameplay.FindAction("move p2", throwIfNotFound: true);
         m_Gameplay_buytower1p2 = m_Gameplay.FindAction("buy tower 1 p2", throwIfNotFound: true);
         m_Gameplay_buytower2p2 = m_Gameplay.FindAction("buy tower 2 p2", throwIfNotFound: true);
@@ -555,6 +576,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_buytower2p1;
     private readonly InputAction m_Gameplay_buytroupe1p1;
     private readonly InputAction m_Gameplay_buytroupe2p1;
+    private readonly InputAction m_Gameplay_opentroupsp1;
     private readonly InputAction m_Gameplay_movep2;
     private readonly InputAction m_Gameplay_buytower1p2;
     private readonly InputAction m_Gameplay_buytower2p2;
@@ -569,6 +591,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         public InputAction @buytower2p1 => m_Wrapper.m_Gameplay_buytower2p1;
         public InputAction @buytroupe1p1 => m_Wrapper.m_Gameplay_buytroupe1p1;
         public InputAction @buytroupe2p1 => m_Wrapper.m_Gameplay_buytroupe2p1;
+        public InputAction @opentroupsp1 => m_Wrapper.m_Gameplay_opentroupsp1;
         public InputAction @movep2 => m_Wrapper.m_Gameplay_movep2;
         public InputAction @buytower1p2 => m_Wrapper.m_Gameplay_buytower1p2;
         public InputAction @buytower2p2 => m_Wrapper.m_Gameplay_buytower2p2;
@@ -598,6 +621,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytroupe2p1.started += instance.OnBuytroupe2p1;
             @buytroupe2p1.performed += instance.OnBuytroupe2p1;
             @buytroupe2p1.canceled += instance.OnBuytroupe2p1;
+            @opentroupsp1.started += instance.OnOpentroupsp1;
+            @opentroupsp1.performed += instance.OnOpentroupsp1;
+            @opentroupsp1.canceled += instance.OnOpentroupsp1;
             @movep2.started += instance.OnMovep2;
             @movep2.performed += instance.OnMovep2;
             @movep2.canceled += instance.OnMovep2;
@@ -632,6 +658,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytroupe2p1.started -= instance.OnBuytroupe2p1;
             @buytroupe2p1.performed -= instance.OnBuytroupe2p1;
             @buytroupe2p1.canceled -= instance.OnBuytroupe2p1;
+            @opentroupsp1.started -= instance.OnOpentroupsp1;
+            @opentroupsp1.performed -= instance.OnOpentroupsp1;
+            @opentroupsp1.canceled -= instance.OnOpentroupsp1;
             @movep2.started -= instance.OnMovep2;
             @movep2.performed -= instance.OnMovep2;
             @movep2.canceled -= instance.OnMovep2;
@@ -689,6 +718,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         void OnBuytower2p1(InputAction.CallbackContext context);
         void OnBuytroupe1p1(InputAction.CallbackContext context);
         void OnBuytroupe2p1(InputAction.CallbackContext context);
+        void OnOpentroupsp1(InputAction.CallbackContext context);
         void OnMovep2(InputAction.CallbackContext context);
         void OnBuytower1p2(InputAction.CallbackContext context);
         void OnBuytower2p2(InputAction.CallbackContext context);

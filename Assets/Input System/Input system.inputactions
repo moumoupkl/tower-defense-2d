@@ -51,6 +51,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "open troups p1",
+                    "type": "Button",
+                    "id": "8754857c-893a-4e4a-a268-9a76a904e670",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "move p2",
                     "type": "PassThrough",
                     "id": "78b2fc71-fb24-4664-bbe9-97a6f5e2db7f",
@@ -424,6 +433,17 @@
                     "processors": "",
                     "groups": "controller",
                     "action": "buy tower 1 p1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96ddbf56-06b6-4e03-86c4-7b71ef9a7c75",
+                    "path": "<Keyboard>/numpadPlus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "open troups p1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
