@@ -125,6 +125,15 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""open troups p2"",
+                    ""type"": ""Button"",
+                    ""id"": ""b43302c2-a87c-4d1a-870b-2b2793dc411a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -468,6 +477,17 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""action"": ""open troups p1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e194449-6404-4c72-91f8-2f16de3e86d5"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""open troups p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -510,6 +530,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         m_Gameplay_buytower2p2 = m_Gameplay.FindAction("buy tower 2 p2", throwIfNotFound: true);
         m_Gameplay_buytroupe1p2 = m_Gameplay.FindAction("buy troupe 1 p2", throwIfNotFound: true);
         m_Gameplay_buytroupe2p2 = m_Gameplay.FindAction("buy troupe 2 p2", throwIfNotFound: true);
+        m_Gameplay_opentroupsp2 = m_Gameplay.FindAction("open troups p2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -582,6 +603,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_buytower2p2;
     private readonly InputAction m_Gameplay_buytroupe1p2;
     private readonly InputAction m_Gameplay_buytroupe2p2;
+    private readonly InputAction m_Gameplay_opentroupsp2;
     public struct GameplayActions
     {
         private @Inputsystem m_Wrapper;
@@ -597,6 +619,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         public InputAction @buytower2p2 => m_Wrapper.m_Gameplay_buytower2p2;
         public InputAction @buytroupe1p2 => m_Wrapper.m_Gameplay_buytroupe1p2;
         public InputAction @buytroupe2p2 => m_Wrapper.m_Gameplay_buytroupe2p2;
+        public InputAction @opentroupsp2 => m_Wrapper.m_Gameplay_opentroupsp2;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -639,6 +662,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytroupe2p2.started += instance.OnBuytroupe2p2;
             @buytroupe2p2.performed += instance.OnBuytroupe2p2;
             @buytroupe2p2.canceled += instance.OnBuytroupe2p2;
+            @opentroupsp2.started += instance.OnOpentroupsp2;
+            @opentroupsp2.performed += instance.OnOpentroupsp2;
+            @opentroupsp2.canceled += instance.OnOpentroupsp2;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -676,6 +702,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytroupe2p2.started -= instance.OnBuytroupe2p2;
             @buytroupe2p2.performed -= instance.OnBuytroupe2p2;
             @buytroupe2p2.canceled -= instance.OnBuytroupe2p2;
+            @opentroupsp2.started -= instance.OnOpentroupsp2;
+            @opentroupsp2.performed -= instance.OnOpentroupsp2;
+            @opentroupsp2.canceled -= instance.OnOpentroupsp2;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -724,5 +753,6 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         void OnBuytower2p2(InputAction.CallbackContext context);
         void OnBuytroupe1p2(InputAction.CallbackContext context);
         void OnBuytroupe2p2(InputAction.CallbackContext context);
+        void OnOpentroupsp2(InputAction.CallbackContext context);
     }
 }

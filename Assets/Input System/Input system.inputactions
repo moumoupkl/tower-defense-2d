@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "open troups p2",
+                    "type": "Button",
+                    "id": "b43302c2-a87c-4d1a-870b-2b2793dc411a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -444,6 +453,17 @@
                     "processors": "",
                     "groups": "keyboard",
                     "action": "open troups p1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e194449-6404-4c72-91f8-2f16de3e86d5",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "open troups p2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
