@@ -19,6 +19,7 @@ public class DynamicGridSelector : MonoBehaviour
     public InputActionReference movep1;
     public InputActionReference buyTurret1;
     public InputActionReference buyTurret2;
+    public InputActionReference buyTurret3;
     private InputActionReference move;
     public GameManager gameManager;
     public Transform startingPoint;
@@ -40,13 +41,15 @@ public class DynamicGridSelector : MonoBehaviour
     private void OnEnable()//subscribe to the input actions
     {
         buyTurret1.action.performed += context => OnBuyActionPerformed(0);
-        buyTurret2.action.performed += context => OnBuyActionPerformed(1);
+        buyTurret2.action.performed += context => OnBuyActionPerformed(1);        
+        buyTurret3.action.performed += context => OnBuyActionPerformed(2);
     }
 
     private void OnDisable()//unsubscribe from the input actions
     {
         buyTurret1.action.performed -= context => OnBuyActionPerformed(0);
         buyTurret2.action.performed -= context => OnBuyActionPerformed(1);
+        buyTurret3.action.performed += context => OnBuyActionPerformed(2);
     }
 
     void Update()

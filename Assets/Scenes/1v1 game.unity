@@ -3717,6 +3717,7 @@ MonoBehaviour:
   movep1: {fileID: -5076617840867599235, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret1: {fileID: 311487145620473931, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret2: {fileID: -4437109822688778639, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  buyTurret3: {fileID: -2720884576249296340, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   gameManager: {fileID: 519420033}
   startingPoint: {fileID: 1964052636}
   selector: {fileID: 670826531}
@@ -3775,6 +3776,7 @@ MonoBehaviour:
   movep1: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret1: {fileID: -3269377568202801211, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret2: {fileID: 4181767097764530651, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  buyTurret3: {fileID: 0}
   gameManager: {fileID: 519420033}
   startingPoint: {fileID: 1916465812}
   selector: {fileID: 245747020}

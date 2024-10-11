@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 3688451453414409004}
   - component: {fileID: 837917564916408193}
   - component: {fileID: 5651269816708902518}
-  - component: {fileID: 5163366896112176628}
+  - component: {fileID: 2616546332662075035}
   m_Layer: 0
   m_Name: freezer
   m_TagString: Weapon
@@ -525,7 +525,7 @@ MonoBehaviour:
   slowDuration: 1.5
   slowStrength: 0.66
   target: {fileID: 0}
---- !u!114 &5163366896112176628
+--- !u!114 &2616546332662075035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -534,12 +534,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8372406137674051238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f26dd75b6a9120244afea4c5be6e36be, type: 3}
+  m_Script: {fileID: 11500000, guid: 34a2ee30d5413eb45a871d790fa74f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   animator: {fileID: 3890406406613334069}
-  constructionTime: 2
+  constructionTime: 1
   objectStats: {fileID: 0}
   range: 10
   rangeIndicator: {fileID: 1241440930303061266}
@@ -548,5 +548,3 @@ MonoBehaviour:
   teamHover: 0
   aimingAtClosestEnnemy: 0
   shootBehavior: {fileID: 5651269816708902518}
-  fireCooldown: 1
-  damage: 1
