@@ -382,7 +382,6 @@ GameObject:
   - component: {fileID: 1665274115624832727}
   - component: {fileID: 3688451453414409004}
   - component: {fileID: 837917564916408193}
-  - component: {fileID: 4564384986012861220}
   - component: {fileID: -3177656823138755771}
   - component: {fileID: 5651269816708902518}
   m_Layer: 0
@@ -510,22 +509,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hover: 0
   blueTeam: 0
---- !u!114 &4564384986012861220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8372406137674051238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35d3a9ddf100a6d42b04948f21a972f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun: {fileID: 2804104066940607362}
-  targetEnemy: {fileID: 0}
-  aimingTolerance: 20
-  rotationSpeed: 10000
 --- !u!114 &-3177656823138755771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +530,7 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   aimingAtEnnemy: 0
   teamHover: 0
+  aimingAtClosestEnnemy: 0
   shootBehavior: {fileID: 5651269816708902518}
 --- !u!114 &5651269816708902518
 MonoBehaviour:
@@ -563,3 +547,4 @@ MonoBehaviour:
   triangRange: {fileID: 9086077882954359423}
   slowDuration: 1.5
   slowStrength: 0.66
+  target: {fileID: 0}
