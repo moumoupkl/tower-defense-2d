@@ -32,7 +32,7 @@ public class WaveHandler : MonoBehaviour
         waveNumber = 0;
         //initialize the wave started
         wavestarted = false;
-        
+
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class WaveHandler : MonoBehaviour
         {
             wavestarted = false;
         }
-        
+
     }
 
     //add troops to the list and their capacity to the current capacity
@@ -62,12 +62,12 @@ public class WaveHandler : MonoBehaviour
             {
                 return;
             }
-
-            gameManager.bluecoinsfloat -= 2;
+            //get price from the enemyStats component
+            gameManager.bluecoinsfloat -= troop.GetComponent<enemyStats>().price;
             gameManager.blueCoinsPerSec += 0.05f;
         }
-        
-        else 
+
+        else
         {
             if (gameManager.redCoins < 2)
             {
@@ -83,13 +83,13 @@ public class WaveHandler : MonoBehaviour
             troops.Add(troop);
             //get the enemyStats component from the troop
             enemyStats enemyStats = troop.GetComponent<enemyStats>();
-            currentTroopCapacity += enemyStats.capacity; 
+            currentTroopCapacity += enemyStats.capacity;
         }
         else
         {
             Debug.Log("Not enough capacity");
         }
-        
+
     }
 
     //remove troops from the list and their capacity from the current capacity

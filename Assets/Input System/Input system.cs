@@ -55,7 +55,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""buy tower 3p1"",
+                    ""name"": ""buy tower 3 p1"",
                     ""type"": ""Button"",
                     ""id"": ""3423570b-53bf-46fc-8e6d-7c07cf73a271"",
                     ""expectedControlType"": ""Button"",
@@ -76,6 +76,15 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""name"": ""buy troupe 2 p1"",
                     ""type"": ""Button"",
                     ""id"": ""5874a2f0-155f-4170-9489-fb6f872bcd7b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""open towers p1"",
+                    ""type"": ""Button"",
+                    ""id"": ""96dd3e1a-c906-4616-9ce8-ad116fafff67"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -109,7 +118,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""buy tower 2 p3"",
+                    ""name"": ""buy tower 3 p2"",
                     ""type"": ""Button"",
                     ""id"": ""598df116-b0d6-46ca-a568-2d6c0c00f947"",
                     ""expectedControlType"": ""Button"",
@@ -130,6 +139,15 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""name"": ""buy troupe 2 p2"",
                     ""type"": ""Button"",
                     ""id"": ""db8a229d-4555-42df-9e1c-5a41a7c2e461"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""open towers p2"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b3fd9bc-f335-4b11-8774-bc4eed187f71"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -474,7 +492,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""buy tower 3p1"",
+                    ""action"": ""buy tower 3 p1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -485,7 +503,29 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""buy tower 2 p3"",
+                    ""action"": ""buy tower 3 p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0c718d2-7956-4ce1-887d-c986f052b91c"",
+                    ""path"": ""<Keyboard>/numpadPlus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""open towers p1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0fed6b36-e459-4db5-b589-d266e82e5c78"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""open towers p2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -522,15 +562,17 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         m_Gameplay_movep1 = m_Gameplay.FindAction("move p1", throwIfNotFound: true);
         m_Gameplay_buytower1p1 = m_Gameplay.FindAction("buy tower 1 p1", throwIfNotFound: true);
         m_Gameplay_buytower2p1 = m_Gameplay.FindAction("buy tower 2  p1", throwIfNotFound: true);
-        m_Gameplay_buytower3p1 = m_Gameplay.FindAction("buy tower 3p1", throwIfNotFound: true);
+        m_Gameplay_buytower3p1 = m_Gameplay.FindAction("buy tower 3 p1", throwIfNotFound: true);
         m_Gameplay_buytroupe1p1 = m_Gameplay.FindAction("buy troupe 1 p1", throwIfNotFound: true);
         m_Gameplay_buytroupe2p1 = m_Gameplay.FindAction("buy troupe 2 p1", throwIfNotFound: true);
+        m_Gameplay_opentowersp1 = m_Gameplay.FindAction("open towers p1", throwIfNotFound: true);
         m_Gameplay_movep2 = m_Gameplay.FindAction("move p2", throwIfNotFound: true);
         m_Gameplay_buytower1p2 = m_Gameplay.FindAction("buy tower 1 p2", throwIfNotFound: true);
         m_Gameplay_buytower2p2 = m_Gameplay.FindAction("buy tower 2 p2", throwIfNotFound: true);
-        m_Gameplay_buytower2p3 = m_Gameplay.FindAction("buy tower 2 p3", throwIfNotFound: true);
+        m_Gameplay_buytower3p2 = m_Gameplay.FindAction("buy tower 3 p2", throwIfNotFound: true);
         m_Gameplay_buytroupe1p2 = m_Gameplay.FindAction("buy troupe 1 p2", throwIfNotFound: true);
         m_Gameplay_buytroupe2p2 = m_Gameplay.FindAction("buy troupe 2 p2", throwIfNotFound: true);
+        m_Gameplay_opentowersp2 = m_Gameplay.FindAction("open towers p2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -598,12 +640,14 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_buytower3p1;
     private readonly InputAction m_Gameplay_buytroupe1p1;
     private readonly InputAction m_Gameplay_buytroupe2p1;
+    private readonly InputAction m_Gameplay_opentowersp1;
     private readonly InputAction m_Gameplay_movep2;
     private readonly InputAction m_Gameplay_buytower1p2;
     private readonly InputAction m_Gameplay_buytower2p2;
-    private readonly InputAction m_Gameplay_buytower2p3;
+    private readonly InputAction m_Gameplay_buytower3p2;
     private readonly InputAction m_Gameplay_buytroupe1p2;
     private readonly InputAction m_Gameplay_buytroupe2p2;
+    private readonly InputAction m_Gameplay_opentowersp2;
     public struct GameplayActions
     {
         private @Inputsystem m_Wrapper;
@@ -614,12 +658,14 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         public InputAction @buytower3p1 => m_Wrapper.m_Gameplay_buytower3p1;
         public InputAction @buytroupe1p1 => m_Wrapper.m_Gameplay_buytroupe1p1;
         public InputAction @buytroupe2p1 => m_Wrapper.m_Gameplay_buytroupe2p1;
+        public InputAction @opentowersp1 => m_Wrapper.m_Gameplay_opentowersp1;
         public InputAction @movep2 => m_Wrapper.m_Gameplay_movep2;
         public InputAction @buytower1p2 => m_Wrapper.m_Gameplay_buytower1p2;
         public InputAction @buytower2p2 => m_Wrapper.m_Gameplay_buytower2p2;
-        public InputAction @buytower2p3 => m_Wrapper.m_Gameplay_buytower2p3;
+        public InputAction @buytower3p2 => m_Wrapper.m_Gameplay_buytower3p2;
         public InputAction @buytroupe1p2 => m_Wrapper.m_Gameplay_buytroupe1p2;
         public InputAction @buytroupe2p2 => m_Wrapper.m_Gameplay_buytroupe2p2;
+        public InputAction @opentowersp2 => m_Wrapper.m_Gameplay_opentowersp2;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -647,6 +693,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytroupe2p1.started += instance.OnBuytroupe2p1;
             @buytroupe2p1.performed += instance.OnBuytroupe2p1;
             @buytroupe2p1.canceled += instance.OnBuytroupe2p1;
+            @opentowersp1.started += instance.OnOpentowersp1;
+            @opentowersp1.performed += instance.OnOpentowersp1;
+            @opentowersp1.canceled += instance.OnOpentowersp1;
             @movep2.started += instance.OnMovep2;
             @movep2.performed += instance.OnMovep2;
             @movep2.canceled += instance.OnMovep2;
@@ -656,15 +705,18 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytower2p2.started += instance.OnBuytower2p2;
             @buytower2p2.performed += instance.OnBuytower2p2;
             @buytower2p2.canceled += instance.OnBuytower2p2;
-            @buytower2p3.started += instance.OnBuytower2p3;
-            @buytower2p3.performed += instance.OnBuytower2p3;
-            @buytower2p3.canceled += instance.OnBuytower2p3;
+            @buytower3p2.started += instance.OnBuytower3p2;
+            @buytower3p2.performed += instance.OnBuytower3p2;
+            @buytower3p2.canceled += instance.OnBuytower3p2;
             @buytroupe1p2.started += instance.OnBuytroupe1p2;
             @buytroupe1p2.performed += instance.OnBuytroupe1p2;
             @buytroupe1p2.canceled += instance.OnBuytroupe1p2;
             @buytroupe2p2.started += instance.OnBuytroupe2p2;
             @buytroupe2p2.performed += instance.OnBuytroupe2p2;
             @buytroupe2p2.canceled += instance.OnBuytroupe2p2;
+            @opentowersp2.started += instance.OnOpentowersp2;
+            @opentowersp2.performed += instance.OnOpentowersp2;
+            @opentowersp2.canceled += instance.OnOpentowersp2;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -687,6 +739,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytroupe2p1.started -= instance.OnBuytroupe2p1;
             @buytroupe2p1.performed -= instance.OnBuytroupe2p1;
             @buytroupe2p1.canceled -= instance.OnBuytroupe2p1;
+            @opentowersp1.started -= instance.OnOpentowersp1;
+            @opentowersp1.performed -= instance.OnOpentowersp1;
+            @opentowersp1.canceled -= instance.OnOpentowersp1;
             @movep2.started -= instance.OnMovep2;
             @movep2.performed -= instance.OnMovep2;
             @movep2.canceled -= instance.OnMovep2;
@@ -696,15 +751,18 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytower2p2.started -= instance.OnBuytower2p2;
             @buytower2p2.performed -= instance.OnBuytower2p2;
             @buytower2p2.canceled -= instance.OnBuytower2p2;
-            @buytower2p3.started -= instance.OnBuytower2p3;
-            @buytower2p3.performed -= instance.OnBuytower2p3;
-            @buytower2p3.canceled -= instance.OnBuytower2p3;
+            @buytower3p2.started -= instance.OnBuytower3p2;
+            @buytower3p2.performed -= instance.OnBuytower3p2;
+            @buytower3p2.canceled -= instance.OnBuytower3p2;
             @buytroupe1p2.started -= instance.OnBuytroupe1p2;
             @buytroupe1p2.performed -= instance.OnBuytroupe1p2;
             @buytroupe1p2.canceled -= instance.OnBuytroupe1p2;
             @buytroupe2p2.started -= instance.OnBuytroupe2p2;
             @buytroupe2p2.performed -= instance.OnBuytroupe2p2;
             @buytroupe2p2.canceled -= instance.OnBuytroupe2p2;
+            @opentowersp2.started -= instance.OnOpentowersp2;
+            @opentowersp2.performed -= instance.OnOpentowersp2;
+            @opentowersp2.canceled -= instance.OnOpentowersp2;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -748,11 +806,13 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         void OnBuytower3p1(InputAction.CallbackContext context);
         void OnBuytroupe1p1(InputAction.CallbackContext context);
         void OnBuytroupe2p1(InputAction.CallbackContext context);
+        void OnOpentowersp1(InputAction.CallbackContext context);
         void OnMovep2(InputAction.CallbackContext context);
         void OnBuytower1p2(InputAction.CallbackContext context);
         void OnBuytower2p2(InputAction.CallbackContext context);
-        void OnBuytower2p3(InputAction.CallbackContext context);
+        void OnBuytower3p2(InputAction.CallbackContext context);
         void OnBuytroupe1p2(InputAction.CallbackContext context);
         void OnBuytroupe2p2(InputAction.CallbackContext context);
+        void OnOpentowersp2(InputAction.CallbackContext context);
     }
 }

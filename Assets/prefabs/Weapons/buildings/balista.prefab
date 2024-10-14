@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 6647077597974995211}
   - component: {fileID: 4000687458499976564}
   - component: {fileID: 8215015086328387544}
+  - component: {fileID: 7889800727733783089}
   m_Layer: 0
   m_Name: balista
   m_TagString: Weapon
@@ -331,6 +332,19 @@ MonoBehaviour:
   - {fileID: 478728259, guid: 0094b8a2ded5ad94d93d301c743b12fd, type: 3}
   - {fileID: 182341575, guid: 0094b8a2ded5ad94d93d301c743b12fd, type: 3}
   - {fileID: -36451986, guid: 0094b8a2ded5ad94d93d301c743b12fd, type: 3}
+--- !u!114 &7889800727733783089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927421271642273980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf1682d3e327ac43a06eb3ba54c1f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 100
 --- !u!1001 &9062761487620347944
 PrefabInstance:
   m_ObjectHideFlags: 0

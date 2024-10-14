@@ -30,7 +30,6 @@ public class CDDamageDower : TurretController
             fireTimer += Time.deltaTime;
 
             // Find the closest enemy within range
-            Debug.Log(targetEnemy);
             if (targetEnemy != null)
             {
                 

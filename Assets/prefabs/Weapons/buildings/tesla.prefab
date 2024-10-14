@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 5249158856713146951}
   - component: {fileID: 5613230004537787480}
   - component: {fileID: -3311412971885080512}
+  - component: {fileID: 8117546486237597188}
   m_Layer: 0
   m_Name: tesla
   m_TagString: Weapon
@@ -396,6 +397,20 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   aimingAtEnnemy: 0
   teamHover: 0
+  aimingAtClosestEnnemy: 0
   shootBehavior: {fileID: 5613230004537787480}
   fireCooldown: 1
   damage: 1
+--- !u!114 &8117546486237597188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540767241916947676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf1682d3e327ac43a06eb3ba54c1f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 130

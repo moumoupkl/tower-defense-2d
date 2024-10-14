@@ -29,7 +29,7 @@ public class DynamicGridSelector : MonoBehaviour
     private Vector2 currentPosition = new Vector2(1.5f, 5.5f);
 
     private GameObject lastSelectedObject;
-    private const int WEAPON_PRICE = 5;
+    private const int WEAPON_PRICE = 100;
     private TroopsAndTowers troopsAndTowers;
 
     void Start()
@@ -41,7 +41,7 @@ public class DynamicGridSelector : MonoBehaviour
     private void OnEnable()//subscribe to the input actions
     {
         buyTurret1.action.performed += context => OnBuyActionPerformed(0);
-        buyTurret2.action.performed += context => OnBuyActionPerformed(1);        
+        buyTurret2.action.performed += context => OnBuyActionPerformed(1);
         buyTurret3.action.performed += context => OnBuyActionPerformed(2);
     }
 
@@ -51,6 +51,7 @@ public class DynamicGridSelector : MonoBehaviour
         buyTurret2.action.performed -= context => OnBuyActionPerformed(1);
         buyTurret3.action.performed += context => OnBuyActionPerformed(2);
     }
+
 
     void Update()
     {
@@ -114,7 +115,7 @@ public class DynamicGridSelector : MonoBehaviour
                 if (turretType >= 0 && turretType < troopsAndTowers.towerPrefabs.Count)
                 {
                     GameObject turretToSpawn = troopsAndTowers.towerPrefabs[turretType];
-                    
+
                     // Start the construction coroutine
                     StartCoroutine(StartConstruction(lastSelectedTile, turretToSpawn));
 
@@ -133,7 +134,6 @@ public class DynamicGridSelector : MonoBehaviour
             }
         }
     }
-
     // Start turret construction
     private IEnumerator StartConstruction(Tile tile, GameObject turretPrefab)
     {
@@ -204,7 +204,7 @@ public class DynamicGridSelector : MonoBehaviour
         }
 
         if (obj.CompareTag(tileTag))
-        {   
+        {
             // Set hover state of the selector
             if (selector != null)
             {
