@@ -2179,6 +2179,7 @@ GameObject:
   - component: {fileID: 291955501}
   - component: {fileID: 291955504}
   - component: {fileID: 291955503}
+  - component: {fileID: 291955506}
   m_Layer: 5
   m_Name: Button and spawn manager
   m_TagString: Untagged
@@ -2304,6 +2305,21 @@ MonoBehaviour:
   waveHandler: {fileID: 519420037}
   spawnGroundTroup: {fileID: -3029517933396479112, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   spawnFlyingTroup: {fileID: -1236154855465603294, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+--- !u!114 &291955506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291955499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce83e8d7c725b45b739b4e3e68fed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move1: {fileID: -5076617840867599235, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  move2: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  gameManager: {fileID: 0}
 --- !u!1001 &297714516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3584,6 +3600,7 @@ GameObject:
   - component: {fileID: 519420039}
   - component: {fileID: 519420040}
   - component: {fileID: 519420041}
+  - component: {fileID: 519420042}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3687,17 +3704,11 @@ MonoBehaviour:
   redCoinsPerSec: 0
   redcoinsfloat: 0
   redPV: 100
-  startingCoins: 110
+  startingCoins: 340
   startingCoinsPerSec: 2
-  BlueCoinstxt: {fileID: 1014240216}
-  RedCoinstxt: {fileID: 1631254715}
   Winner: {fileID: 126528329}
   gameover: {fileID: 1805112953}
-  BluePV: {fileID: 219644028}
-  RedPV: {fileID: 728904020}
   pauseImage: {fileID: 162068513}
-  move1: {fileID: -5076617840867599235, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
-  move2: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3882,6 +3893,21 @@ MonoBehaviour:
   panels: []
   dynamicGridSelector: {fileID: 519420036}
   openMenu: {fileID: -367295956155924408, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+--- !u!114 &519420042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce83e8d7c725b45b739b4e3e68fed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move1: {fileID: 0}
+  move2: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1001 &522869547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5413,6 +5439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 737636671}
   - component: {fileID: 737636672}
+  - component: {fileID: 737636673}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -5454,6 +5481,23 @@ MonoBehaviour:
   fillRight: {fileID: 1670951854}
   fillLeft: {fileID: 1074581653}
   spawnPhase: 0
+--- !u!114 &737636673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737636670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00c889de2c0c08409b122a1a80b9f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlueCoinstxt: {fileID: 1014240216}
+  RedCoinstxt: {fileID: 1631254715}
+  BluePV: {fileID: 219644028}
+  RedPV: {fileID: 728904020}
+  gameManager: {fileID: 0}
 --- !u!1001 &741918065
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -17,15 +16,9 @@ public class GameManager : MonoBehaviour
     public int redPV = 100;
     public int startingCoins;
     public float startingCoinsPerSec;
-    public TMP_Text BlueCoinstxt;
-    public TMP_Text RedCoinstxt;
     public TMP_Text Winner;
     public GameObject gameover;
-    public TMP_Text BluePV;
-    public TMP_Text RedPV;
     public GameObject pauseImage;
-    public InputActionReference move1;
-    public InputActionReference move2;
 
     private bool previousPauseState;
 
@@ -43,11 +36,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        BlueCoinstxt.text = blueCoins.ToString();
-        RedCoinstxt.text = redCoins.ToString();
-        BluePV.text = bluePV.ToString();
-        RedPV.text = redPV.ToString();
-
         // Toggle pause on Escape key
         if (Input.GetKeyDown(KeyCode.Escape) && !gameisover)
         {
@@ -59,13 +47,6 @@ public class GameManager : MonoBehaviour
 
         // Detect pausing or resuming
         previousPauseState = pause;
-
-        // Enable move actions if disabled
-        if (!move1.action.enabled || !move2.action.enabled)
-        {
-            move1.action.Enable();
-            move2.action.Enable();
-        }
 
         // Update coins over time
         bluecoinsfloat += blueCoinsPerSec * Time.deltaTime;
