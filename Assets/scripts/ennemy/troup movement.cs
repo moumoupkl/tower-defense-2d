@@ -149,12 +149,16 @@ public class TroupMovement : MonoBehaviour
     }
 
     // Method to apply a slowing effect
-    public void Slow(float slowTime, float slowStrength)
+    public void SlowOn(float slowStrength)
     {
+        Debug.Log("freeeeee");
         isSlowed = true;
-        slowTimer = 0f;
-        this.slowTime = slowTime;
         this.slowStrength = slowStrength;
+    }
+
+    public void SlowOff()
+    {
+        isSlowed = false;
     }
 
     // Calculate the progress of the troop
