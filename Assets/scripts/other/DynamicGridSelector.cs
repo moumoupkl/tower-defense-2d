@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class DynamicGridSelector : MonoBehaviour
 {
@@ -16,11 +13,6 @@ public class DynamicGridSelector : MonoBehaviour
     public float minY = 0.5f;
     public float inputDelay = 0.5f;
     private float inputTimer;
-    public InputActionReference movep1;
-    public InputActionReference buyTurret1;
-    public InputActionReference buyTurret2;
-    public InputActionReference buyTurret3;
-    private InputActionReference move;
     public GameManager gameManager;
     public Transform startingPoint;
     public selector selector; // Reference to the Selector script
@@ -29,7 +21,6 @@ public class DynamicGridSelector : MonoBehaviour
     private Vector2 currentPosition = new Vector2(1.5f, 5.5f);
 
     private GameObject lastSelectedObject;
-    private const int WEAPON_PRICE = 100;
     private TroopsAndTowers troopsAndTowers;
 
     void Start()
@@ -38,31 +29,14 @@ public class DynamicGridSelector : MonoBehaviour
         InitializeSelection();
     }
 
-    private void OnEnable()//subscribe to the input actions
-    {
-        buyTurret1.action.performed += context => OnBuyActionPerformed(0);
-        buyTurret2.action.performed += context => OnBuyActionPerformed(1);
-        buyTurret3.action.performed += context => OnBuyActionPerformed(2);
-    }
-
-    private void OnDisable()//unsubscribe from the input actions
-    {
-        buyTurret1.action.performed -= context => OnBuyActionPerformed(0);
-        buyTurret2.action.performed -= context => OnBuyActionPerformed(1);
-        buyTurret3.action.performed += context => OnBuyActionPerformed(2);
-    }
-
-
     void Update()
     {
-        HandleMovement();
         CheckAndCorrectSelectorPosition();
         CheckHoverState();
     }
 
     private void InitializeSelection()//initialize the selection object
     {
-        move = movep1;
         inputTimer = 0;
         selection.transform.position = startingPoint.position;
         currentPosition = startingPoint.position;
@@ -70,12 +44,10 @@ public class DynamicGridSelector : MonoBehaviour
         SetHoverState(lastSelectedObject, true);
     }
 
-    private void HandleMovement()//handle the movement of the selection object
+    public void HandleMovement(Vector2 moveDirection)//handle the movement of the selection object
     {
-        move = movep1;
         inputTimer -= Time.deltaTime;
 
-        Vector2 moveDirection = move.action.ReadValue<Vector2>();
         Vector2 direction = GetMovementDirection(moveDirection);
 
         if (inputTimer <= 0 && direction != Vector2.zero)
@@ -98,76 +70,9 @@ public class DynamicGridSelector : MonoBehaviour
         return new Vector2(horizontal, vertical).normalized;
     }
 
-    private void OnBuyActionPerformed(int turretType) // buy a turret
+    public GameObject GetLastSelectedObject() // get the last selected object
     {
-        if (lastSelectedObject == null) return;
-
-        var lastSelectedTile = lastSelectedObject.GetComponent<Tile>();
-        var lastSelectedComponent = lastSelectedObject.GetComponent<ObjectStats>();
-
-        if (lastSelectedTile != null && lastSelectedComponent != null && lastSelectedComponent.hover && !lastSelectedTile.activeConstruction)
-        {
-            if (CanAffordTurret())
-            {
-                lastSelectedTile.activeConstruction = true;
-                gameManager.AddCoins(-WEAPON_PRICE, blueTeam);
-
-                if (turretType >= 0 && turretType < troopsAndTowers.towerPrefabs.Count)
-                {
-                    GameObject turretToSpawn = troopsAndTowers.towerPrefabs[turretType];
-
-                    // Start the construction coroutine
-                    StartCoroutine(StartConstruction(lastSelectedTile, turretToSpawn));
-
-                    lastSelectedObject = null;
-                }
-                else
-                {
-                    Debug.Log("Invalid turret type.");
-                    Debug.Log("Turret type: " + turretType);
-                    Debug.Log("Tower Prefabs Count: " + troopsAndTowers.towerPrefabs.Count);
-                }
-            }
-            else
-            {
-                Debug.Log("Not enough coins or game is paused.");
-            }
-        }
-    }
-    // Start turret construction
-    private IEnumerator StartConstruction(Tile tile, GameObject turretPrefab)
-    {
-        // Set construction time to the construction time of the prefab
-        float constructionTime = turretPrefab.GetComponent<TowerControler>().constructionTime;
-
-        // Set particle time to construction time of the prefab
-        if (tile.particles != null)
-        {
-            GameObject spawnedParticles = Instantiate(tile.particles, tile.transform.position, Quaternion.identity);
-            if (spawnedParticles.TryGetComponent(out Particle particleScript))
-            {
-                particleScript.SetLifetime(constructionTime);
-            }
-        }
-
-        // Wait for construction to complete
-        yield return new WaitForSeconds(constructionTime);
-
-        // Instantiate the turret and assign team
-        GameObject turretInstance = Instantiate(turretPrefab, tile.transform.position, Quaternion.identity);
-        if (turretInstance.TryGetComponent(out ObjectStats turretStats))
-        {
-            turretStats.blueTeam = tile.objectStats.blueTeam;
-        }
-
-        // Mark tile as inactive after construction
-        tile.activeConstruction = false;
-        tile.gameObject.SetActive(false);
-    }
-
-    private bool CanAffordTurret()//check if the player can afford the turret
-    {
-        return !gameManager.pause && (blueTeam ? gameManager.blueCoins >= WEAPON_PRICE : gameManager.redCoins >= WEAPON_PRICE);
+        return lastSelectedObject;
     }
 
     private void MoveSelection(Vector2 direction)//move the selection object

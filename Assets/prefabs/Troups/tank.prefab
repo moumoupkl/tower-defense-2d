@@ -343,3 +343,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueMaterial: {fileID: -876546973899608171, guid: 5306362b30d839e41b3ec3b6cef223a0, type: 3}
   redMaterial: {fileID: -876546973899608171, guid: f011de148964c2245bca06b0cc65fa7a, type: 3}
+  objectsToChangeColor: []

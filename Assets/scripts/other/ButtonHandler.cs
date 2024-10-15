@@ -8,16 +8,12 @@ public class ButtonHandler : MonoBehaviour
     public GameObject flyingTroup;
     public WaveHandler waveHandler;
 
-    private ObjectSpawner objectSpawner;
-
     // Input actions for troop spawning
     public InputActionReference spawnGroundTroup;     // Reference for player ground troop spawn
     public InputActionReference spawnFlyingTroup;     // Reference for player flying troop spawn
 
     void Start()
     {
-        objectSpawner = GetComponent<ObjectSpawner>();
-
         // Subscribe to the input actions
         spawnGroundTroup.action.performed += ctx => waveHandler.AddTroop(groundTroup);
         spawnFlyingTroup.action.performed += ctx => waveHandler.AddTroop(flyingTroup);
