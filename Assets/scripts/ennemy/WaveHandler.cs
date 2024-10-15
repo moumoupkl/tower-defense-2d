@@ -15,30 +15,21 @@ public class WaveHandler : MonoBehaviour
     public bool wavestarted;
     private int troopLength;
     public ObjectSpawner objectSpawner;
-    //lisst of troops that were bought
     public List<GameObject> troops;
     private GameManager gameManager;
-    // Start is called before the first frame update
+
     void Start()
     {
-        //get the gameManager component from the main camera
         Camera mainCamera = Camera.main;
         gameManager = mainCamera.GetComponent<GameManager>();
-        //initialize the list of troops
         troops = new List<GameObject>();
-        //initialize the current troop capacity
         currentTroopCapacity = 0;
-        //initialize the wave number
         waveNumber = 0;
-        //initialize the wave started
         wavestarted = false;
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //if sapwnphase true than spawnwave once
         if (waveTimer.spawnPhase && !wavestarted)
         {
             Debug.Log("wave started");
@@ -49,24 +40,27 @@ public class WaveHandler : MonoBehaviour
         {
             wavestarted = false;
         }
-
     }
 
-    //add troops to the list and their capacity to the current capacity
     public void AddTroop(GameObject troop)
     {
-        //check if the player has enough coins to buy the troop
         if (blueTeam)
         {
             if (gameManager.blueCoins < 2)
             {
                 return;
             }
-            //get price from the enemyStats component
+
+            if (troop.GetComponent<enemyStats>().capacity + currentTroopCapacity > MaxTroopCapacity)
+            {
+                return;
+            }
+
             gameManager.bluecoinsfloat -= troop.GetComponent<enemyStats>().price;
             gameManager.blueCoinsPerSec += 0.05f;
-        }
 
+            currentTroopCapacity += troop.GetComponent<enemyStats>().capacity;
+        }
         else
         {
             if (gameManager.redCoins < 2)
@@ -77,11 +71,9 @@ public class WaveHandler : MonoBehaviour
             gameManager.redCoinsPerSec += 0.05f;
         }
 
-        //check if the current capacity is enough to add the troop
         if (currentTroopCapacity + troop.GetComponent<enemyStats>().capacity <= MaxTroopCapacity)
         {
             troops.Add(troop);
-            //get the enemyStats component from the troop
             enemyStats enemyStats = troop.GetComponent<enemyStats>();
             currentTroopCapacity += enemyStats.capacity;
         }
@@ -89,16 +81,13 @@ public class WaveHandler : MonoBehaviour
         {
             Debug.Log("Not enough capacity");
         }
-
     }
 
-    //remove troops from the list and their capacity from the current capacity
     public void RemoveTroop(GameObject troop)
     {
         if (troops.Contains(troop))
         {
             troops.Remove(troop);
-            //get the enemyStats component from the troop
             enemyStats enemyStats = troop.GetComponent<enemyStats>();
             currentTroopCapacity -= enemyStats.capacity;
         }
@@ -110,24 +99,26 @@ public class WaveHandler : MonoBehaviour
 
     public IEnumerator spawnWave()
     {
-        // Set spawn interval to minimum between the max time between troops and waveSpawnDuration/amount of troops in list
+        Debug.Log("Spawning wave with " + troops.Count + " troops.");
+
+        if (troops.Count == 0)
+        {
+            Debug.LogWarning("No troops to spawn.");
+            yield break;
+        }
+
+        currentTroopCapacity = 0;
         spawnInterval = Mathf.Min(MaxTimeBetweenTroops, waveTimer.waveSpawnDuration / troops.Count);
 
-        // Spawn all troops in the list
-        //get the amount of troops in the list
         troopLength = troops.Count;
-        //loop trooplenth times
         for (int i = 0; i < troopLength; i++)
         {
+            Debug.Log("Spawning troop " + (i + 1) + " of " + troopLength);
             objectSpawner.SpawnTroops(troops[i], blueTeam);
-            // Wait for the spawn interval
             yield return new WaitForSeconds(spawnInterval);
         }
 
-        // Remove all troops from the list
         troops = new List<GameObject>();
-
-        //reset the wave started flag
         wavestarted = false;
     }
 }

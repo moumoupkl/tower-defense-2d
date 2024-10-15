@@ -124,17 +124,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bb6e1102ab61e4eb3156fa8e88044f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhealth: 20
+  maxhealth: 200
   health: 0
   damage: 20
   speed: 0.5
   ground: 0
   gameManager: {fileID: 0}
-  price: 10
-  reward: 5
+  price: 30
+  reward: 15
+  capacity: 4
   explosion: {fileID: 5567741904827571220, guid: 80142aee67d25654ab91d139f3f868e3, type: 3}
   flashDuration: 0.1
   blueTeam: 0
+  level: 0
+  whiteMaterial: {fileID: 0}
 --- !u!114 &-8174002363625170442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +159,8 @@ MonoBehaviour:
   isSlowed: 0
   slowTime: 0
   slowStrength: 0
+  progress: 0
+  animator: {fileID: 0}
 --- !u!61 &4578192734660917154
 BoxCollider2D:
   m_ObjectHideFlags: 0

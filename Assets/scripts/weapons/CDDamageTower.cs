@@ -11,7 +11,7 @@ public class CDDamageDower : TurretController
     protected override void Start()
     {
         base.Start();
-        
+
         if (shootBehavior == null)
         {
             shootBehavior = GetComponent<ShootBehavior>();
@@ -21,7 +21,7 @@ public class CDDamageDower : TurretController
     }
 
     protected override void Update()
-    {   
+    {
         base.Update();
         if (!gameManager.pause)
         {
@@ -32,7 +32,7 @@ public class CDDamageDower : TurretController
             // Find the closest enemy within range
             if (targetEnemy != null)
             {
-                
+
                 animator.speed = 1f / fireCooldown * 10;
                 animator.SetBool("fight", true);
 
@@ -42,16 +42,16 @@ public class CDDamageDower : TurretController
                 {
                     if (shootBehavior != null)
                     {
-                            //Debug.Log("shoot cd");
-                            shootBehavior.Shoot();
-                            fireTimer = 0f; // Reset the cooldown timer after shooting
-                        
+                        //Debug.Log("shoot cd");
+                        shootBehavior.Shoot();
+                        fireTimer = 0f; // Reset the cooldown timer after shooting
+
                     }
                 }
             }
-            else 
+            else
             {
-                animator.SetBool("fight", false);
+                //animator.SetBool("fight", false);
             }
         }
         else
