@@ -17,6 +17,7 @@ public class WaveHandler : MonoBehaviour
     public ObjectSpawner objectSpawner;
     public List<GameObject> troops;
     private GameManager gameManager;
+    public troup_order troup_order;
 
     void Start()
     {
@@ -44,6 +45,7 @@ public class WaveHandler : MonoBehaviour
 
     public void AddTroop(GameObject troop)
     {
+
         enemyStats enemyStats = troop.GetComponent<enemyStats>();
 
         if (blueTeam)
@@ -62,6 +64,8 @@ public class WaveHandler : MonoBehaviour
 
             gameManager.bluecoinsfloat -= enemyStats.price;
             gameManager.blueCoinsPerSec += 0.05f;
+            //call spawncard from troup_order
+            //troup_order.spawn_card(troop);
         }
         else
         {

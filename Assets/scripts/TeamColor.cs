@@ -12,6 +12,11 @@ public class TeamColor : MonoBehaviour
 
     void Start()
     {
+        UpdateShader();
+    }
+
+    public void UpdateShader()
+    {
         // Get the renderer of the enemy itself (not the white child object)
         enemyRenderer = GetComponent<Renderer>();
 
