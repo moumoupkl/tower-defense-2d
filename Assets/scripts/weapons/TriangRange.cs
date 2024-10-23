@@ -5,24 +5,40 @@ using UnityEngine;
 public class TriangRange : MonoBehaviour
 {
     public List<Collider2D> colliders = new List<Collider2D>();
-    private FreezerShootBehaviour freeze;
-
-
-
+    private List<TroupMovement> troupMovements = new List<TroupMovement>();
+    public FreezerShootBehaviour freeze;
 
     private void Start()
     {
-        freeze = GetComponent<FreezerShootBehaviour>();
+
+        if (freeze == null)
+        {
+            Debug.LogError("FreezerShootBehaviour component not found on the GameObject.");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("slow");
         // Vérifie si l'objet entrant est un ennemi
         if (other.gameObject.tag == "Enemy")
         {
             colliders.Add(other);
-            // Appelle la fonction SlowOn pour ralentir l'ennemi
-            other.gameObject.GetComponent<TroupMovement>().SlowOn(freeze.slowStrength);
+            TroupMovement troupMovement = other.gameObject.GetComponent<TroupMovement>();
+            if (troupMovement != null)
+            {
+                troupMovements.Add(troupMovement);
+                // Vérifie si freeze n'est pas null avant d'appeler SlowOn
+                if (freeze != null)
+                {
+                    // Appelle la fonction SlowOn pour ralentir l'ennemi
+                    troupMovement.SlowOn(freeze.slowStrength);
+                }
+                else
+                {
+                    Debug.LogError("Freeze component is null. Cannot call SlowOn.");
+                }
+            }
         }
     }
 
@@ -32,6 +48,11 @@ public class TriangRange : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             colliders.Remove(other);
+            TroupMovement troupMovement = other.gameObject.GetComponent<TroupMovement>();
+            if (troupMovement != null)
+            {
+                troupMovements.Remove(troupMovement);
+            }
         }
     }
 }

@@ -111,9 +111,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5219892272392995976}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.721, y: -0, z: 0}
-  m_LocalScale: {x: 0.9985299, y: 1.1870329, z: 1.0884}
+  m_LocalRotation: {x: -0, y: -0, z: -0.745127, w: 0.66692275}
+  m_LocalPosition: {x: -0.925, y: 0.103, z: 0}
+  m_LocalScale: {x: 1.2481624, y: 1.6024941, z: 1.0884}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2804104066940607362}
@@ -125,7 +125,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5219892272392995976}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliders: []
+  freeze: {fileID: 5651269816708902518}
 --- !u!1 &5441539284068006505
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,8 +294,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2562689701278880291}
   - {fileID: 3636695891419621699}
+  - {fileID: 2562689701278880291}
   m_Father: {fileID: 2181028394002360745}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.34}
 --- !u!212 &8777821770730070517
@@ -400,7 +401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8372406137674051238}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.99993616, w: 0.011303268}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: -2.29, y: -0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -408,7 +409,7 @@ Transform:
   - {fileID: 8695909484985070439}
   - {fileID: 2804104066940607362}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -178.705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
 --- !u!212 &1665274115624832727
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -522,11 +523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced469fc4c2ab52439ddbeb3bca8f13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triangRange: {fileID: 0}
   slowDuration: 1.5
-  slowStrength: 0.66
+  slowStrength: 0.1
   target: {fileID: 0}
-  effectZone: {fileID: 3636695891419621699}
 --- !u!114 &2616546332662075035
 MonoBehaviour:
   m_ObjectHideFlags: 0
