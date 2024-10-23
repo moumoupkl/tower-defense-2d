@@ -15,29 +15,23 @@ public class TriangRange : MonoBehaviour
         freeze = GetComponent<FreezerShootBehaviour>();
     }
 
-
-
-
     private void OnTriggerEnter2D(Collider2D other)
-
-
-
     {
-        // fait appel a la fonction freeze dans le script de troupMovement
+        // Vérifie si l'objet entrant est un ennemi
         if (other.gameObject.tag == "Enemy")
         {
             colliders.Add(other);
+            // Appelle la fonction SlowOn pour ralentir l'ennemi
             other.gameObject.GetComponent<TroupMovement>().SlowOn(freeze.slowStrength);
-
-
         }
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
-
-
-        colliders.Remove(other); // Retirer les ennemis qui sortent de la zone
-
+        // Retirer les ennemis qui sortent de la zone
+        if (other.gameObject.tag == "Enemy")
+        {
+            colliders.Remove(other);
+        }
     }
-
 }
