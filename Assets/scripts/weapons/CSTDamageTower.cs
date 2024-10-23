@@ -11,8 +11,8 @@ public class CSTDamageTower : TurretController
     protected override void Start()
     {
         base.Start();
-        
-        
+
+
         if (shootBehavior == null)
         {
             shootBehavior = GetComponent<ShootBehavior>();
@@ -22,19 +22,18 @@ public class CSTDamageTower : TurretController
     }
 
     protected override void Update()
-    {   
+    {
         base.Update();
 
         if (!gameManager.pause)
         {
 
 
-        Debug.Log(targetEnemy);
+            Debug.Log(targetEnemy);
             // Find the closest enemy within range
 
             if (targetEnemy != null)
             {
-                Debug.Log("target");
                 animator.SetBool("fight", true);
 
                 // Check if the enemy is within range and shoot if the cooldown has passed
@@ -43,13 +42,12 @@ public class CSTDamageTower : TurretController
                 {
                     if (shootBehavior != null)
                     {
-                        Debug.Log("shoot csnt");
                         shootBehavior.Shoot();
-                    
+
                     }
                 }
             }
-            else 
+            else
             {
                 animator.SetBool("fight", false);
             }
