@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,33 +6,46 @@ public class FreezerShootBehaviour : ShootBehavior
     public TriangRange triangRange;
     public float slowDuration;
     public float slowStrength;
-    private TurretController TurretController;
-        public Transform target;
+    private TurretController turretController;
+    public Transform target;
+    public Transform effectZone; // Référence à la zone d'effet
+
+    void Start()
+    {
+        turretController = GetComponent<TurretController>();
+    }
+
+    void Update()
+    {
+        target = turretController.targetEnemy;
+
+        if (target == null)
+        {
+            Debug.LogWarning("No target enemy found.");
+            return;
+        }
+
+        // Calculez la direction et l'angle pour faire face à la cible
+        Vector3 dir = target.position - turretController.transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        // Calculez la position relative du triangle par rapport au centre de la tourelle
+        Vector3 relativePosition = effectZone.position - turretController.transform.position;
+
+        // Appliquez la rotation à la position relative
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Vector3 rotatedPosition = rotation * relativePosition;
+
+        // Mettez à jour la position du triangle en utilisant la position du centre de la tourelle et la position relative après rotation
+        effectZone.position = turretController.transform.position + rotatedPosition;
+
+        // Appliquez la rotation au triangle pour qu'il fasse face à la cible
+        effectZone.rotation = rotation;
+    }
 
     public override void Shoot()
     {
-        TurretController = GetComponent<TurretController>();
         Debug.Log("Freeze");
-        target = TurretController.targetEnemy;
-        //rotate the triangle to face the target
-        Vector3 dir = target.position - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-
-        foreach (var collider in triangRange.colliders)
-        {
-            // Get the GameObject that the collider is attached to
-            GameObject colliderObject = collider.gameObject;
-
-            // Try to get the script you want to affect (replace 'YourScript' with the actual script name)
-            TroupMovement troupMovement = colliderObject.GetComponent<TroupMovement>();
-
-            if (troupMovement != null)
-            {
-                // Perform your action on the script
-                //troupMovement.Slow(slowDuration, slowStrength); // Replace with the method you want to call
-            }
-        }
+        // Logique spécifique au tir, si nécessaire
     }
 }
