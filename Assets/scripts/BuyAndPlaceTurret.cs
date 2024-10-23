@@ -1,15 +1,18 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BuyAndPlaceTurret : MonoBehaviour
 {
     private GameManager gameManager;
     private TroopsAndTowers troopsAndTowers;
+    private GameObject towers;
 
     private void Start()
     {
         gameManager = GetComponent<GameManager>();
         troopsAndTowers = GetComponent<TroopsAndTowers>();
+        towers = GameObject.Find("Towers");
     }
 
     public void OnBuyActionPerformed(int turretType, bool isBlueTeam, GameObject lastSelectedObject) // buy a turret
@@ -74,6 +77,20 @@ public class BuyAndPlaceTurret : MonoBehaviour
         {
             turretStats.blueTeam = tile.objectStats.blueTeam;
         }
+        //offset  the y by + 0.3f
+        turretInstance.transform.position += new Vector3(0, 0.3f, 0);
+
+        //put the turret as child of the Towers gameobject
+        turretInstance.transform.parent = towers.transform;
+
+        //set the rendering order to -y position to the gameobject
+        turretInstance.GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-turretInstance.transform.position.y);
+        //and its children if they have a sprite renderer
+        foreach (SpriteRenderer sr in turretInstance.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.sortingOrder = Mathf.RoundToInt(-turretInstance.transform.position.y);
+        }
+
 
         // Mark tile as inactive after construction
         tile.activeConstruction = false;

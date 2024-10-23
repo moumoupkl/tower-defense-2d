@@ -2334,16 +2334,15 @@ MonoBehaviour:
   buyTurret1P1: {fileID: 311487145620473931, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret2P1: {fileID: -4437109822688778639, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret3P1: {fileID: -2720884576249296340, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  movementLogicP1: {fileID: 670826532}
+  dynamicGridSelectorP1: {fileID: 519420034}
   move2: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret1P2: {fileID: -3269377568202801211, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret2P2: {fileID: 4181767097764530651, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret3P2: {fileID: -50812813300138823, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
-  gameManager: {fileID: 0}
-  movementLogicP1: {fileID: 670826532}
   movementLogicP2: {fileID: 245747021}
-  buyAndPlaceTurret: {fileID: 519420043}
-  dynamicGridSelectorP1: {fileID: 519420034}
   dynamicGridSelectorP2: {fileID: 519420036}
+  buyAndPlaceTurret: {fileID: 519420043}
   menu1open: 0
   menu2open: 0
 --- !u!1001 &297714516
@@ -3831,7 +3830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueTeam: 1
   waveTimer: {fileID: 737636672}
-  MaxTimeBetweenTroops: 2
+  MaxTimeBetweenTroops: 1
   waveNumber: 0
   MaxTroopCapacity: 15
   currentTroopCapacity: 0
@@ -3853,7 +3852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueTeam: 0
   waveTimer: {fileID: 737636672}
-  MaxTimeBetweenTroops: 2
+  MaxTimeBetweenTroops: 1
   waveNumber: 0
   MaxTroopCapacity: 15
   currentTroopCapacity: 0
@@ -5101,11 +5100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4995196563439000580, guid: 64c33c344f2335144aa58d97c5b5ecea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.97
       objectReference: {fileID: 0}
     - target: {fileID: 4995196563439000580, guid: 64c33c344f2335144aa58d97c5b5ecea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.07
       objectReference: {fileID: 0}
     - target: {fileID: 4995196563439000580, guid: 64c33c344f2335144aa58d97c5b5ecea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5138,6 +5137,10 @@ PrefabInstance:
     - target: {fileID: 4995196563439000580, guid: 64c33c344f2335144aa58d97c5b5ecea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890033427122004204, guid: 64c33c344f2335144aa58d97c5b5ecea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12616,6 +12619,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3464467087149340758, guid: 6272361ef5c002643b924432652d2946, type: 3}
   m_PrefabInstance: {fileID: 1366526336}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1368704982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1368704983}
+  - component: {fileID: 1368704984}
+  m_Layer: 0
+  m_Name: Towers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1368704983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368704982}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1368704984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368704982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62b2c20b56c4bb4ca5c190f18a4ddfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1376628551
 GameObject:
   m_ObjectHideFlags: 0
@@ -16924,3 +16971,4 @@ SceneRoots:
   - {fileID: 245747018}
   - {fileID: 3988126190461302655}
   - {fileID: 2123739882}
+  - {fileID: 1368704983}

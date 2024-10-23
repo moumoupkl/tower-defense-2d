@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4f54aabc47af48f4fa33d79ba134b246
+guid: 1ef38d612043f8f4fb7171930c93aec5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: archer_tower_0
+      name: tesla1.0-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c53fc3dc49eec841b0fb90a667a2fb7
-      internalID: 1175484896
+      spriteID: cbbe10fd8d845e748909587724b435dd
+      internalID: -1976253842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: archer_tower_1
+      name: tesla1.0-Sheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 186c990f9d720f5458c524576553ffd6
-      internalID: -1770234725
+      spriteID: ec8b46ceeb8720c409aba65e4cac24cd
+      internalID: 1800236700
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: archer_tower_2
+      name: tesla1.0-Sheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,8 +166,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32109c2508d0c4346a50a5b7bc1c0672
-      internalID: 569835602
+      spriteID: dbc72986799097b4ab8191cd26915ce9
+      internalID: 771935358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla1.0-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9948841bc5fa71240b605f38e42f8b5d
+      internalID: 1220293951
       vertices: []
       indices: 
       edges: []
@@ -183,9 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      archer_tower_0: 1175484896
-      archer_tower_1: -1770234725
-      archer_tower_2: 569835602
+      tesla1.0-Sheet_0: -1976253842
+      tesla1.0-Sheet_1: 1800236700
+      tesla1.0-Sheet_2: 771935358
+      tesla1.0-Sheet_3: 1220293951
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

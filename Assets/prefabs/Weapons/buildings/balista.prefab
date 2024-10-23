@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: -6387288546725819741}
   - component: {fileID: 6647077597974995211}
   - component: {fileID: 4000687458499976564}
-  - component: {fileID: 8215015086328387544}
   - component: {fileID: 7889800727733783089}
   m_Layer: 0
   m_Name: balista
@@ -206,7 +205,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &65986397816820227
@@ -238,10 +237,10 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.5
 --- !u!114 &111477996359910634
@@ -315,23 +314,6 @@ MonoBehaviour:
   redMaterial: {fileID: -876546973899608171, guid: f011de148964c2245bca06b0cc65fa7a, type: 3}
   objectsToChangeColor:
   - {fileID: 153911045023871067}
---- !u!114 &8215015086328387544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4927421271642273980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 634f26dbaf0378f4486c76e03264ffdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 1836312124, guid: 0094b8a2ded5ad94d93d301c743b12fd, type: 3}
-  - {fileID: 478728259, guid: 0094b8a2ded5ad94d93d301c743b12fd, type: 3}
-  - {fileID: 182341575, guid: 0094b8a2ded5ad94d93d301c743b12fd, type: 3}
-  - {fileID: -36451986, guid: 0094b8a2ded5ad94d93d301c743b12fd, type: 3}
 --- !u!114 &7889800727733783089
 MonoBehaviour:
   m_ObjectHideFlags: 0

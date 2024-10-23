@@ -32,7 +32,7 @@ public class FreezerShootBehaviour : ShootBehavior
             if (troupMovement != null)
             {
                 // Perform your action on the script
-                troupMovement.Slow(slowDuration, slowStrength); // Replace with the method you want to call
+                //troupMovement.Slow(slowDuration, slowStrength); // Replace with the method you want to call
             }
         }
     }

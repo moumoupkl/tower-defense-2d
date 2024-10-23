@@ -44,43 +44,45 @@ public class WaveHandler : MonoBehaviour
 
     public void AddTroop(GameObject troop)
     {
+        enemyStats enemyStats = troop.GetComponent<enemyStats>();
+
         if (blueTeam)
         {
-            if (gameManager.blueCoins < 2)
+            if (gameManager.blueCoins < enemyStats.price)
             {
+                Debug.Log("Not enough blue coins");
                 return;
             }
 
-            if (troop.GetComponent<enemyStats>().capacity + currentTroopCapacity > MaxTroopCapacity)
+            if (enemyStats.capacity + currentTroopCapacity > MaxTroopCapacity)
             {
+                Debug.Log("Not enough capacity for blue team");
                 return;
             }
 
-            gameManager.bluecoinsfloat -= troop.GetComponent<enemyStats>().price;
+            gameManager.bluecoinsfloat -= enemyStats.price;
             gameManager.blueCoinsPerSec += 0.05f;
-
-            currentTroopCapacity += troop.GetComponent<enemyStats>().capacity;
         }
         else
         {
-            if (gameManager.redCoins < 2)
+            if (gameManager.redCoins < enemyStats.price)
             {
+                Debug.Log("Not enough red coins");
                 return;
             }
-            gameManager.redcoinsfloat -= 2;
+
+            if (enemyStats.capacity + currentTroopCapacity > MaxTroopCapacity)
+            {
+                Debug.Log("Not enough capacity for red team");
+                return;
+            }
+
+            gameManager.redcoinsfloat -= enemyStats.price;
             gameManager.redCoinsPerSec += 0.05f;
         }
 
-        if (currentTroopCapacity + troop.GetComponent<enemyStats>().capacity <= MaxTroopCapacity)
-        {
-            troops.Add(troop);
-            enemyStats enemyStats = troop.GetComponent<enemyStats>();
-            currentTroopCapacity += enemyStats.capacity;
-        }
-        else
-        {
-            Debug.Log("Not enough capacity");
-        }
+        currentTroopCapacity += enemyStats.capacity;
+        troops.Add(troop);
     }
 
     public void RemoveTroop(GameObject troop)
