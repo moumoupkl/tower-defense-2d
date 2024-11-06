@@ -21,8 +21,6 @@ public class TroupMovement : MonoBehaviour
     // Private variables
     private float currentSpeed;
     private float startSpeed;
-    private float slowTimer;
-
     void Start()
     {
         // Get the main camera and the GameManager component
@@ -84,15 +82,9 @@ public class TroupMovement : MonoBehaviour
         // Handle slowing effect
         if (isSlowed)
         {
-            slowTimer += Time.deltaTime;
             currentSpeed = startSpeed * slowStrength;
-            Debug.Log($"Slowed: currentSpeed = {currentSpeed}, slowTimer = {slowTimer}");
-            if (slowTimer >= slowTime)
-            {
-                isSlowed = false;
-                slowTimer = 0; // Reset slow timer
-                Debug.Log("Slow effect ended.");
-            }
+            Debug.Log($"Slowed: currentSpeed = {currentSpeed}");
+
         }
         else
         {
@@ -157,13 +149,11 @@ public class TroupMovement : MonoBehaviour
         Debug.Log("Applying slow effect.");
         isSlowed = true;
         this.slowStrength = slowStrength;
-        slowTimer = 0; // Reset slow timer when slow is applied
     }
 
     public void SlowOff()
     {
         isSlowed = false;
-        slowTimer = 0; // Reset slow timer when slow is turned off
     }
 
     // Calculate the progress of the troop

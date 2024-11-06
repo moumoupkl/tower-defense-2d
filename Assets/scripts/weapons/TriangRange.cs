@@ -41,7 +41,6 @@ public class TriangRange : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerExit2D(Collider2D other)
     {
         // Retirer les ennemis qui sortent de la zone
@@ -52,7 +51,19 @@ public class TriangRange : MonoBehaviour
             if (troupMovement != null)
             {
                 troupMovements.Remove(troupMovement);
+                // Vérifie si freeze n'est pas null avant d'appeler SlowOff
+                if (freeze != null)
+                {
+                    // Appelle la fonction SlowOff après 2 secondes
+                    StartCoroutine(CallSlowOffAfterDelay(troupMovement, freeze.slowStrength, 2f));
+                }
             }
         }
+    }
+
+    private IEnumerator CallSlowOffAfterDelay(TroupMovement troupMovement, float slowStrength, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        troupMovement.SlowOff();
     }
 }

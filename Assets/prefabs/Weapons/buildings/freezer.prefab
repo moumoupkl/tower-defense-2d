@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowDuration: 1.5
-  slowStrength: 0.1
+  slowStrength: 0.5
   target: {fileID: 0}
 --- !u!114 &2616546332662075035
 MonoBehaviour:

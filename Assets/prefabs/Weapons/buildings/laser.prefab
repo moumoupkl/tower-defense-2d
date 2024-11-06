@@ -202,8 +202,7 @@ GameObject:
   - component: {fileID: 82609098850773830}
   - component: {fileID: 3452732114884017971}
   - component: {fileID: 492404229070731662}
-  - component: {fileID: 7796959084597129576}
-  - component: {fileID: -5202086948739722200}
+  - component: {fileID: 7052192397201741912}
   m_Layer: 0
   m_Name: laser
   m_TagString: Weapon
@@ -315,7 +314,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &7796959084597129576
+--- !u!114 &7052192397201741912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,31 +323,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 4411097325702905010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35d3a9ddf100a6d42b04948f21a972f0, type: 3}
+  m_Script: {fileID: 11500000, guid: f26dd75b6a9120244afea4c5be6e36be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootBehavior: {fileID: 0}
-  range: 4
-  rangeIndicator: {fileID: 1641344447870892478}
   gameManager: {fileID: 0}
   animator: {fileID: 633221223319180929}
-  hover: 0
-  fireCooldown: 0.5
-  gun: {fileID: 652430019637556253}
---- !u!114 &-5202086948739722200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4411097325702905010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a5d6fa82a0d4d4a8fb9159d2b94b0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 0}
-  firePoint: {fileID: 0}
+  constructionTime: 2
+  objectStats: {fileID: 0}
+  range: 10
+  rangeIndicator: {fileID: 1641344447870892478}
+  targetEnemy: {fileID: 0}
+  aimingAtEnnemy: 0
+  teamHover: 0
+  aimingAtClosestEnnemy: 0
+  shootBehavior: {fileID: 0}
+  fireCooldown: 1
+  damage: 1
 --- !u!1 &5757122732303161028
 GameObject:
   m_ObjectHideFlags: 0
