@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WaveHandler : MonoBehaviour
 {
+    public troopCard troopCard;
     public bool blueTeam;
     public Wavetimer waveTimer;
     public float MaxTimeBetweenTroops;
@@ -45,7 +46,6 @@ public class WaveHandler : MonoBehaviour
 
     public void AddTroop(GameObject troop)
     {
-
         enemyStats enemyStats = troop.GetComponent<enemyStats>();
 
         if (blueTeam)
@@ -87,6 +87,7 @@ public class WaveHandler : MonoBehaviour
 
         currentTroopCapacity += enemyStats.capacity;
         troops.Add(troop);
+        troopCard.spawn_card(troop);
     }
 
     public void RemoveTroop(GameObject troop)
@@ -120,11 +121,11 @@ public class WaveHandler : MonoBehaviour
         for (int i = 0; i < troopLength; i++)
         {
             Debug.Log("Spawning troop " + (i + 1) + " of " + troopLength);
-            objectSpawner.SpawnTroops(troops[i], blueTeam);
+            objectSpawner.SpawnTroops(troops[0], blueTeam);
+            troops.RemoveAt(0);
             yield return new WaitForSeconds(spawnInterval);
         }
 
-        troops = new List<GameObject>();
         wavestarted = false;
     }
 }

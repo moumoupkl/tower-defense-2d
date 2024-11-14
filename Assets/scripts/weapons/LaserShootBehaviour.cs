@@ -41,11 +41,11 @@ public class LaserShootBehaviour : MonoBehaviour
         {
             if (hit.collider != null && hit.collider.CompareTag("Enemy"))
             {
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
+                /* Enemy enemy = hit.collider.GetComponent<Enemy>();
                 if (enemy != null)
                 {
                     enemy.TakeDamage(laserDamage);
-                }
+                }*/
             }
         }
     }
