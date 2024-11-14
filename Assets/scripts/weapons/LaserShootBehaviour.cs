@@ -4,44 +4,43 @@ using UnityEngine;
 
 public class LaserShootBehaviour : MonoBehaviour
 {
-    private TurretController turretController;
+    private CDDamageDower CDdamageTower;
     public Transform target;
-    public float laserDamage = 10f;
+    public int laserDamage = 10;
     public LineRenderer laserLine;
 
     // Start is called before the first frame update
     void Start()
     {
-        turretController = GetComponent<TurretController>();
+        CDdamageTower = GetComponent<CDDamageDower>();
         laserLine = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        target = turretController.targetEnemy;
-        if (target != null)
-        {
-            ShootLaser();
-        }
-        else
-        {
-            laserLine.enabled = false;
-        }
+
     }
 
-    void ShootLaser()
+    public void ShootLaser()
     {
         laserLine.enabled = true;
         laserLine.SetPosition(0, transform.position);
-        laserLine.SetPosition(1, target.position);
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, target.position - transform.position);
+        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 screenEdge = Camera.main.ScreenToWorldPoint(new Vector3(
+            direction.x > 0 ? Screen.width : 0,
+            direction.y > 0 ? Screen.height : 0,
+            Camera.main.nearClipPlane));
+
+        laserLine.SetPosition(1, screenEdge);
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, direction);
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider != null && hit.collider.CompareTag("Enemy"))
             {
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
+                enemyStats enemy = hit.collider.GetComponent<enemyStats>();
                 if (enemy != null)
                 {
                     enemy.TakeDamage(laserDamage);

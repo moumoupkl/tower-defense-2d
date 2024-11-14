@@ -64,6 +64,15 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""buy tower 4 p1"",
+                    ""type"": ""Button"",
+                    ""id"": ""bdc2fb4c-93aa-4425-9f72-0d3bbd682b2c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""buy troupe 1 p1"",
                     ""type"": ""Button"",
                     ""id"": ""b18f3781-ecd6-4004-b7f2-9fcf8a3fa145"",
@@ -121,6 +130,15 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""name"": ""buy tower 3 p2"",
                     ""type"": ""Button"",
                     ""id"": ""598df116-b0d6-46ca-a568-2d6c0c00f947"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""buy tower 4 p2"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee17d245-4196-4c7d-8650-d4f46c6c9ba4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -528,6 +546,28 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
                     ""action"": ""open towers p2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea10adfc-2521-4aa5-86d0-b05f34d7f354"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""buy tower 4 p1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b91a3b7-eee7-46fe-8fdd-8372bfbc5967"",
+                    ""path"": ""<Keyboard>/alt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""buy tower 4 p2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -563,6 +603,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         m_Gameplay_buytower1p1 = m_Gameplay.FindAction("buy tower 1 p1", throwIfNotFound: true);
         m_Gameplay_buytower2p1 = m_Gameplay.FindAction("buy tower 2  p1", throwIfNotFound: true);
         m_Gameplay_buytower3p1 = m_Gameplay.FindAction("buy tower 3 p1", throwIfNotFound: true);
+        m_Gameplay_buytower4p1 = m_Gameplay.FindAction("buy tower 4 p1", throwIfNotFound: true);
         m_Gameplay_buytroupe1p1 = m_Gameplay.FindAction("buy troupe 1 p1", throwIfNotFound: true);
         m_Gameplay_buytroupe2p1 = m_Gameplay.FindAction("buy troupe 2 p1", throwIfNotFound: true);
         m_Gameplay_opentowersp1 = m_Gameplay.FindAction("open towers p1", throwIfNotFound: true);
@@ -570,6 +611,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         m_Gameplay_buytower1p2 = m_Gameplay.FindAction("buy tower 1 p2", throwIfNotFound: true);
         m_Gameplay_buytower2p2 = m_Gameplay.FindAction("buy tower 2 p2", throwIfNotFound: true);
         m_Gameplay_buytower3p2 = m_Gameplay.FindAction("buy tower 3 p2", throwIfNotFound: true);
+        m_Gameplay_buytower4p2 = m_Gameplay.FindAction("buy tower 4 p2", throwIfNotFound: true);
         m_Gameplay_buytroupe1p2 = m_Gameplay.FindAction("buy troupe 1 p2", throwIfNotFound: true);
         m_Gameplay_buytroupe2p2 = m_Gameplay.FindAction("buy troupe 2 p2", throwIfNotFound: true);
         m_Gameplay_opentowersp2 = m_Gameplay.FindAction("open towers p2", throwIfNotFound: true);
@@ -638,6 +680,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_buytower1p1;
     private readonly InputAction m_Gameplay_buytower2p1;
     private readonly InputAction m_Gameplay_buytower3p1;
+    private readonly InputAction m_Gameplay_buytower4p1;
     private readonly InputAction m_Gameplay_buytroupe1p1;
     private readonly InputAction m_Gameplay_buytroupe2p1;
     private readonly InputAction m_Gameplay_opentowersp1;
@@ -645,6 +688,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_buytower1p2;
     private readonly InputAction m_Gameplay_buytower2p2;
     private readonly InputAction m_Gameplay_buytower3p2;
+    private readonly InputAction m_Gameplay_buytower4p2;
     private readonly InputAction m_Gameplay_buytroupe1p2;
     private readonly InputAction m_Gameplay_buytroupe2p2;
     private readonly InputAction m_Gameplay_opentowersp2;
@@ -656,6 +700,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         public InputAction @buytower1p1 => m_Wrapper.m_Gameplay_buytower1p1;
         public InputAction @buytower2p1 => m_Wrapper.m_Gameplay_buytower2p1;
         public InputAction @buytower3p1 => m_Wrapper.m_Gameplay_buytower3p1;
+        public InputAction @buytower4p1 => m_Wrapper.m_Gameplay_buytower4p1;
         public InputAction @buytroupe1p1 => m_Wrapper.m_Gameplay_buytroupe1p1;
         public InputAction @buytroupe2p1 => m_Wrapper.m_Gameplay_buytroupe2p1;
         public InputAction @opentowersp1 => m_Wrapper.m_Gameplay_opentowersp1;
@@ -663,6 +708,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         public InputAction @buytower1p2 => m_Wrapper.m_Gameplay_buytower1p2;
         public InputAction @buytower2p2 => m_Wrapper.m_Gameplay_buytower2p2;
         public InputAction @buytower3p2 => m_Wrapper.m_Gameplay_buytower3p2;
+        public InputAction @buytower4p2 => m_Wrapper.m_Gameplay_buytower4p2;
         public InputAction @buytroupe1p2 => m_Wrapper.m_Gameplay_buytroupe1p2;
         public InputAction @buytroupe2p2 => m_Wrapper.m_Gameplay_buytroupe2p2;
         public InputAction @opentowersp2 => m_Wrapper.m_Gameplay_opentowersp2;
@@ -687,6 +733,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytower3p1.started += instance.OnBuytower3p1;
             @buytower3p1.performed += instance.OnBuytower3p1;
             @buytower3p1.canceled += instance.OnBuytower3p1;
+            @buytower4p1.started += instance.OnBuytower4p1;
+            @buytower4p1.performed += instance.OnBuytower4p1;
+            @buytower4p1.canceled += instance.OnBuytower4p1;
             @buytroupe1p1.started += instance.OnBuytroupe1p1;
             @buytroupe1p1.performed += instance.OnBuytroupe1p1;
             @buytroupe1p1.canceled += instance.OnBuytroupe1p1;
@@ -708,6 +757,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytower3p2.started += instance.OnBuytower3p2;
             @buytower3p2.performed += instance.OnBuytower3p2;
             @buytower3p2.canceled += instance.OnBuytower3p2;
+            @buytower4p2.started += instance.OnBuytower4p2;
+            @buytower4p2.performed += instance.OnBuytower4p2;
+            @buytower4p2.canceled += instance.OnBuytower4p2;
             @buytroupe1p2.started += instance.OnBuytroupe1p2;
             @buytroupe1p2.performed += instance.OnBuytroupe1p2;
             @buytroupe1p2.canceled += instance.OnBuytroupe1p2;
@@ -733,6 +785,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytower3p1.started -= instance.OnBuytower3p1;
             @buytower3p1.performed -= instance.OnBuytower3p1;
             @buytower3p1.canceled -= instance.OnBuytower3p1;
+            @buytower4p1.started -= instance.OnBuytower4p1;
+            @buytower4p1.performed -= instance.OnBuytower4p1;
+            @buytower4p1.canceled -= instance.OnBuytower4p1;
             @buytroupe1p1.started -= instance.OnBuytroupe1p1;
             @buytroupe1p1.performed -= instance.OnBuytroupe1p1;
             @buytroupe1p1.canceled -= instance.OnBuytroupe1p1;
@@ -754,6 +809,9 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
             @buytower3p2.started -= instance.OnBuytower3p2;
             @buytower3p2.performed -= instance.OnBuytower3p2;
             @buytower3p2.canceled -= instance.OnBuytower3p2;
+            @buytower4p2.started -= instance.OnBuytower4p2;
+            @buytower4p2.performed -= instance.OnBuytower4p2;
+            @buytower4p2.canceled -= instance.OnBuytower4p2;
             @buytroupe1p2.started -= instance.OnBuytroupe1p2;
             @buytroupe1p2.performed -= instance.OnBuytroupe1p2;
             @buytroupe1p2.canceled -= instance.OnBuytroupe1p2;
@@ -804,6 +862,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         void OnBuytower1p1(InputAction.CallbackContext context);
         void OnBuytower2p1(InputAction.CallbackContext context);
         void OnBuytower3p1(InputAction.CallbackContext context);
+        void OnBuytower4p1(InputAction.CallbackContext context);
         void OnBuytroupe1p1(InputAction.CallbackContext context);
         void OnBuytroupe2p1(InputAction.CallbackContext context);
         void OnOpentowersp1(InputAction.CallbackContext context);
@@ -811,6 +870,7 @@ public partial class @Inputsystem: IInputActionCollection2, IDisposable
         void OnBuytower1p2(InputAction.CallbackContext context);
         void OnBuytower2p2(InputAction.CallbackContext context);
         void OnBuytower3p2(InputAction.CallbackContext context);
+        void OnBuytower4p2(InputAction.CallbackContext context);
         void OnBuytroupe1p2(InputAction.CallbackContext context);
         void OnBuytroupe2p2(InputAction.CallbackContext context);
         void OnOpentowersp2(InputAction.CallbackContext context);

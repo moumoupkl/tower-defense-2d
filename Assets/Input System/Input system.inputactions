@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "buy tower 4 p1",
+                    "type": "Button",
+                    "id": "bdc2fb4c-93aa-4425-9f72-0d3bbd682b2c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "buy troupe 1 p1",
                     "type": "Button",
                     "id": "b18f3781-ecd6-4004-b7f2-9fcf8a3fa145",
@@ -99,6 +108,15 @@
                     "name": "buy tower 3 p2",
                     "type": "Button",
                     "id": "598df116-b0d6-46ca-a568-2d6c0c00f947",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "buy tower 4 p2",
+                    "type": "Button",
+                    "id": "ee17d245-4196-4c7d-8650-d4f46c6c9ba4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -504,6 +522,28 @@
                     "processors": "",
                     "groups": "keyboard",
                     "action": "open towers p2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea10adfc-2521-4aa5-86d0-b05f34d7f354",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "buy tower 4 p1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b91a3b7-eee7-46fe-8fdd-8372bfbc5967",
+                    "path": "<Keyboard>/alt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "buy tower 4 p2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

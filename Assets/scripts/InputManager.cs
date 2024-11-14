@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     public InputActionReference buyTurret1P1;
     public InputActionReference buyTurret2P1;
     public InputActionReference buyTurret3P1;
+    public InputActionReference buyTurret4P1;
     public MovementLogic movementLogicP1;
     public DynamicGridSelector dynamicGridSelectorP1;
 
@@ -16,6 +17,7 @@ public class InputManager : MonoBehaviour
     public InputActionReference buyTurret1P2;
     public InputActionReference buyTurret2P2;
     public InputActionReference buyTurret3P2;
+    public InputActionReference buyTurret4P2;
     public MovementLogic movementLogicP2;
     public DynamicGridSelector dynamicGridSelectorP2;
 
@@ -40,11 +42,14 @@ public class InputManager : MonoBehaviour
         buyTurret1P1.action.performed += OnBuyTurret1P1;
         buyTurret2P1.action.performed += OnBuyTurret2P1;
         buyTurret3P1.action.performed += OnBuyTurret3P1;
+        buyTurret4P1.action.performed += OnBuyTurret4P1;
 
         move2.action.performed += OnMove2;
         buyTurret1P2.action.performed += OnBuyTurret1P2;
         buyTurret2P2.action.performed += OnBuyTurret2P2;
         buyTurret3P2.action.performed += OnBuyTurret3P2;
+        buyTurret4P2.action.performed += OnBuyTurret4P2;
+
     }
 
     void Update()
@@ -107,6 +112,12 @@ public class InputManager : MonoBehaviour
         buyAndPlaceTurret.OnBuyActionPerformed(2, true, lastSelectedObject); // Assuming turret type 2 for blue team
     }
 
+    private void OnBuyTurret4P1(InputAction.CallbackContext context)
+    {
+        GameObject lastSelectedObject = dynamicGridSelectorP1.GetLastSelectedObject();
+        buyAndPlaceTurret.OnBuyActionPerformed(3, true, lastSelectedObject); // Assuming turret type 2 for blue team
+    }
+
     private void OnMove2(InputAction.CallbackContext context)
     {
         if (movementLogicP2 == null)
@@ -136,5 +147,11 @@ public class InputManager : MonoBehaviour
     {
         GameObject lastSelectedObject = dynamicGridSelectorP2.GetLastSelectedObject();
         buyAndPlaceTurret.OnBuyActionPerformed(2, false, lastSelectedObject); // Assuming turret type 2 for red team
+    }
+
+    private void OnBuyTurret4P2(InputAction.CallbackContext context)
+    {
+        GameObject lastSelectedObject = dynamicGridSelectorP2.GetLastSelectedObject();
+        buyAndPlaceTurret.OnBuyActionPerformed(3, false, lastSelectedObject); // Assuming turret type 2 for red team
     }
 }

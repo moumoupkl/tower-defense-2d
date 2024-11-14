@@ -2334,12 +2334,14 @@ MonoBehaviour:
   buyTurret1P1: {fileID: 311487145620473931, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret2P1: {fileID: -4437109822688778639, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret3P1: {fileID: -2720884576249296340, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  buyTurret4P1: {fileID: 0}
   movementLogicP1: {fileID: 670826532}
   dynamicGridSelectorP1: {fileID: 519420034}
   move2: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret1P2: {fileID: -3269377568202801211, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret2P2: {fileID: 4181767097764530651, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret3P2: {fileID: -50812813300138823, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
+  buyTurret4P2: {fileID: 0}
   movementLogicP2: {fileID: 245747021}
   dynamicGridSelectorP2: {fileID: 519420036}
   buyAndPlaceTurret: {fileID: 519420043}
@@ -3838,6 +3840,7 @@ MonoBehaviour:
   wavestarted: 0
   objectSpawner: {fileID: 291955502}
   troops: []
+  troup_order: {fileID: 0}
 --- !u!114 &519420038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3860,6 +3863,7 @@ MonoBehaviour:
   wavestarted: 0
   objectSpawner: {fileID: 291955502}
   troops: []
+  troup_order: {fileID: 0}
 --- !u!114 &519420039
 MonoBehaviour:
   m_ObjectHideFlags: 0
