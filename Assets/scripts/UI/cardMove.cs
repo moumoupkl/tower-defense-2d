@@ -4,40 +4,69 @@ using UnityEngine;
 
 public class cardMove : MonoBehaviour
 {
-    public float speed;
-    public float accelerationSpeed;
+    public float accelerationDuration;
+    public float duration;
+    private Coroutine moveCoroutine;
 
     /// <summary>
-    /// Smoothly moves the card to the final position with adjustable acceleration and deceleration.
+    /// Smoothly moves the card to the final position within a specified duration with adjustable acceleration.
     /// </summary>
     /// <param name="finalPosition">The target position to move the card to.</param>
-    public void move_card(Transform finalPosition)
+    public void move_card(Vector3 finalPosition)
     {
-        StartCoroutine(MoveCardCoroutine(finalPosition, speed, accelerationSpeed));
+        if (accelerationDuration * 2 > duration)
+        {
+            Debug.LogError("Acceleration duration must be at least half of the total duration.");
+            return;
+        }
+
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+        }
+
+        moveCoroutine = StartCoroutine(MoveCardCoroutine(finalPosition));
     }
 
-    private IEnumerator MoveCardCoroutine(Transform finalPosition, float speed, float accelerationSpeed)
+    private IEnumerator MoveCardCoroutine(Vector3 finalPosition)
     {
-        Debug.Log("Moving card");
         Vector3 startPosition = transform.position;
-        float journeyLength = Vector3.Distance(startPosition, finalPosition.position);
-        float startTime = Time.time;
+        float elapsedTime = 0f;
 
-        while (Vector3.Distance(transform.position, finalPosition.position) > 0.01f)
+        // Acceleration phase
+        while (elapsedTime < accelerationDuration)
         {
-            float timeElapsed = (Time.time - startTime) * speed;
-            float fractionOfJourney = timeElapsed / journeyLength;
-            float easedFraction = EaseInOutQuad(fractionOfJourney, accelerationSpeed);
-            transform.position = Vector3.Lerp(startPosition, finalPosition.position, easedFraction);
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / accelerationDuration;
+            transform.position = Vector3.Lerp(startPosition, finalPosition, Mathf.SmoothStep(0, 1, t));
             yield return null;
         }
 
-        transform.position = finalPosition.position;
-    }
+        // Constant speed phase
+        float constantSpeedDuration = duration - 2 * accelerationDuration;
+        elapsedTime = 0f;
+        Vector3 midPosition = transform.position;
+        while (elapsedTime < constantSpeedDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / constantSpeedDuration;
+            transform.position = Vector3.Lerp(midPosition, finalPosition, t);
+            yield return null;
+        }
 
-    private float EaseInOutQuad(float t, float accelerationSpeed)
-    {
-        t = Mathf.Clamp01(t * accelerationSpeed);
-        return t < 0.5f ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        // Deceleration phase
+        elapsedTime = 0f;
+        Vector3 decelerationStartPosition = transform.position;
+        while (elapsedTime < accelerationDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / accelerationDuration;
+            transform.position = Vector3.Lerp(decelerationStartPosition, finalPosition, Mathf.SmoothStep(0, 1, t));
+            yield return null;
+        }
+
+        // Ensure the final position is exactly the target position
+        transform.position = finalPosition;
+        moveCoroutine = null;
     }
 }

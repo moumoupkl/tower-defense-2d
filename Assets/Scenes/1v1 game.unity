@@ -2457,7 +2457,8 @@ MonoBehaviour:
   card: {fileID: 6977204111667535135, guid: 8daaa28edce3f6444a02e9313528554d, type: 3}
   maxHeight: {fileID: 0}
   minHeight: {fileID: 0}
-  maxDistanceBetweenCards: 1
+  maxDistanceBetweenCards: 1.1
+  distanceBetweenCards: 0
   spawnPosition: {fileID: 0}
   cards: []
 --- !u!1 &312343172
@@ -3320,8 +3321,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -226.3, y: 0}
-  m_SizeDelta: {x: -452.61, y: 20}
+  m_AnchoredPosition: {x: -290, y: 0}
+  m_SizeDelta: {x: -580, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &439402727
 MonoBehaviour:
@@ -3779,11 +3780,11 @@ MonoBehaviour:
   blueCoins: 0
   blueCoinsPerSec: 0
   bluecoinsfloat: 0
-  bluePV: 100
+  bluePV: 10000
   redCoins: 0
   redCoinsPerSec: 0
   redcoinsfloat: 0
-  redPV: 100
+  redPV: 10000
   startingCoins: 3400
   startingCoinsPerSec: 2
   Winner: {fileID: 126528329}
@@ -4077,7 +4078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 441, y: 254}
+  m_AnchoredPosition: {x: 463, y: 254}
   m_SizeDelta: {x: 82.725, y: 42.0923}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &523940289
@@ -4129,8 +4130,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4275,8 +4276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 226.3, y: -0.000009059906}
-  m_SizeDelta: {x: -452.61, y: 20}
+  m_AnchoredPosition: {x: 290, y: 0}
+  m_SizeDelta: {x: -580, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &528883122
 MonoBehaviour:
@@ -4838,6 +4839,7 @@ MonoBehaviour:
   maxHeight: {fileID: 0}
   minHeight: {fileID: 0}
   maxDistanceBetweenCards: 0
+  distanceBetweenCards: 0
   spawnPosition: {fileID: 0}
   cards: []
 --- !u!1 &619372817
@@ -4905,7 +4907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -196, y: 254.00002}
+  m_AnchoredPosition: {x: -169.7, y: 254.00002}
   m_SizeDelta: {x: 82.725, y: 42.0923}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &621225295
@@ -4957,8 +4959,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6170,6 +6172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 792077596}
   - component: {fileID: 792077597}
+  - component: {fileID: 792077598}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -6235,6 +6238,19 @@ MonoBehaviour:
     volume: 0.8
     loop: 0
     source: {fileID: 0}
+--- !u!114 &792077598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792077595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4cc10f861bbc904d8ac303edd4a5e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 0
 --- !u!1001 &812832615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13445,8 +13461,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13798,8 +13814,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14226,7 +14242,8 @@ MonoBehaviour:
   card: {fileID: 6977204111667535135, guid: 8daaa28edce3f6444a02e9313528554d, type: 3}
   maxHeight: {fileID: 0}
   minHeight: {fileID: 0}
-  maxDistanceBetweenCards: 1
+  maxDistanceBetweenCards: 1.5
+  distanceBetweenCards: 0
   spawnPosition: {fileID: 0}
   cards: []
 --- !u!1 &1619150799

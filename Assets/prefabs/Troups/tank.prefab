@@ -301,7 +301,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   price: 4
   reward: 2
-  capacity: 0
+  capacity: 2
   explosion: {fileID: 5567741904827571220, guid: 80142aee67d25654ab91d139f3f868e3, type: 3}
   flashDuration: 0.1
   blueTeam: 0

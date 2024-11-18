@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 6174286827662104791, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
       value: weapon picker (2)
@@ -153,6 +157,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6174286827662104791, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
       value: weapon picker (5)
@@ -215,6 +223,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
       objectReference: {fileID: 0}
+    - target: {fileID: 6174286827662104791, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
       value: weapon picker (3)
@@ -276,6 +288,10 @@ PrefabInstance:
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174286827662104791, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
@@ -343,6 +359,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6174286827662104791, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
       value: weapon picker (7)
@@ -409,6 +429,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6174286827662104791, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
       value: weapon picker (6)
@@ -470,6 +494,10 @@ PrefabInstance:
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174286827662104791, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
@@ -536,6 +564,10 @@ PrefabInstance:
     - target: {fileID: 6174286827662104791, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_FlipX
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174286827662104791, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
