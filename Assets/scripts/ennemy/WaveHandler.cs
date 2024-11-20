@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WaveHandler : MonoBehaviour
 {
+    public troopCard troopCard;
     public bool blueTeam;
     public Wavetimer waveTimer;
     public float MaxTimeBetweenTroops;
@@ -33,7 +34,6 @@ public class WaveHandler : MonoBehaviour
     {
         if (waveTimer.spawnPhase && !wavestarted)
         {
-            Debug.Log("wave started");
             StartCoroutine(spawnWave());
             wavestarted = true;
         }
@@ -45,11 +45,16 @@ public class WaveHandler : MonoBehaviour
 
     public void AddTroop(GameObject troop)
     {
-
         enemyStats enemyStats = troop.GetComponent<enemyStats>();
 
         if (blueTeam)
         {
+            if (waveTimer.spawnPhase == true)
+            {
+                Debug.Log("Cannot add troops during wave phase");
+                return;
+            }
+
             if (gameManager.blueCoins < enemyStats.price)
             {
                 Debug.Log("Not enough blue coins");
@@ -69,6 +74,12 @@ public class WaveHandler : MonoBehaviour
         }
         else
         {
+            if (waveTimer.spawnPhase == true)
+            {
+                Debug.Log("Cannot add troops during wave phase");
+                return;
+            }
+
             if (gameManager.redCoins < enemyStats.price)
             {
                 Debug.Log("Not enough red coins");
@@ -87,6 +98,7 @@ public class WaveHandler : MonoBehaviour
 
         currentTroopCapacity += enemyStats.capacity;
         troops.Add(troop);
+        troopCard.spawn_card(troop);
     }
 
     public void RemoveTroop(GameObject troop)
@@ -105,11 +117,10 @@ public class WaveHandler : MonoBehaviour
 
     public IEnumerator spawnWave()
     {
-        Debug.Log("Spawning wave with " + troops.Count + " troops.");
+        //Debug.Log("Spawning wave with " + troops.Count + " troops.");
 
         if (troops.Count == 0)
         {
-            Debug.LogWarning("No troops to spawn.");
             yield break;
         }
 
@@ -119,12 +130,14 @@ public class WaveHandler : MonoBehaviour
         troopLength = troops.Count;
         for (int i = 0; i < troopLength; i++)
         {
-            Debug.Log("Spawning troop " + (i + 1) + " of " + troopLength);
-            objectSpawner.SpawnTroops(troops[i], blueTeam);
+            //Debug.Log("Spawning troop " + (i + 1) + " of " + troopLength);
+            objectSpawner.SpawnTroops(troops[0], blueTeam);
+            troops.RemoveAt(0);
+            //remove the visual card from the troopCard script
+            troopCard.remove_card(0);
             yield return new WaitForSeconds(spawnInterval);
         }
 
-        troops = new List<GameObject>();
         wavestarted = false;
     }
 }
