@@ -46,6 +46,8 @@ public class DynamicGridSelector : MonoBehaviour
 
     public void HandleMovement(Vector2 moveDirection)//handle the movement of the selection object
     {
+        if (!this.enabled) return; // Check if the script is active
+
         inputTimer -= Time.deltaTime;
 
         Vector2 direction = GetMovementDirection(moveDirection);

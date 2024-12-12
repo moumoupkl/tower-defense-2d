@@ -30,13 +30,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6419738564999419246}
-  - {fileID: 8459249996983322100}
-  - {fileID: 4863462293031762576}
-  - {fileID: 5537214064079609876}
-  - {fileID: 2842998629443381168}
-  - {fileID: 4626892493614937827}
-  - {fileID: 7194139507988856813}
   - {fileID: 6890744439723911218}
+  - {fileID: 5537214064079609876}
+  - {fileID: 7194139507988856813}
+  - {fileID: 4863462293031762576}
+  - {fileID: 4626892493614937827}
+  - {fileID: 8459249996983322100}
+  - {fileID: 2842998629443381168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &138482704602064214
@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
-      value: weapon picker (2)
+      value: weapon picker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -127,19 +127,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.38268346
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0.9238795
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -163,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
-      value: weapon picker (5)
+      value: weapon picker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
-      value: weapon picker (3)
+      value: weapon picker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -329,11 +329,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.7071068
+      value: -0.9238795
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.y
@@ -341,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0.38268346
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -365,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
-      value: weapon picker (7)
+      value: weapon picker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -399,19 +399,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -435,7 +435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
-      value: weapon picker (6)
+      value: weapon picker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -501,7 +501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
-      value: weapon picker (1)
+      value: weapon picker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -535,19 +535,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 4797882235984109510, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -571,7 +571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549440952619951383, guid: 175875b680eb90f4c8726d8e3c6fd355, type: 3}
       propertyPath: m_Name
-      value: weapon picker (4)
+      value: weapon picker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

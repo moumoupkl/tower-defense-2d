@@ -9,7 +9,6 @@ public class InputManager : MonoBehaviour
     public InputActionReference buyTurret2P1;
     public InputActionReference buyTurret3P1;
     public InputActionReference buyTurret4P1;
-    public MovementLogic movementLogicP1;
     public DynamicGridSelector dynamicGridSelectorP1;
 
     [Header("Player2")]
@@ -18,7 +17,6 @@ public class InputManager : MonoBehaviour
     public InputActionReference buyTurret2P2;
     public InputActionReference buyTurret3P2;
     public InputActionReference buyTurret4P2;
-    public MovementLogic movementLogicP2;
     public DynamicGridSelector dynamicGridSelectorP2;
 
     [Header("buy and place turret script")]
@@ -42,13 +40,13 @@ public class InputManager : MonoBehaviour
         buyTurret1P1.action.performed += OnBuyTurret1P1;
         buyTurret2P1.action.performed += OnBuyTurret2P1;
         buyTurret3P1.action.performed += OnBuyTurret3P1;
-        buyTurret4P1.action.performed += OnBuyTurret4P1;
+        //buyTurret4P1.action.performed += OnBuyTurret4P1;
 
         move2.action.performed += OnMove2;
         buyTurret1P2.action.performed += OnBuyTurret1P2;
         buyTurret2P2.action.performed += OnBuyTurret2P2;
         buyTurret3P2.action.performed += OnBuyTurret3P2;
-        buyTurret4P2.action.performed += OnBuyTurret4P2;
+        //buyTurret4P2.action.performed += OnBuyTurret4P2;
 
     }
 
@@ -83,14 +81,8 @@ public class InputManager : MonoBehaviour
 
     private void OnMove1(InputAction.CallbackContext context)
     {
-        if (movementLogicP1 == null)
-        {
-            Debug.LogError("movementLogicP1 is not assigned.");
-            return;
-        }
-
         Vector2 movement = context.ReadValue<Vector2>();
-        movementLogicP1.HandleMovement(movement);
+
         dynamicGridSelectorP1.HandleMovement(movement);
     }
 
@@ -120,14 +112,7 @@ public class InputManager : MonoBehaviour
 
     private void OnMove2(InputAction.CallbackContext context)
     {
-        if (movementLogicP2 == null)
-        {
-            Debug.LogError("movementLogicP2 is not assigned.");
-            return;
-        }
-
         Vector2 movement = context.ReadValue<Vector2>();
-        movementLogicP2.HandleMovement(movement);
         dynamicGridSelectorP2.HandleMovement(movement);
     }
 

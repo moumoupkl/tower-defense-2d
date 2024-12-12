@@ -40,7 +40,7 @@ public class LaserShootBehaviour : MonoBehaviour
         {
             if (hit.collider != null && hit.collider.CompareTag("Enemy"))
             {
-
+                /*
                 if (enemy != null)
                 {
                     enemy.TakeDamage(laserDamage);

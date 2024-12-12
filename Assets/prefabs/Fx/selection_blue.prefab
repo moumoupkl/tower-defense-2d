@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5890033427122004204}
   - component: {fileID: 3156200366755435075}
   - component: {fileID: 8476107458880570381}
-  - component: {fileID: 1465237520742327681}
   m_Layer: 0
   m_Name: selection_blue
   m_TagString: Untagged
@@ -123,24 +122,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hover: 0
   child: {fileID: 2305605648657397552}
---- !u!114 &1465237520742327681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3327746968061140628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92a737abfd0a81444b80dfb8e56b86a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selection: {fileID: 0}
-  maxX: 5.5
-  minX: -4.5
-  maxY: 10.5
-  minY: 0.5
-  inputDelay: 0.5
 --- !u!1001 &8557922766011526185
 PrefabInstance:
   m_ObjectHideFlags: 0
