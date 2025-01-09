@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     public InputActionReference buyTurret3P1;
     public InputActionReference buyTurret4P1;
     public DynamicGridSelector dynamicGridSelectorP1;
+    public MenuSystem MenuSystemP1;
 
     [Header("Player2")]
     public InputActionReference move2;
@@ -18,6 +19,7 @@ public class InputManager : MonoBehaviour
     public InputActionReference buyTurret3P2;
     public InputActionReference buyTurret4P2;
     public DynamicGridSelector dynamicGridSelectorP2;
+    public MenuSystem MenuSystemP2;
 
     [Header("buy and place turret script")]
     private GameManager gameManager;
@@ -82,8 +84,8 @@ public class InputManager : MonoBehaviour
     private void OnMove1(InputAction.CallbackContext context)
     {
         Vector2 movement = context.ReadValue<Vector2>();
-
         dynamicGridSelectorP1.HandleMovement(movement);
+        MenuSystemP1.ChangePanel(movement);
     }
 
     private void OnBuyTurret1P1(InputAction.CallbackContext context)
@@ -110,10 +112,15 @@ public class InputManager : MonoBehaviour
         buyAndPlaceTurret.OnBuyActionPerformed(3, true, lastSelectedObject); // Assuming turret type 2 for blue team
     }
 
+
+
+
+
     private void OnMove2(InputAction.CallbackContext context)
     {
         Vector2 movement = context.ReadValue<Vector2>();
         dynamicGridSelectorP2.HandleMovement(movement);
+        MenuSystemP2.ChangePanel(movement);
     }
 
     private void OnBuyTurret1P2(InputAction.CallbackContext context)

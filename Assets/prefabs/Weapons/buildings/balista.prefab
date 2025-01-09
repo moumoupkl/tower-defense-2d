@@ -375,6 +375,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7816288656710204626, guid: 1d35bf4f197f610428cb77dad308c675, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9216520747371702387, guid: 1d35bf4f197f610428cb77dad308c675, type: 3}
       propertyPath: m_Name
       value: archer_tower

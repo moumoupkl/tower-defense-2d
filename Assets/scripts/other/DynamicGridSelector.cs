@@ -31,11 +31,11 @@ public class DynamicGridSelector : MonoBehaviour
 
     void Update()
     {
-        CheckAndCorrectSelectorPosition();
         CheckHoverState();
     }
 
-    private void InitializeSelection()//initialize the selection object
+    // Initializes the selection object by setting its position and hover state.
+    private void InitializeSelection()
     {
         inputTimer = 0;
         selection.transform.position = startingPoint.position;
@@ -44,7 +44,9 @@ public class DynamicGridSelector : MonoBehaviour
         SetHoverState(lastSelectedObject, true);
     }
 
-    public void HandleMovement(Vector2 moveDirection)//handle the movement of the selection object
+    // Handles the movement of the selection object based on the input direction.
+    // Input: Vector2 moveDirection - the direction in which to move the selection.
+    public void HandleMovement(Vector2 moveDirection)
     {
         if (!this.enabled) return; // Check if the script is active
 
@@ -61,7 +63,10 @@ public class DynamicGridSelector : MonoBehaviour
         if (direction == Vector2.zero) inputTimer = 0;
     }
 
-    private Vector2 GetMovementDirection(Vector2 moveDirection)//get the movement direction
+    // Determines the movement direction based on the input direction.
+    // Input: Vector2 moveDirection - the input direction.
+    // Output: Vector2 - the normalized movement direction.
+    private Vector2 GetMovementDirection(Vector2 moveDirection)
     {
         float horizontal = moveDirection.x;
         float vertical = moveDirection.y;
@@ -72,12 +77,16 @@ public class DynamicGridSelector : MonoBehaviour
         return new Vector2(horizontal, vertical).normalized;
     }
 
-    public GameObject GetLastSelectedObject() // get the last selected object
+    // Returns the last selected object.
+    // Output: GameObject - the last selected object.
+    public GameObject GetLastSelectedObject()
     {
         return lastSelectedObject;
     }
 
-    private void MoveSelection(Vector2 direction)//move the selection object
+    // Moves the selection object in the specified direction.
+    // Input: Vector2 direction - the direction in which to move the selection.
+    private void MoveSelection(Vector2 direction)
     {
         if (gameManager.pause || selection == null) return;
 
@@ -87,9 +96,24 @@ public class DynamicGridSelector : MonoBehaviour
 
         selection.transform.position = newPosition;
         currentPosition = newPosition;
+
+        CheckAndCorrectSelectorPosition();
     }
 
-    private GameObject GetObjectAtPosition(Vector2 position)//get the object at the position
+    // Checks and corrects the position of the selection object if it goes out of bounds.
+    private void CheckAndCorrectSelectorPosition()
+    {
+        if (selection.transform.position.x < minX || selection.transform.position.x > maxX ||
+            selection.transform.position.y < minY || selection.transform.position.y > maxY)
+        {
+            selection.transform.position = currentPosition;
+        }
+    }
+
+    // Gets the object at the specified position.
+    // Input: Vector2 position - the position to check for an object.
+    // Output: GameObject - the object at the position, or null if no object is found.
+    private GameObject GetObjectAtPosition(Vector2 position)
     {
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero);
         if (hit.collider != null && (hit.collider.CompareTag(tileTag) || hit.collider.CompareTag(weaponTag)))
@@ -99,7 +123,10 @@ public class DynamicGridSelector : MonoBehaviour
         return null;
     }
 
-    private void SetHoverState(GameObject obj, bool state)//set the hover state of the object
+    // Sets the hover state of the specified object.
+    // Input: GameObject obj - the object to set the hover state for.
+    //        bool state - the hover state to set (true for hover, false for not hover).
+    private void SetHoverState(GameObject obj, bool state)
     {
         if (obj == null) return;
 
@@ -110,17 +137,14 @@ public class DynamicGridSelector : MonoBehaviour
             else component.setHoversFalse();
         }
 
-        if (obj.CompareTag(tileTag))
+        if (obj.CompareTag(tileTag) && selector != null)
         {
-            // Set hover state of the selector
-            if (selector != null)
-            {
-                selector.hover = state;
-            }
+            selector.hover = state;
         }
     }
 
-    private void CheckHoverState()//check and update the hover state continuously
+    // Continuously checks and updates the hover state of the selection object.
+    private void CheckHoverState()
     {
         Vector2 newPosition = currentPosition;
         GameObject newSelectedObject = GetObjectAtPosition(newPosition);
@@ -130,15 +154,6 @@ public class DynamicGridSelector : MonoBehaviour
             SetHoverState(lastSelectedObject, false); // Unset hover state of the previous object
             lastSelectedObject = newSelectedObject;
             SetHoverState(lastSelectedObject, true); // Set hover state of the new object
-        }
-    }
-
-    private void CheckAndCorrectSelectorPosition()//check and correct the position of the selection object
-    {
-        if (selection.transform.position.x < minX || selection.transform.position.x > maxX ||
-            selection.transform.position.y < minY || selection.transform.position.y > maxY)
-        {
-            selection.transform.position = currentPosition;
         }
     }
 }

@@ -12,6 +12,7 @@ public class MenuSystem : MonoBehaviour
     public DynamicGridSelector dynamicGridSelector;
     public InputActionReference openMenu;
     public int activePanel = 0;
+    private TroopsAndTowers troopsAndTowers;
 
     void Start()
     {
@@ -24,8 +25,11 @@ public class MenuSystem : MonoBehaviour
         {
             panels[i] = selectionMenu.transform.GetChild(i).gameObject;
         }
+        // get troops and towers script
+        troopsAndTowers = GetComponent<TroopsAndTowers>();
 
 
+        AddElements(troopsAndTowers.towerPrefabs);
     }
 
     void Update()
@@ -44,20 +48,82 @@ public class MenuSystem : MonoBehaviour
             dynamicGridSelector.enabled = true;
             selectionMenu.SetActive(false);
         }
-        //if enter is pressed, change the panel
-        if (Keyboard.current.enterKey.wasPressedThisFrame)
-        {
-            ChangePanel((activePanel + 1) % panels.Length);
-        }
     }
 
-    public void ChangePanel(int panel)
+    /// <summary>
+    /// Changes the active panel based on the given direction vector.
+    /// </summary>
+    /// <param name="direction">A Vector2 indicating the direction the player is pointing in. 
+    /// The direction vector will be normalized and rounded to the nearest integer.</param>
+    /// <remarks>
+    /// The direction vector can be one of the following:
+    /// - (0, 1) for up
+    /// - (1, 1) for up-right
+    /// - (1, 0) for right
+    /// - (1, -1) for down-right
+    /// - (0, -1) for down
+    /// - (-1, -1) for down-left
+    /// - (-1, 0) for left
+    /// - (-1, 1) for up-left
+    /// </remarks>
+    public void ChangePanel(Vector2 direction)
     {
-        //turn off the outline of the current panel
-        panels[activePanel].transform.Find("outline").gameObject.SetActive(false);
-        //turn on the outline of the new panel
-        panels[panel].transform.Find("outline").gameObject.SetActive(true);
-        //set the new panel as the active panel
-        activePanel = panel;
+        AddElements(troopsAndTowers.towerPrefabs);
+        int panel = -1;
+        //normalize the direction vector
+        direction = new Vector2(Mathf.Round(direction.x), Mathf.Round(direction.y));
+
+        if (direction == Vector2.up)
+            panel = 0;
+        else if (direction == new Vector2(1, 1))
+            panel = 1;
+        else if (direction == Vector2.right)
+            panel = 2;
+        else if (direction == new Vector2(1, -1))
+            panel = 3;
+        else if (direction == Vector2.down)
+            panel = 4;
+        else if (direction == new Vector2(-1, -1))
+            panel = 5;
+        else if (direction == Vector2.left)
+            panel = 6;
+        else if (direction == new Vector2(-1, 1))
+            panel = 7;
+
+        if (panel != -1)
+        {
+            //turn off the outline of the current panel
+            panels[activePanel].transform.Find("outline").gameObject.SetActive(false);
+            //turn on the outline of the new panel
+            panels[panel].transform.Find("outline").gameObject.SetActive(true);
+            //set the new panel as the active panel
+            activePanel = panel;
+        }
+        Debug.Log(direction);
+    }
+
+    public void AddElements(List<GameObject> elements)
+    {
+        for (int i = 0; i < elements.Count; i++)
+        {
+            if (i >= panels.Length)
+                break;
+
+            GameObject panel = panels[i];
+            Transform objectImageTransform = panel.transform.Find("object image");
+
+            if (objectImageTransform != null)
+            {
+                GameObject objectImage = objectImageTransform.gameObject;
+                SpriteRenderer spriteRenderer = objectImage.GetComponent<SpriteRenderer>();
+
+                if (spriteRenderer != null)
+                {
+                    spriteRenderer.sprite = elements[i].GetComponent<SpriteRenderer>().sprite;
+                    spriteRenderer.sortingOrder = panel.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                    objectImage.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
+        }
     }
 }

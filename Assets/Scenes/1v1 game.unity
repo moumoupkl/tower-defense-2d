@@ -2329,12 +2329,14 @@ MonoBehaviour:
   buyTurret3P1: {fileID: -2720884576249296340, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret4P1: {fileID: 0}
   dynamicGridSelectorP1: {fileID: 519420034}
+  MenuSystemP1: {fileID: 519420040}
   move2: {fileID: -1581325474765588544, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret1P2: {fileID: -3269377568202801211, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret2P2: {fileID: 4181767097764530651, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret3P2: {fileID: -50812813300138823, guid: 7ac2136a83c63164fbc239d7d7cd7fcb, type: 3}
   buyTurret4P2: {fileID: 0}
   dynamicGridSelectorP2: {fileID: 519420036}
+  MenuSystemP2: {fileID: 519420041}
   buyAndPlaceTurret: {fileID: 519420043}
   menu1open: 0
   menu2open: 0
@@ -3773,12 +3775,12 @@ MonoBehaviour:
   blueCoins: 0
   blueCoinsPerSec: 0
   bluecoinsfloat: 0
-  bluePV: 10000
+  bluePV: 100
   redCoins: 0
   redCoinsPerSec: 0
   redcoinsfloat: 0
-  redPV: 10000
-  startingCoins: 3400
+  redPV: 100
+  startingCoins: 100
   startingCoinsPerSec: 2
   Winner: {fileID: 126528329}
   gameover: {fileID: 1805112953}
@@ -17023,6 +17025,10 @@ PrefabInstance:
     - target: {fileID: 7194139507988856813, guid: b2e1173faeb9b9e448039060c7a2d7cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024324554736914839, guid: b2e1173faeb9b9e448039060c7a2d7cf, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8290034040564024408, guid: b2e1173faeb9b9e448039060c7a2d7cf, type: 3}
       propertyPath: m_LocalPosition.x
