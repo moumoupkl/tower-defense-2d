@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318226ea508e5914dbabf94cda719818, type: 3}
+  m_Name: CoilData
+  m_EditorClassIdentifier: 
+  range: 4
+  aimAngle: 360
+  attackSpeed: 0.2
+  rotationSpeed: 0
+  targetingPriority: 2
+  buildCost: 250
+  builTime: 5
+  sellValue: 150
+  maxUpgradeLevel: 3
+  canTargetAir: 0
+  canTargetGround: 1
+  isMultiShot: 0
+  multiShotCount: 3
+  isAoe: 1
+  aoeDamage: 30
+  projectilePrefab: {fileID: 3560568825590547721, guid: 7ee058f359d6e51489839c2387931cac, type: 3}

@@ -27,7 +27,7 @@ public class BuyAndPlaceTurret : MonoBehaviour
             if (CanAffordTurret(turretType, isBlueTeam))
             {
                 lastSelectedTile.activeConstruction = true;
-                int turretPrice = troopsAndTowers.towerPrefabs[turretType].GetComponent<Price>().price;
+                int turretPrice = GetTurretPrice(turretType);
                 gameManager.AddCoins(-turretPrice, isBlueTeam);
 
                 if (turretType >= 0 && turretType < troopsAndTowers.towerPrefabs.Count)
@@ -56,7 +56,17 @@ public class BuyAndPlaceTurret : MonoBehaviour
     private IEnumerator StartConstruction(Tile tile, GameObject turretPrefab, bool isBlueTeam)
     {
         // Set construction time to the construction time of the prefab
-        float constructionTime = turretPrefab.GetComponent<TowerControler>().constructionTime;
+        float constructionTime;
+        var towerControler = turretPrefab.GetComponent<TowerControler>();
+        if (towerControler != null)
+        {
+            constructionTime = towerControler.constructionTime;
+        }
+        else
+        {
+            var towerData = turretPrefab.GetComponent<Tower>().towerData;
+            constructionTime = towerData.builTime;
+        }
 
         // Set particle time to construction time of the prefab
         if (tile.particles != null)
@@ -83,14 +93,11 @@ public class BuyAndPlaceTurret : MonoBehaviour
         //put the turret as child of the Towers gameobject
         turretInstance.transform.parent = towers.transform;
 
-        //set the rendering order to -y position to the gameobject
-        turretInstance.GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-turretInstance.transform.position.y);
         //and its children if they have a sprite renderer
         foreach (SpriteRenderer sr in turretInstance.GetComponentsInChildren<SpriteRenderer>())
         {
             sr.sortingOrder = Mathf.RoundToInt(-turretInstance.transform.position.y);
         }
-
 
         // Mark tile as inactive after construction
         tile.activeConstruction = false;
@@ -99,7 +106,22 @@ public class BuyAndPlaceTurret : MonoBehaviour
 
     private bool CanAffordTurret(int turretType, bool isBlueTeam) // check if the player can afford the turret
     {
-        int turretPrice = troopsAndTowers.towerPrefabs[turretType].GetComponent<Price>().price;
+        int turretPrice = GetTurretPrice(turretType);
         return !gameManager.pause && (isBlueTeam ? gameManager.blueCoins >= turretPrice : gameManager.redCoins >= turretPrice);
+    }
+
+    private int GetTurretPrice(int turretType)
+    {
+        var turretPrefab = troopsAndTowers.towerPrefabs[turretType];
+        var priceComponent = turretPrefab.GetComponent<Price>();
+        if (priceComponent != null)
+        {
+            return priceComponent.price;
+        }
+        else
+        {
+            var towerData = turretPrefab.GetComponent<Tower>().towerData;
+            return towerData.buildCost;
+        }
     }
 }

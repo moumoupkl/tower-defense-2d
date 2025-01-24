@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1d930022f56894fbc0e63d64c638a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   particles: {fileID: 2278256178577447766, guid: 12d3d41155bc33d4ca03d3c0bec4dcfc, type: 3}
   activeConstruction: 0
   constructionTime: 0
   objectStats: {fileID: 0}
+  hideTiles: 1

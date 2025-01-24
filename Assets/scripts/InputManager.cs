@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     public InputActionReference buyTurret4P1;
     public DynamicGridSelector dynamicGridSelectorP1;
     public MenuSystem MenuSystemP1;
+    public bool menu1open;
+
 
     [Header("Player2")]
     public InputActionReference move2;
@@ -20,17 +22,11 @@ public class InputManager : MonoBehaviour
     public InputActionReference buyTurret4P2;
     public DynamicGridSelector dynamicGridSelectorP2;
     public MenuSystem MenuSystemP2;
+    public bool menu2open;
 
     [Header("buy and place turret script")]
     private GameManager gameManager;
-
-
     public BuyAndPlaceTurret buyAndPlaceTurret;
-
-
-
-    public bool menu1open;
-    public bool menu2open;
 
     void Start()
     {

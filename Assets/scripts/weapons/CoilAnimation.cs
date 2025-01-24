@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class teslaDamage : MonoBehaviour
+public class CoilExplosion : MonoBehaviour
 {
-    public int damageAmount = 10;
     public float effectDuration = 1f; // Duration of the effect in seconds
-    public float blastRadius;   // Radius of the circle raycast
-    public LayerMask enemyLayer;      // Layer mask to filter for enemies
     private Animator animator;
-    public TurretController tc;
     private GameManager gameManager;
 
     private float destructionTimer;  // Tracks remaining time for destruction
@@ -30,7 +26,6 @@ public class teslaDamage : MonoBehaviour
         }
 
         destructionTimer = effectDuration;
-        ApplyDamage();
     }
 
     void Update()
@@ -55,19 +50,6 @@ public class teslaDamage : MonoBehaviour
                 Destroy(gameObject);
                 isDestroyed = true;
             }
-        }
-    }
-
-    void ApplyDamage()
-    {
-        // Perform a circle raycast to find all enemies within the blast radius
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, blastRadius, enemyLayer);
-
-        foreach (Collider2D enemyCollider in hitEnemies)
-        {
-            // Access the enemy script and apply damage
-            enemyStats enemy = enemyCollider.GetComponent<enemyStats>();
-            enemy.TakeDamage(damageAmount);
         }
     }
 }

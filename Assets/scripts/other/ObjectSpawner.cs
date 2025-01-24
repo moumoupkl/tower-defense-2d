@@ -5,6 +5,8 @@ public class ObjectSpawner : MonoBehaviour
     public GameManager gameManager;
     public Transform blueSpawnPoint;
     public Transform redSpawnPoint;
+    public GameObject spawnedTroops;
+    public GameObject redspawnedTroops;
     private Transform spawnPoint;
     public EnnemyUpgrade blueEnnemyUpgrade;
     public EnnemyUpgrade redEnnemyUpgrade;
@@ -35,6 +37,15 @@ public class ObjectSpawner : MonoBehaviour
         {
             // Spawn the object at the correct spawn point
             GameObject troop = Instantiate(objectToSpawn, spawnPoint.position, Quaternion.identity);
+            // if blueteam set as child of spawnedtroops
+            if (blueTeam)
+            {
+                troop.transform.parent = spawnedTroops.transform;
+            }
+            else
+            {
+                troop.transform.parent = redspawnedTroops.transform;
+            }
 
             // Get the TroopMovement component from the spawned object
             TroupMovement troopMovement = troop.GetComponent<TroupMovement>();

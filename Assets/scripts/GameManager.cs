@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Toggle pause on Escape key
-        if (Input.GetKeyDown(KeyCode.Escape) && !gameisover)
+        if (Input.GetKeyDown(KeyCode.P) && !gameisover)
         {
             pause = !pause;
         }

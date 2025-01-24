@@ -13,6 +13,8 @@ public class MenuSystem : MonoBehaviour
     public InputActionReference openMenu;
     public int activePanel = 0;
     private TroopsAndTowers troopsAndTowers;
+    public float animationTime = 0.5f;
+    private GameObject NeutralPosition;
 
     void Start()
     {
@@ -28,8 +30,10 @@ public class MenuSystem : MonoBehaviour
         // get troops and towers script
         troopsAndTowers = GetComponent<TroopsAndTowers>();
 
-
         AddElements(troopsAndTowers.towerPrefabs);
+
+        //get the child object called "Neutral position" in the selection menu
+        NeutralPosition = selectionMenu.transform.Find("Neutral position").gameObject;
     }
 
     void Update()
@@ -89,6 +93,13 @@ public class MenuSystem : MonoBehaviour
             panel = 6;
         else if (direction == new Vector2(-1, 1))
             panel = 7;
+        else
+            panel = 8;
+        //if not 8 than deactivate 8
+        if (panel != 8)
+        {
+            panels[8].transform.Find("outline").gameObject.SetActive(false);
+        }
 
         if (panel != -1)
         {
@@ -99,7 +110,6 @@ public class MenuSystem : MonoBehaviour
             //set the new panel as the active panel
             activePanel = panel;
         }
-        Debug.Log(direction);
     }
 
     public void AddElements(List<GameObject> elements)

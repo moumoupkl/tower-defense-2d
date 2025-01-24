@@ -17,12 +17,15 @@ public class TroupMovement : MonoBehaviour
     public float slowStrength;
     public float progress;
     public Animator animator;
+    private TroopPath troopPath;
 
     // Private variables
     private float currentSpeed;
     private float startSpeed;
     void Start()
     {
+        //get trooppath from parent
+        troopPath = transform.parent.GetComponent<TroopPath>();
         // Get the main camera and the GameManager component
         Camera mainCamera = Camera.main;
         gameManager = mainCamera.GetComponent<GameManager>();
@@ -34,31 +37,15 @@ public class TroupMovement : MonoBehaviour
         startSpeed = enemyStats.speed;
         currentSpeed = startSpeed;
 
-        // Find the GameObject named "troup path" in the scene
-        GameObject troupPath = GameObject.Find("troup path");
-        if (troupPath == null)
-        {
-            Debug.LogError("GameObject 'troup path' not found in the scene.");
-            return;
-        }
+        // Find the GameObject named "Troop Path" in the scene
+        GameObject troupPath = troopPath.troopPath;
 
-        // Determine the correct path based on the team
-        string teamPath = blueTeam ? "blue" : "red";
-
-        // Find the child object for the corresponding team inside "troup path"
-        Transform teamPathTransform = troupPath.transform.Find(teamPath);
-        if (teamPathTransform == null)
-        {
-            Debug.LogError($"Child '{teamPath}' not found inside 'troup path'.");
-            return;
-        }
-
-        // Get all child transforms inside the team path and assign them to the path array
-        int childCount = teamPathTransform.childCount;
+        // Get all child transforms inside "Troop Path" and assign them to the path array
+        int childCount = troupPath.transform.childCount;
         path = new Transform[childCount];
         for (int i = 0; i < childCount; i++)
         {
-            path[i] = teamPathTransform.GetChild(i);
+            path[i] = troupPath.transform.GetChild(i);
         }
 
         // Initialize starting position and target index

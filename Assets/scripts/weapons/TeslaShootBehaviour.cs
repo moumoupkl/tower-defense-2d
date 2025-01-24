@@ -10,6 +10,6 @@ public class TeslaShootBehaviour : ShootBehavior
     {
         GameObject TeslaExplosion = Instantiate(explosionPrefab, firePoint.position, firePoint.rotation);
         //set damageSAmount of the explosion to the damageAmount of the turret
-        TeslaExplosion.GetComponent<teslaDamage>().damageAmount = GetComponent<CDDamageDower>().damage;
+        //TeslaExplosion.GetComponent<teslaDamage>().damageAmount = GetComponent<CDDamageDower>().damage;
     }
 }

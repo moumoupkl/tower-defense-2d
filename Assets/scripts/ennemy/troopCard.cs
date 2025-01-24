@@ -38,7 +38,7 @@ public class troopCard : MonoBehaviour
         cards.Add(newCard);
         //move all cards to the correct position
         set_distance();
-        move_cards();   
+        move_cards();
     }
 
     /// <summary>
@@ -47,7 +47,7 @@ public class troopCard : MonoBehaviour
     /// <param name="index">The index of the card to remove.</param>
     public void remove_card(int index)
     {
-        Debug.Log("removing card at index: " + index);
+        //Debug.Log("removing card at index: " + index);
         //destroy the card at the given index
         Destroy(cards[index]);
         //remove the card from the list
@@ -87,5 +87,5 @@ public class troopCard : MonoBehaviour
             distanceBetweenCards = maxDistanceBetweenCards;
         }
     }
-    
+
 }
